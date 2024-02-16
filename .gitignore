@@ -3,4 +3,4 @@
 # dependencies
 
 /venv
-backend/backend/__pycache__/*
+backend/backend/__pycache__
