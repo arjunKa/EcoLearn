@@ -7,8 +7,7 @@ export const Nav = styled.nav`
     height: 85px; 
     display: flex;
     justify-content: space-between;
-    padding: 0.2rem calc((100vw - 1000px) / 2);
-    z-index: 12;
+    padding: 0rem 2rem;
 `;
 
 export const NavLink = styled(Link)`
@@ -41,12 +40,32 @@ export const Hamburger = styled(FaBars)`
 export const NavMenu = styled.div`
     display: flex; 
     align-items: center;
-    margin-right: -24px;
     @media screen and (max-width: 768px) {
         display: none;
     }
 `;
 
+export const Logo = styled.div`
+    font-size: 35px;    
+    font-family: Arial, Helvetica, sans-serif;
+    height: 80px;
+    
+    border: 3px blue;
+    border-width: thick;
+
+`;
+
+export const LogoNavLink = styled(Link)`
+    color: #000000;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    height: 100%;
+    cursor: pointer;
+    &.active{
+        color: #000000;
+    }
+`;
 // export const NavBtn = styled.nav`
 //     display: flex;
 //     align-items: center;

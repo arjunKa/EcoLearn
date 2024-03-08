@@ -4,6 +4,8 @@ import {
     NavLink,
     Hamburger,
     NavMenu,
+    Logo,
+    LogoNavLink,
 } from "./navbarElements";
 
 
@@ -11,11 +13,15 @@ const Navbar = () => {
     return (
         <>
             <Nav>
+                <Logo>
+                    <LogoNavLink to= "/">
+                        EcoLearning
+                    </LogoNavLink>
+                </Logo>
                 <Hamburger />
-
                 <NavMenu>
-                    <NavLink to= "/calculator">
-                        Calculator
+                    <NavLink to= "/tools">
+                        Tools
                     </NavLink>
                     <NavLink to= "/projects">
                         Projects
