@@ -1,5 +1,17 @@
 import React from "react";
+import { styled } from "styled-components";
 import { Form } from "react-router-dom";
+
+export const MyButton = styled.button`
+    type: submit;
+    background-color: #808080;
+    text-align: center;
+    opacity: 1;
+    height: 80%;
+    width: 30%;
+    margin: 0px 155px;
+    &:hover { opacity: 0.8 }
+`
 
 const TreesCalc = () => {
     return (
@@ -9,15 +21,15 @@ const TreesCalc = () => {
                 Trees Planted!
             </h1>
             {/* Block for inside Calc */}
-            <div style={{ display: "flex", flexDirection: "row", padding: "0.5rem 5rem" }}>
+            <div style={{ display: "flex", flexDirection: "row", padding: "10px 5px 10px 20px", border: "2px solid #000", borderRadius: "25px" }}>
                 {/* Calc Options */}
-                <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-evenly", flexGrow: 1, backgroundColor: "#515579" }}>
+                <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-around", flexGrow: 1 }}>
                     {/* left side */}
                     <div style={{ display: "flex", flexDirection: "column" }}>
                         {/* Drop down menu for type of tree */}
-                        <div style={{display: "flex", flexDirection: "column", padding: "1rem" }}>
+                        <div style={{display: "flex", flexDirection: "column", padding: "10px" }}>
                             <label for="trees"> Type of Tree </label>
-                            <select name="trees" id="trees">
+                            <select name="trees" id="trees" style={{ width: "170px" }}>
                                 <option> </option>
                                 <option value="spruce"> Spruce </option>
                                 <option value="birch"> Birch </option>
@@ -28,12 +40,16 @@ const TreesCalc = () => {
                     </div>
 
                     {/* Right Side */}
-                    <div style={{ display: "flex", flexDirection: "column"}}>
+                    <div style={{ display: "flex", flexDirection: "column", paddingBottom: "10px" }}>
                         {/* Input box for Quantity */}
                         <form style={{ padding: "1.5rem 0" }}>
                             <label for="numOfTrees" style={{ padding: "0rem 1rem" }}> Quantity Planted </label>
                             <input type="text" id="numOfTrees" name="numOfTrees"></input>
                         </form>
+
+                        {/* Submit Button */}
+                        <MyButton>Submit</MyButton>
+
                     </div>
                 </div>
 
