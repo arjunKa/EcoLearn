@@ -1,13 +1,13 @@
 import React from "react";
 import { styled } from "styled-components";
-import { Form } from "react-router-dom";
+import treeImg from "../../public/treeImage.jpeg"
 
 export const MyButton = styled.button`
     type: submit;
     background-color: #808080;
     text-align: center;
     opacity: 1;
-    height: 80%;
+    height: 40px;
     width: 30%;
     margin: 0px 155px;
     &:hover { opacity: 0.8 }
@@ -54,8 +54,8 @@ const TreesCalc = () => {
                 </div>
 
                 {/* Image area within Calc */}
-                <div style={{ display: "flex", flexGrow: 1, backgroundColor: "#000000" }}>
-                    image
+                <div style={{ display: "flex", justifyContent: "space-around", flexGrow: 1}}>
+                   <img src={treeImg} style={{ width: "70%", height: "70%" }}></img>
                 </div>
 
             </div>

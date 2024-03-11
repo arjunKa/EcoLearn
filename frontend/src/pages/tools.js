@@ -1,16 +1,9 @@
 import React from "react";
-import TreesCalc from "../components/Calculators/TreesCalc"
+import TreesCalc from "../components/Calculators/treesCalc"
 
 const Tools = () => {
     return (
-        <div
-            style={{
-                display: "flex",
-                flexDirection: "column",
-                padding: "25px 25px",
-                height: "100vh",
-            }}
-        >
+        <div style={{ display: "flex", flexDirection: "column", padding: "25px 25px", height: "100vh" }}>
             <h1 style={{ color: "#515799"}}>
                 This page is for the Tools!
             </h1>
