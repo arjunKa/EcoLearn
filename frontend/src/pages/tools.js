@@ -1,7 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import TreesCalc from "../components/Calculators/treesCalc"
+import GardenCalc from "../components/Calculators/gardenCalc"
 
 const Tools = () => {
+
+    const [calc, setCalc] = useState("treesPlanted");
+    const handleChange = (event) => {
+        setCalc(event.target.value);
+    };
+
+    function Calculator() {
+        if (calc === "treesPlanted") {
+            return <TreesCalc/>
+        } else if (calc === "garden") {
+            return <GardenCalc/>
+        } else {
+            return null;
+        }
+    }
+
     return (
         <div style={{ display: "flex", flexDirection: "column", padding: "25px 25px", height: "100vh" }}>
             <h1 style={{ color: "#515799"}}>
@@ -24,8 +41,7 @@ const Tools = () => {
                 {/* Right Filter Side (Filter by specific Calc in left side filter) */}
                 <div style={{ display: "flex", flexDirection: "column", paddingRight: "100px" }}>
                     <label for="calc"> Tool Filter </label>
-                    <select name="calc" id="calc" style={{ width: "250px" }}>
-                        <option> </option>
+                    <select name="calc" id="calc" onChange={handleChange} style={{ width: "250px" }}>
                         <option value="treesPlanted"> Trees </option>
                         <option value="garden"> Garden </option>
                         <option value="energySaved"> Energy Saved </option>
@@ -35,7 +51,7 @@ const Tools = () => {
             </div>
 
             {/* Where Calculators are displayed */}
-            <TreesCalc/>
+            <Calculator/>
         </div>
     );
 };

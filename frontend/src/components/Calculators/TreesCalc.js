@@ -1,6 +1,6 @@
 import React from "react";
 import { styled } from "styled-components";
-import treeImg from "../../public/treeImage.jpeg"
+import treeImg from "../../Public/treeImage.jpeg"
 
 export const MyButton = styled.button`
     type: submit;
@@ -15,7 +15,7 @@ export const MyButton = styled.button`
 
 const TreesCalc = () => {
     return (
-        <div style={{ display: "flex", flexDirection: "column" }}> 
+        <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", marginLeft: "200px", marginRight: "200px", marginTop: "30px" }}> 
             {/* Heading outside of Calc */}
             <h1 style={{ display: "flex", justifyContent: "flex-end", padding: "0rem 5rem 0rem 0rem" }}>
                 Trees Planted!
@@ -59,8 +59,7 @@ const TreesCalc = () => {
                 </div>
 
             </div>
-            
-        </div>
+        </div>    
     );
 };
 
