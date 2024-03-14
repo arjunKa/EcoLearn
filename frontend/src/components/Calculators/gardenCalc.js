@@ -1,8 +1,89 @@
-import React from "react";
+import React, {useState} from "react";
 import { styled } from "styled-components";
-
+import { MyButton } from "./treesCalc";
 
 const GardenCalc = () => {
+
+    const [garden, setGarden] = useState("grass");
+    const handleChange = (event) => {
+        setGarden(event.target.value);
+    };
+
+    function PlantType () {
+        if (garden === "grass"){
+            return (
+                <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-around" }}>
+                    <div style={{ display: "flex", flexDirection: "column", paddingBottom: "5px"}}>
+                        {/* Area of grass patch */}
+                        <form style={{display: "flex", flexDirection: "column"}}>
+                            <label for="grassArea" style={{paddingRight: "5px" }}> Area of Grass (m^2) </label>
+                            <input type="number" id="grassArea" name="grassArea" min="0" step=".01" style={{ width: "180px"}}></input>
+                        </form>
+                    </div>
+
+                    {/* Submit Button */}
+                    <div style={{ display: "flex", alignItems: "flex-start"}}>
+                        <MyButton> Calculate </MyButton>
+                    </div>
+                </div>
+            );
+        } else if (garden === "shrub") {
+            return (
+                <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-around" }}>
+                    <div style={{ display: "flex", flexDirection: "column", paddingBottom: "5px"}}> 
+                        {/* Number of Shrubs */}
+                        <form style={{display: "flex", flexDirection: "column"}}>
+                            <label for="numShrubs" style={{paddingRight: "5px" }}> # of Shrubs Planted </label>
+                            <input type="number" id="numShrubs" name="numShrubs" min="0" style={{ width: "180px"}}></input>
+                        </form>
+                    </div>
+
+                    {/* Submit Button */}
+                    <div style={{ display: "flex", alignItems: "flex-start"}}>
+                        <MyButton> Calculate </MyButton>
+                    </div>
+                </div>
+            );
+        } else if (garden === "flower") {
+            return (
+                <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-around" }}>  
+                    <div style={{ display: "flex", flexDirection: "column", paddingBottom: "5px"}}>
+                        {/* Weight of flower planted */}
+                        <form style={{display: "flex", flexDirection: "column"}}>
+                            <label for="flowerWeight" style={{paddingRight: "5px" }}> Weight of flowers (lb)?? </label>
+                            <input type="text" id="flowerWeight" name="flowerWeight" min="0" style={{ width: "180px"}}></input>
+                        </form>
+                    </div>
+
+                    {/* Submit Button */}
+                    <div style={{ display: "flex", alignItems: "flex-start"}}>
+                        <MyButton> Calculate </MyButton>
+                    </div>
+                </div>
+            );
+        } else if (garden === "vegetables") {
+            return (
+                <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-around" }}>
+                    <div style={{ display: "flex", flexDirection: "column", paddingBottom: "5px"}}>
+                        {/* Weight of vegetables planted */}
+                        <form style={{display: "flex", flexDirection: "column"}}>
+                            <label for="vegWeight" style={{paddingRight: "5px" }}> Weight of Veggies (lb)?? </label>
+                            <input type="text" id="vegWeight" name="vegWeight" min="0" style={{ width: "180px"}}></input>
+                        </form>
+                    </div>
+                    
+                    {/* Submit Button */}
+                    <div style={{ display: "flex", alignItems: "flex-start"}}>
+                        <MyButton> Calculate </MyButton>
+                    </div>
+
+                </div>
+            );
+        } else {
+            return null;
+        }
+    }
+
     return(
         <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", marginLeft: "200px", marginRight: "200px", marginTop: "30px" }}>
             {/* Heading outside of Calculator */}
@@ -20,8 +101,7 @@ const GardenCalc = () => {
                         <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-evenly" }}>
                             {/* Input box for Potatoes*/}
                             <label for="plant"> Type of Plant </label>
-                            <select name="plant" id="plant" style={{ width: "170px" }}>
-                                <option> </option>
+                            <select name="plant" id="plant" onChange={handleChange} style={{ width: "170px" }}>
                                 <option value="grass"> Grass </option>
                                 <option value="shrub"> Shrub </option>
                                 <option value="flower"> Flowers/Small Plants </option>
@@ -33,7 +113,7 @@ const GardenCalc = () => {
 
                     {/* Right Side */}
                     <div style={{ display: "flex", flexDirection: "column" }}>
-                        right side
+                        <PlantType/>
                     </div>
                 </div>
 
