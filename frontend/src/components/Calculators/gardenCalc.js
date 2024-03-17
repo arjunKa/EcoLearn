@@ -1,6 +1,5 @@
 import React, {useState} from "react";
-import { styled } from "styled-components";
-import { MyButton } from "./treesCalc";
+import { MyButton } from "../Common/CommonUI";
 
 const GardenCalc = () => {
 
@@ -22,8 +21,8 @@ const GardenCalc = () => {
                     </div>
 
                     {/* Submit Button */}
-                    <div style={{ display: "flex", alignItems: "flex-start"}}>
-                        <MyButton> Calculate </MyButton>
+                    <div style={{ display: "flex"}}>
+                        <MyButton style={{width: "100px"}}> Calculate </MyButton>
                     </div>
                 </div>
             );
@@ -40,7 +39,7 @@ const GardenCalc = () => {
 
                     {/* Submit Button */}
                     <div style={{ display: "flex", alignItems: "flex-start"}}>
-                        <MyButton> Calculate </MyButton>
+                        <MyButton style={{width: "100px"}}> Calculate </MyButton>
                     </div>
                 </div>
             );
@@ -57,7 +56,7 @@ const GardenCalc = () => {
 
                     {/* Submit Button */}
                     <div style={{ display: "flex", alignItems: "flex-start"}}>
-                        <MyButton> Calculate </MyButton>
+                        <MyButton style={{width: "100px"}}> Calculate </MyButton>
                     </div>
                 </div>
             );
@@ -74,9 +73,8 @@ const GardenCalc = () => {
                     
                     {/* Submit Button */}
                     <div style={{ display: "flex", alignItems: "flex-start"}}>
-                        <MyButton> Calculate </MyButton>
+                        <MyButton style={{width: "100px"}}> Calculate </MyButton>
                     </div>
-
                 </div>
             );
         } else {

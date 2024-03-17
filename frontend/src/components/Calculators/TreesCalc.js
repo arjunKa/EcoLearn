@@ -1,17 +1,6 @@
 import React from "react";
-import { styled } from "styled-components";
-import treeImg from "../../Public/treeImage.jpeg"
-
-export const MyButton = styled.button`
-    type: submit;
-    background-color: #808080;
-    text-align: center;
-    opacity: 1;
-    height: 40px;
-    width: 30%;
-    margin: 0px 155px;
-    &:hover { opacity: 0.8 }
-`
+import { MyButton } from "../Common/CommonUI";
+import treeImg from "../../public/treeImage.jpeg"
 
 const TreesCalc = () => {
     return (
@@ -32,7 +21,7 @@ const TreesCalc = () => {
                             <select name="trees" id="trees" style={{ width: "170px" }}>
                                 <option> </option>
                                 <option value="basswood"> Basswood </option>
-                                <option value="Beech"> Beech </option>
+                                <option value="beech"> Beech </option>
                                 <option value="birch"> Birch </option>
                                 <option value="blackCherry"> Black Cherry </option>
                                 <option value="blackWalnut"> Black Walnut </option>
@@ -64,13 +53,13 @@ const TreesCalc = () => {
                     {/* Right Side */}
                     <div style={{ display: "flex", flexDirection: "column", paddingBottom: "10px" }}>
                         {/* Input box for Age */}
-                        <form style={{ paddingTop: "30px", paddingBottom: "20px" }}>
+                        <form style={{ paddingTop: "37px", paddingBottom: "20px" }}>
                             <label for="age" style={{ padding: "0rem 1rem" }}> Age </label>
                             <input type="number" min="0" id="age" name="age" style={{ width: "100px"}}></input>
                         </form>
 
                         {/* Submit Button */}
-                        <MyButton>Submit</MyButton>
+                        <MyButton style={{margin: "0px 60px", width: "100px"}}>Submit</MyButton>
 
                     </div>
                 </div>
@@ -80,6 +69,11 @@ const TreesCalc = () => {
                    <img src={treeImg} style={{ width: "70%", height: "70%" }}></img>
                 </div>
 
+            </div>
+            {/* Reference Link */}
+            <div style={{ display: "flex", flexDirection: "row", justifyContent: "flex-end" }}>
+                Reference Link: 
+                <a href="https://treecanada.ca/carbon-calculator/" style={{ paddingLeft: "5px"}}> https://treecanada.ca/carbon-calculator/ </a>
             </div>
         </div>    
     );

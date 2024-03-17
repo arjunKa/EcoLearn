@@ -1,6 +1,11 @@
 import React from "react";
 import { styled } from "styled-components";
 
+
+{/* Type of Item */}
+{/* Weight in Kg Recycled */}
+
+
 const RecyclingCalc = () => {
     return (
         <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", marginLeft: "200px", marginRight: "200px", marginTop: "30px" }}>                    {/* Heading outside of Calc */}

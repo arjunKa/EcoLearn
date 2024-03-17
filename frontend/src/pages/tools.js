@@ -6,6 +6,7 @@ import FoodWasteCalc from "../components/Calculators/foodWasteCalc";
 import CarEmissionCalc from "../components/Calculators/carEmissionCalc";
 import RecyclingCalc from "../components/Calculators/recyclingCalc";
 import RenewableEnergyCalc from "../components/Calculators/renewableEnergyCalc";
+import ItemsDonatedCalc from "../components/Calculators/itemsDonatedCalc";
 
 const Tools = () => {
 
@@ -29,6 +30,8 @@ const Tools = () => {
             return <RecyclingCalc/>
         } else if (calc === "energy"){
             return <RenewableEnergyCalc/>
+        } else if (calc === "items") {
+            return <ItemsDonatedCalc/>
         } else {
             return null;
         }
@@ -41,8 +44,8 @@ const Tools = () => {
             </h1>
 
             {/* Drop down filters to decide which calculator */}
-            <div style={{display: "flex", flexDirection: "row", justifyContent: "space-between", paddingBottom: "25px" }}>
-                {/* Left Filter Side (Filter by type of Calc??) */}
+            <div style={{display: "flex", flexDirection: "row", justifyContent: "space-between", paddingLeft: "200px" }}>
+                {/* Left Filter Side (Filter by type of Calc??)
                 <div style={{ display: "flex", flexDirection: "column", paddingLeft: "100px" }}>
                     <label for="calcType"> Filter Type </label>
                     <select name="calcType" id="calcType" style={{ width: "250px" }}>
@@ -51,7 +54,7 @@ const Tools = () => {
                         <option value="automotive"> Automotive </option>
                         <option value="electricity"> Electricity </option>
                     </select>
-                </div>
+                </div> */}
 
                 {/* Right Filter Side (Filter by specific Calc in left side filter) */}
                 <div style={{ display: "flex", flexDirection: "column", paddingRight: "100px" }}>
@@ -64,6 +67,7 @@ const Tools = () => {
                         <option value="carEmissions"> Car Emissions </option>
                         <option value="water"> Water Saved </option>
                         <option value="energy"> Renewable Energy </option>
+                        <option value="items"> Items Donated </option>
                     </select>
                 </div>
             </div>
