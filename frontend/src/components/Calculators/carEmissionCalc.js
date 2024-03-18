@@ -1,5 +1,5 @@
 import React from "react";
-import { styled } from "styled-components";
+import { MyButton } from "../Common/CommonUI";
 
 {/* Type of Cars */}
 {/* Distance Traveled in Km  */}
@@ -39,7 +39,16 @@ const CarEmissionCalc = () => {
 
                     {/* Right Side */}                    
                     <div style={{ display: "flex", flexDirection: "column" }}>
+                        {/* Drop down for type of Car driven */}
+                        <div style={{ display: "flex", flexDirection: "column", paddingBottom: "5px" }}>
+                            <label for="kmDriven" style={{ paddingRight: "5px" }}> Distance saved (km) </label>
+                            <input type="number" id="kmDriven" name="kmDriven" min="0" step=".01" style={{width:"160px"}}></input>  
+                        </div>
 
+                        {/* Submit Button */}
+                        <div style={{ display: "flex", alignItems: "flex-start"}}>
+                            <MyButton style={{width: "100px"}}> Calculate </MyButton>
+                        </div>
                     </div>
                 </div>
 
