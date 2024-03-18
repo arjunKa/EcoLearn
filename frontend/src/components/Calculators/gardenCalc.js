@@ -33,7 +33,7 @@ const GardenCalc = () => {
                         {/* Number of Shrubs */}
                         <form style={{display: "flex", flexDirection: "column"}}>
                             <label for="numShrubs" style={{paddingRight: "5px" }}> # of Shrubs Planted </label>
-                            <input type="number" id="numShrubs" name="numShrubs" min="0" style={{ width: "180px"}}></input>
+                            <input type="number" id="numShrubs" name="numShrubs" min="0" step=".01" style={{ width: "180px"}}></input>
                         </form>
                     </div>
 
@@ -50,7 +50,7 @@ const GardenCalc = () => {
                         {/* Weight of flower planted */}
                         <form style={{display: "flex", flexDirection: "column"}}>
                             <label for="flowerWeight" style={{paddingRight: "5px" }}> Weight of flowers (lb)?? </label>
-                            <input type="text" id="flowerWeight" name="flowerWeight" min="0" style={{ width: "180px"}}></input>
+                            <input type="text" id="flowerWeight" name="flowerWeight" min="0" step=".01" style={{ width: "180px"}}></input>
                         </form>
                     </div>
 
@@ -67,7 +67,7 @@ const GardenCalc = () => {
                         {/* Weight of vegetables planted */}
                         <form style={{display: "flex", flexDirection: "column"}}>
                             <label for="vegWeight" style={{paddingRight: "5px" }}> Weight of Veggies (lb)?? </label>
-                            <input type="text" id="vegWeight" name="vegWeight" min="0" style={{ width: "180px"}}></input>
+                            <input type="text" id="vegWeight" name="vegWeight" min="0" step=".01" style={{ width: "180px"}}></input>
                         </form>
                     </div>
                     
