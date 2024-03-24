@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import { styled } from "styled-components";
-import { MyButton } from "./treesCalc";
+import { MyButton } from "./Trees/TreesCalc";
 
 const GardenCalc = () => {
 
