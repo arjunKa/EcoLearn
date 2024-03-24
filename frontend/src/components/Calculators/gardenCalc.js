@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import { MyButton } from "../Common/CommonUI";
-import potatoImg from "../../public/potatoImage.jpg"
+import potatoImg from "../../public/potatoImage.jpg";
 
 const GardenCalc = () => {
 

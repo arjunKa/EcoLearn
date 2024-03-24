@@ -15,14 +15,22 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, re_path
 from rest_framework import routers
 from todo import views
+from ecoLearning import views as b2
+# from .views import tree_list
 
+#these are api tools for admin access, to add new entires and delete them
 router = routers.DefaultRouter()
 router.register(r'todos', views.TodoView, 'todo')
+router.register(r'trees', b2.TreeView, 'Tree')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
+    path('api/ecolearning/trees', b2.tree_list, name = "trees")
+    # re_path('api/ecolearning/$', b2.tree_list),
+    # re_path(r'^api/ecolearning/([0-9])$', b2.TreeView.as_view({'get': 'tree'}))
+    
 ]

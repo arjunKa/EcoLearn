@@ -1,11 +1,20 @@
 import React, { useState } from "react";
-import TreesCalc from "../components/Calculators/treesCalc"
+import TreesCalc from "../components/Calculators/Trees/TreesCalc"
 import GardenCalc from "../components/Calculators/gardenCalc"
 import WaterSavedCalc from "../components/Calculators/waterSavedCalc"
 import FoodWasteCalc from "../components/Calculators/foodWasteCalc";
 import CarEmissionCalc from "../components/Calculators/carEmissionCalc";
 import RecyclingCalc from "../components/Calculators/recyclingCalc";
 import RenewableEnergyCalc from "../components/Calculators/renewableEnergyCalc";
+import {
+    Form,
+    Label,
+    FormGroup,
+    Input,
+    Col, Row,
+    Button, option
+  
+  } from 'reactstrap';
 import ItemsDonatedCalc from "../components/Calculators/itemsDonatedCalc";
 
 const Tools = () => {
@@ -45,21 +54,12 @@ const Tools = () => {
 
             {/* Drop down filters to decide which calculator */}
             <div style={{display: "flex", flexDirection: "row", justifyContent: "space-between", paddingLeft: "200px" }}>
-                {/* Left Filter Side (Filter by type of Calc??)
-                <div style={{ display: "flex", flexDirection: "column", paddingLeft: "100px" }}>
-                    <label for="calcType"> Filter Type </label>
-                    <select name="calcType" id="calcType" style={{ width: "250px" }}>
-                        <option> </option>
-                        <option value="planting"> Planting </option>
-                        <option value="automotive"> Automotive </option>
-                        <option value="electricity"> Electricity </option>
-                    </select>
-                </div> */}
+
 
                 {/* Right Filter Side (Filter by specific Calc in left side filter) */}
                 <div style={{ display: "flex", flexDirection: "column", paddingRight: "100px" }}>
-                    <label for="calc"> Tool Filter </label>
-                    <select name="calc" id="calc" onChange={handleChange} style={{ width: "250px" }}>
+                    <label htmlFor="calc"> Tool Filter </label>
+                    <Input type="select" name="calc" id="calc" onChange={handleChange} style={{ width: "250px" }}>
                         <option value="treesPlanted"> Trees </option>
                         <option value="garden"> Garden </option>
                         <option value="recycling"> Recycling </option>
@@ -68,7 +68,9 @@ const Tools = () => {
                         <option value="water"> Water Saved </option>
                         <option value="energy"> Renewable Energy </option>
                         <option value="items"> Items Donated </option>
-                    </select>
+                    </Input>
+                        
+                    
                 </div>
             </div>
 
