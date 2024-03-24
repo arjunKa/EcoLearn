@@ -1,15 +1,12 @@
 import React from "react";
-import { styled } from "styled-components";
-
-{/* Type of Renewable Energy (Electricity Saved, Rainwater, Solar Panels) */}
-{/* Question to ask how much  time of electricity saved, rainwater (oz), solar panel size*/}
+import { MyButton } from "../Common/CommonUI";
 
 const RenewableEnergyCalc = () => {
     return (
         <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", marginLeft: "200px", marginRight: "200px", marginTop: "30px" }}>             
             {/* Heading outside of Calc */}
             <h1 style={{ display: "flex", justifyContent: "flex-end" }}>
-                Recycling
+                Renewable Energy
             </h1>
 
             {/* Block for inside Calc */}
@@ -41,7 +38,16 @@ const RenewableEnergyCalc = () => {
 
                     {/* Right Side */}                    
                     <div style={{ display: "flex", flexDirection: "column" }}>
+                        {/* Input for energy saved in kilowats */}
+                        <div style={{ display: "flex", flexDirection: "column", paddingBottom: "5px" }}>
+                            <label for="energySaved" style={{ paddingRight: "5px" }}> Energy Saved (Kw) </label>
+                            <input type="number" id="energySaved" name="energySaved" min="0" step=".01" ></input>
+                        </div>
 
+                        {/* Submit Button */}
+                        <div style={{ display: "flex", alignItems: "flex-start"}}>
+                            <MyButton style={{width: "100px"}}> Calculate </MyButton>
+                        </div>
                     </div>
                 </div>
 
@@ -49,16 +55,9 @@ const RenewableEnergyCalc = () => {
                 <div style={{ display: "flex", justifyContent: "space-around", flexGrow: 1, backgroundColor: "#808080" }}>
                     Hello
                 </div>
-
-
             </div>
-
-
         </div>
-
-
     );
-
 };
 
 export default RenewableEnergyCalc;

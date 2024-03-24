@@ -1,5 +1,6 @@
 import React from "react";
 import { MyButton } from "../Common/CommonUI";
+import waterImg from "../../public/waterImage.jpg"
 
 {/* How many litres of Water saved */}
 
@@ -12,7 +13,7 @@ const WaterSavedCalc = () => {
             </h1>
         
             {/* Block for inside Calc */}
-            <div style={{ display: "flex", flexDirection: "row", padding: "10px 5px 10px 0px", border: "2px solid #000", borderRadius: "25px" }}>
+            <div style={{ display: "flex", flexDirection: "row", padding: "10px 5px 10px 0px", border: "2px solid #000", borderRadius: "25px", marginBottom: "30px" }}>
                 {/* Calc Options */}
                 <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-around", flexGrow: 2 }}>
                     {/* Left Side */}
@@ -34,8 +35,8 @@ const WaterSavedCalc = () => {
                 </div>
 
                 {/* Image area within Calc */}
-                <div style={{ display: "flex", justifyContent: "space-around", flexGrow: 1, backgroundColor: "#808080" }}>
-                    Hello
+                <div style={{ display: "flex", justifyContent: "space-evenly", flexGrow: 1 }}>
+                    <img src={waterImg} style={{ width:"60%", height: "70%", paddingTop: "30px"}}></img>
                 </div>
             </div>
         </div>

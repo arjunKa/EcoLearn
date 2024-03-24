@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import { MyButton } from "../Common/CommonUI";
+import potatoImg from "../../public/potatoImage.jpg"
 
 const GardenCalc = () => {
 
@@ -116,8 +117,8 @@ const GardenCalc = () => {
                 </div>
 
                 {/* Image */}
-                <div style={{ display: "flex", justifyContent: "space-around", flexGrow: 1, backgroundColor: "#808080" }}>
-
+                <div style={{ display: "flex", justifyContent: "space-around", flexGrow: 1, marginLeft: "50px" }}>
+                    <img src={potatoImg} style={{ width:"60%", height: "100%", padding: "50px 0px 50px 0px"}}></img>
                 </div>
             </div>
         </div>  
