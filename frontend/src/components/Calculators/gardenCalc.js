@@ -1,6 +1,6 @@
 import React, {useState} from "react";
-import { styled } from "styled-components";
-import { MyButton } from "./Trees/TreesCalc";
+import { MyButton } from "../Common/CommonUI";
+import potatoImg from "../../public/potatoImage.jpg";
 
 const GardenCalc = () => {
 
@@ -22,8 +22,8 @@ const GardenCalc = () => {
                     </div>
 
                     {/* Submit Button */}
-                    <div style={{ display: "flex", alignItems: "flex-start"}}>
-                        <MyButton> Calculate </MyButton>
+                    <div style={{ display: "flex"}}>
+                        <MyButton style={{width: "100px"}}> Calculate </MyButton>
                     </div>
                 </div>
             );
@@ -34,13 +34,13 @@ const GardenCalc = () => {
                         {/* Number of Shrubs */}
                         <form style={{display: "flex", flexDirection: "column"}}>
                             <label for="numShrubs" style={{paddingRight: "5px" }}> # of Shrubs Planted </label>
-                            <input type="number" id="numShrubs" name="numShrubs" min="0" style={{ width: "180px"}}></input>
+                            <input type="number" id="numShrubs" name="numShrubs" min="0" step=".01" style={{ width: "180px"}}></input>
                         </form>
                     </div>
 
                     {/* Submit Button */}
                     <div style={{ display: "flex", alignItems: "flex-start"}}>
-                        <MyButton> Calculate </MyButton>
+                        <MyButton style={{width: "100px"}}> Calculate </MyButton>
                     </div>
                 </div>
             );
@@ -51,13 +51,13 @@ const GardenCalc = () => {
                         {/* Weight of flower planted */}
                         <form style={{display: "flex", flexDirection: "column"}}>
                             <label for="flowerWeight" style={{paddingRight: "5px" }}> Weight of flowers (lb)?? </label>
-                            <input type="text" id="flowerWeight" name="flowerWeight" min="0" style={{ width: "180px"}}></input>
+                            <input type="text" id="flowerWeight" name="flowerWeight" min="0" step=".01" style={{ width: "180px"}}></input>
                         </form>
                     </div>
 
                     {/* Submit Button */}
                     <div style={{ display: "flex", alignItems: "flex-start"}}>
-                        <MyButton> Calculate </MyButton>
+                        <MyButton style={{width: "100px"}}> Calculate </MyButton>
                     </div>
                 </div>
             );
@@ -68,15 +68,14 @@ const GardenCalc = () => {
                         {/* Weight of vegetables planted */}
                         <form style={{display: "flex", flexDirection: "column"}}>
                             <label for="vegWeight" style={{paddingRight: "5px" }}> Weight of Veggies (lb)?? </label>
-                            <input type="text" id="vegWeight" name="vegWeight" min="0" style={{ width: "180px"}}></input>
+                            <input type="text" id="vegWeight" name="vegWeight" min="0" step=".01" style={{ width: "180px"}}></input>
                         </form>
                     </div>
                     
                     {/* Submit Button */}
                     <div style={{ display: "flex", alignItems: "flex-start"}}>
-                        <MyButton> Calculate </MyButton>
+                        <MyButton style={{width: "100px"}}> Calculate </MyButton>
                     </div>
-
                 </div>
             );
         } else {
@@ -118,8 +117,8 @@ const GardenCalc = () => {
                 </div>
 
                 {/* Image */}
-                <div style={{ display: "flex", justifyContent: "space-around", flexGrow: 1, backgroundColor: "#808080" }}>
-
+                <div style={{ display: "flex", justifyContent: "space-around", flexGrow: 1, marginLeft: "50px" }}>
+                    <img src={potatoImg} style={{ width:"60%", height: "100%", padding: "50px 0px 50px 0px"}}></img>
                 </div>
             </div>
         </div>  

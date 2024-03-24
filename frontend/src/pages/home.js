@@ -1,20 +1,18 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import Header from "../components/Homepage/header"
+import JsonData from "../data/data.json"
 
-const Home = () => {
-    return (
-        <div
-            style={{
-                display: "flex",
-                justifyContent: "centre",
-                alignItems: "centre",
-                height: "100vh",
-            }}
-        >
-            <h1>
-                Home Page!
-            </h1>
-        </div>
-    );
+const Home = (props) => {
+  const [landingPageData, setLandingPageData] = useState({});
+  useEffect(() => {
+    setLandingPageData(JsonData);
+  }, []);
+
+  return(
+    <div>
+      <Header data={landingPageData.Header}/>
+    </div>
+  );
 };
 
 export default Home;

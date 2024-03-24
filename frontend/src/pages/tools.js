@@ -15,6 +15,7 @@ import {
     Button, option
   
   } from 'reactstrap';
+import ItemsDonatedCalc from "../components/Calculators/itemsDonatedCalc";
 
 const Tools = () => {
 
@@ -38,6 +39,8 @@ const Tools = () => {
             return <RecyclingCalc/>
         } else if (calc === "energy"){
             return <RenewableEnergyCalc/>
+        } else if (calc === "items") {
+            return <ItemsDonatedCalc/>
         } else {
             return null;
         }
@@ -50,8 +53,8 @@ const Tools = () => {
             </h1>
 
             {/* Drop down filters to decide which calculator */}
-            <div style={{display: "flex", flexDirection: "row", justifyContent: "space-between", paddingBottom: "25px" }}>
-    
+            <div style={{display: "flex", flexDirection: "row", justifyContent: "space-between", paddingLeft: "200px" }}>
+
 
                 {/* Right Filter Side (Filter by specific Calc in left side filter) */}
                 <div style={{ display: "flex", flexDirection: "column", paddingRight: "100px" }}>
@@ -64,7 +67,10 @@ const Tools = () => {
                         <option value="carEmissions"> Car Emissions </option>
                         <option value="water"> Water Saved </option>
                         <option value="energy"> Renewable Energy </option>
+                        <option value="items"> Items Donated </option>
                     </Input>
+                        
+                    
                 </div>
             </div>
 
