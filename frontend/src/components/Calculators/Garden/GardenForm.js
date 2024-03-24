@@ -10,10 +10,10 @@ import {
 import React, { useState } from 'react';
 import axios from "axios";
 
-const TreesForm = ({ onUpdate }) => {
+const GardenForm = ({ onUpdate }) => {
 
 
-  const [selectedOption, setSelectedOption] = useState('grass');
+  const [selectedOption, setSelectedOption] = useState('');
   const [responseData, setResponseData] = useState(null);
   const [age, setAge] = useState(''); // State for age input
 
@@ -50,7 +50,7 @@ const TreesForm = ({ onUpdate }) => {
 
   return (
 
-    <Form>
+    <Form style={{ border: '1px solid blue' }} >
       <Row>
         <Col md={4}>
           <FormGroup>
@@ -93,6 +93,13 @@ const TreesForm = ({ onUpdate }) => {
       </Button>
 
 
+      {responseData && (
+        <div>
+          <h2>Response Data:</h2>
+          <p>{responseData.age} {JSON.stringify(responseData, null, 2)}</p>
+        </div>
+      )}
+
     </Form>
 
 
@@ -100,4 +107,4 @@ const TreesForm = ({ onUpdate }) => {
   );
 
 }
-export default TreesForm;
+export default GardenForm;

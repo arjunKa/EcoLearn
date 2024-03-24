@@ -38,7 +38,7 @@ const TreesForm = ({ onUpdate }) => {
 
   return (
 
-    <Form  >
+    <Form style={{border: '1px solid blue' }} >
       <Row>
         <Col md={8}>
           <FormGroup >

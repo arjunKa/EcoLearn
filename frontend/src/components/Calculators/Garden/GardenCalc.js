@@ -1,33 +1,19 @@
 import React, { useState } from "react";
 import { styled } from "styled-components";
-import treeImg from "../../../public/treeImage.jpeg"
+import treeImg from "../../../public/potatoImage.jpg"
 import {
     Button,
     CardImg, CardBody, CardText, CardTitle, CardSubtitle,
     Card
 } from "reactstrap";
 
-import TreesForm from "./TreesForm";
-import ProgressBarTrees from "./ProgressBarTrees";
-import "./TreeCalc.css";
+import GardenForm from "./GardenForm";
+import ProgressBarGardens from "./ProgressBarGarden";
+import "./Garden.css";
 
 
 const TreesCalc = () => {
 
-    //     try {
-    //         const response = await axios.get('/api/ecolearning/', {
-    //             params: {
-    //                 // query: inputValue,
-    //                 option_type: selectedOption.toLowerCase()
-    //             }
-    //         });
-    //         setResponseData(response.data);
-
-    //         // Log response.data.type after setting the response data
-    //         console.log(response.data.type);
-    //     } catch (error) {
-    //         console.error('Error fetching data:', error);
-    //     }
 
     const [calc, setCalc] = useState(''); // State for age input
 
@@ -36,10 +22,10 @@ const TreesCalc = () => {
     };
 
     return (
-        <div >
+        <div>
             {/* Heading outside of Calc */}
             <h1 style={{ display: "flex", justifyContent: "flex-end" }}>
-                Trees Planted
+                Gardens
             </h1>
 
             {/* Block for inside Calc */}
@@ -79,26 +65,19 @@ const TreesCalc = () => {
 
                     {/* Calc Options */}
                     <div className="calc_box_form">
-                        <TreesForm onUpdate={handleCalcUpdate} />
+                        <GardenForm onUpdate={handleCalcUpdate} />
                         {calc && (
                             <div style={{ border: '1px solid black' }}>
-                                <ProgressBarTrees calc={calc} />
+                                <ProgressBarGardens calc={calc} />
                                 <h2>Response Data:</h2>
                                 <p>{JSON.stringify(calc, null, 2)}</p>
                             </div>
                         )}
 
-
                     </div>
                 </div>
 
-                {/* <div style={{ display: "flex", justifyContent: "space-around", flexGrow: 1 }}>
-                    <img src={treeImg} style={{ width: "70%", height: "70%" }}></img>
-                </div> */}
-
-
             </Card>
-
 
         </div >
     );
