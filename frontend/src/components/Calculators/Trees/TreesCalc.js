@@ -7,7 +7,7 @@ import {
     Card
 } from "reactstrap";
 
-import TreesCalc2 from "./TreesForm";
+import TreesForm from "./TreesForm";
 import ProgressBarTrees from "./ProgressBarTrees";
 
 export const MyButton = styled.button`
@@ -88,7 +88,7 @@ const TreesCalc = () => {
 
                     {/* Calc Options */}
                     <div>
-                        <TreesCalc2 onUpdate={handleCalcUpdate} />
+                        <TreesForm onUpdate={handleCalcUpdate} />
                         {calc && (
                             <div>
                                 <ProgressBarTrees calc={calc} />
@@ -96,7 +96,7 @@ const TreesCalc = () => {
                                 <p>{JSON.stringify(calc, null, 2)}</p>
                             </div>
                         )}
-                        
+
 
                     </div>
                 </div>

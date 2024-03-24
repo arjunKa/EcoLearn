@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import TreesCalc from "../components/Calculators/Trees/TreesCalc"
-import GardenCalc from "../components/Calculators/gardenCalc"
+import GardenCalc from "../components/Calculators/Gardens/gardenCalc"
 import WaterSavedCalc from "../components/Calculators/waterSavedCalc"
 import FoodWasteCalc from "../components/Calculators/foodWasteCalc";
 import CarEmissionCalc from "../components/Calculators/carEmissionCalc";
