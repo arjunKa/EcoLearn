@@ -9,7 +9,7 @@ import {
 
 import GardenForm from "./GardenForm";
 import ProgressBarGardens from "./ProgressBarGarden";
-import "./Garden.css";
+// import "./Garden.css";
 
 
 const TreesCalc = () => {

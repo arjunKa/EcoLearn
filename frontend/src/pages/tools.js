@@ -48,7 +48,7 @@ const Tools = () => {
     }
 
     return (
-        <div style={{ padding: "25px 25px" }}>
+        <div style={{ padding: "25px 25px" }} className="page">
             <h1 style={{ color: "#515799" }}>
                 This page is for the Tools!
             </h1>
