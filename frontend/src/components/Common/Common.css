@@ -16,7 +16,7 @@
     font-family: "Raleway", sans-serif;
     /* text-align: center; */
     color: #fff;
-    font-size: 70px;
+    font-size: 10vw;
     font-weight: 700;
     text-transform: uppercase;
     margin-top: 0;
@@ -28,9 +28,9 @@
 }
 .intro p {
     color: #fff;
-    font-size: 22px;
+    font-size: 5vw;
     font-weight: 300;
-    line-height: 30px;
+
     margin: 0 auto;
     margin-bottom: 60px;
 }
