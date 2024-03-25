@@ -9,7 +9,7 @@ import {
 
 import TreesForm from "./TreesForm";
 import ProgressBarTrees from "./ProgressBarTrees";
-import "./TreeCalc.css";
+// import "./TreeCalc.css";
 
 
 const TreesCalc = () => {
