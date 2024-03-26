@@ -3,4 +3,4 @@
 # dependencies
 db.sqlite3
 /venv
-/backend/backend/__pycache__
+/backend/__pycache__
