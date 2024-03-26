@@ -7,49 +7,41 @@ import {
   Button
 
 } from 'reactstrap';
-import React, { useState } from 'react';
-import axios from "axios";
+import React, { useState, useEffect } from 'react';
 
 const TreesForm = ({ onUpdate }) => {
 
 
-  const [selectedOption, setSelectedOption] = useState('');
-  const [responseData, setResponseData] = useState(null);
+  const [selectedOption, setSelectedOption] = useState('basswood');
   const [age, setAge] = useState(''); // State for age input
 
-  const handleButtonClick = async () => {
-    try {
-      const res = await axios.get(
-        "/api/ecolearning/trees",
-        {
-          params: {
-            type: selectedOption.toLowerCase(),
-            age: age
-          },
-        }
-      );
-      setResponseData(res.data);
-      onUpdate(res.data);
-      console.log(res.data);
+  const handleAgeChange = (event) => {
+    const newAge = event.target.value;
+    setAge(newAge);
+    onUpdate({ age: newAge, selectedOption });
+};
 
-    } catch (err) { }
-
-  };
+const handleSelectedOptionChange = (event) => {
+    const newSelectedOption = event.target.value;
+    setSelectedOption(newSelectedOption);
+    onUpdate({ age, selectedOption: newSelectedOption });
+};
 
   return (
 
-    <Form style={{border: '1px solid blue' }} >
+    <Form style={{ border: '1px solid blue'}} >
       <Row>
-        <Col md={8}>
+        <Col md={4} >
           <FormGroup >
             <Label for="exampleNumber">
-              Age of tree (months)
+              Quantity of trees planted
             </Label>
             <Input
               id="exampleNumber"
               name="age"
               placeholder="number placeholder"
-              type="number" value={age} onChange={(event) => setAge(event.target.value)}
+              type="number" value={age} onChange={handleAgeChange}
+              onBlur={handleAgeChange}
               required
             />
           </FormGroup>
@@ -58,17 +50,17 @@ const TreesForm = ({ onUpdate }) => {
           <FormGroup>
 
             <Label for="exampleSelect">
-              Select
+              Type of Tree
             </Label>
 
             <Input
               id="exampleSelect"
               name="select"
-              type="select" value={selectedOption} onChange={(event) => setSelectedOption(event.target.value)}
+              type="select" value={selectedOption} onChange={handleSelectedOptionChange}
+              onBlur={handleSelectedOptionChange}
             >
-              <option> </option>
               <option value="basswood"> Basswood </option>
-              <option value="Beech"> Beech </option>
+              <option value="beech"> Beech </option>
               <option value="birch"> Birch </option>
               <option value="blackCherry"> Black Cherry </option>
               <option value="blackWalnut"> Black Walnut </option>
@@ -97,18 +89,6 @@ const TreesForm = ({ onUpdate }) => {
           </FormGroup>
         </Col>
       </Row>
-
-      <Button onClick={handleButtonClick}>
-        Submit
-      </Button>
-
-
-      {responseData && (
-        <div>
-          <h2>Response Data:</h2>
-          <p>{responseData.age} {JSON.stringify(responseData, null, 2)}</p>
-        </div>
-      )}
 
     </Form>
 

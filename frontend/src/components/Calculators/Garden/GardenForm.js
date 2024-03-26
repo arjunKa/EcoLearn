@@ -13,7 +13,7 @@ import axios from "axios";
 const GardenForm = ({ onUpdate }) => {
 
 
-  const [selectedOption, setSelectedOption] = useState('');
+  const [selectedOption, setSelectedOption] = useState('grass');
   const [responseData, setResponseData] = useState(null);
   const [age, setAge] = useState(''); // State for age input
 

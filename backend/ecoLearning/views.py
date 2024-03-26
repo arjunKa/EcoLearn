@@ -9,12 +9,14 @@ from rest_framework import status
 from rest_framework import permissions
 from rest_framework.renderers import JSONRenderer, TemplateHTMLRenderer
 import json
+from django.http import JsonResponse
 
 # Create your views here.
 
 class TreeView(viewsets.ModelViewSet):
     serializer_class = TreeSerializer
     queryset = Tree.objects.all()
+    
 
     
 # class CustomTree:
@@ -25,8 +27,7 @@ class TreeView(viewsets.ModelViewSet):
 #         self.amount_carbon = amount_carbon
 #         self.description = description
     
-@api_view(['GET',])
-# @renderer_classes((JSONRenderer))
+@api_view(['GET','POST'])
 def tree_list(request):
     print("-------------------------------------")
     print("request ",request)
@@ -35,13 +36,10 @@ def tree_list(request):
     if request.method == 'GET':
         print("request.GET ",request.GET)
         try:
-
             tree = Tree.objects.all()
-            
             tree_type = request.GET.get('type')
             age = request.GET.get('age')
-        
-            
+
             if tree_type:
                 tree = Tree.objects.get(type=tree_type)
             else:
@@ -53,8 +51,7 @@ def tree_list(request):
             
             print(age)
             print("tree type", tree_type)
-
-            
+  
             amount_carbon = tree.amount_carbon
             description = tree.description 
             carbon_reduction = float(int(age)*float(amount_carbon))
@@ -70,6 +67,39 @@ def tree_list(request):
             return Response(custom_obj, status=status.HTTP_200_OK)
         except Tree.DoesNotExist:
             return Response({'error': 'Tree not found'}, status=status.HTTP_404_NOT_FOUND)
+        except Exception as e:
+            return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
+        
+    if request.method == 'POST':
+        try:
+            # Get the treeData from request data
+            trees = request.data.get('treeData', [])
+            print("tree type", trees)
+            # Initialize an empty list to store the processed data
+            arr = []
+
+            # Process each tree item
+            for item in trees:
+                # Create a new dictionary for each item
+                tree_dict = {}
+                tree_type = item.get('selectedOption')
+                try:
+                    # Fetch the tree object from the database
+                    tree = Tree.objects.get(type=tree_type)
+                    
+                    # Populate the dictionary with tree data
+                    tree_dict['type'] = tree_type
+                    tree_dict['total'] = float(tree.amount_carbon)
+                    
+                    # Append the dictionary to the list
+                    arr.append(tree_dict)
+                    print("array", arr)
+                except Tree.DoesNotExist:
+                    return Response({'error': f'Tree with type "{tree_type}" not found'}, status=status.HTTP_404_NOT_FOUND)
+            
+            # Return the processed data as JSON response
+            return Response(arr, status=status.HTTP_200_OK)
+
         except Exception as e:
             return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
 

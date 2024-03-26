@@ -1,42 +1,61 @@
-import React, { useState } from "react";
-import { styled } from "styled-components";
-import treeImg from "../../../public/treeImage.jpeg"
+import React, { useState, useEffect } from "react";
+
 import {
     Button,
     CardImg, CardBody, CardText, CardTitle, CardSubtitle,
-    Card
+    Card, Form
 } from "reactstrap";
 
 import TreesForm from "./TreesForm";
 import ProgressBarTrees from "./ProgressBarTrees";
-// import "./TreeCalc.css";
-
+import axios from "axios";
+import TreesCard from "./TreesCard";
 
 const TreesCalc = () => {
 
-    //     try {
-    //         const response = await axios.get('/api/ecolearning/', {
-    //             params: {
-    //                 // query: inputValue,
-    //                 option_type: selectedOption.toLowerCase()
-    //             }
-    //         });
-    //         setResponseData(response.data);
-
-    //         // Log response.data.type after setting the response data
-    //         console.log(response.data.type);
-    //     } catch (error) {
-    //         console.error('Error fetching data:', error);
-    //     }
-
     const [calc, setCalc] = useState(''); // State for age input
+    const [treeData, setTreeData] = useState([{}]); // State for storing tree data
 
-    const handleCalcUpdate = (newCalc) => {
-        setCalc(newCalc);
+    useEffect(() => {
+        // Ensure at least one TreesForm is rendered initially
+        if (treeData.length === 0) {
+            setTreeData([{}]);
+        }
+    }, []);
+
+    const handleCalcUpdate = (index, data) => {
+        const updatedTreeData = [...treeData];
+        updatedTreeData[index] = data;
+        setTreeData(updatedTreeData);
+    };
+
+    const handleButtonClick = async () => {
+        try {
+            // Make your API request with the treeData array
+            console.log(treeData);
+            const res = await axios.post("/api/ecolearning/trees", { treeData });
+
+            // Handle the response as needed
+            console.log(res.data);
+            setCalc(res.data);
+
+        } catch (err) {
+            console.error('Error fetching data:', err);
+        }
+    };
+
+    const handleAddRow = () => {
+        setTreeData([...treeData, {}]);
+    };
+
+    const handleDeleteRow = (index) => {
+        const updatedTreeData = [...treeData];
+        updatedTreeData.splice(index, 1);
+        setTreeData(updatedTreeData);
     };
 
     return (
-        <div >
+        <div>
             {/* Heading outside of Calc */}
             <h1 style={{ display: "flex", justifyContent: "flex-end" }}>
                 Trees Planted
@@ -47,43 +66,39 @@ const TreesCalc = () => {
 
                 <div className="calc_box">
                     {/* Box of whole Calculator */}
+                    <TreesCard />
 
-                    <div className="calc_box_card">
-                        <Card className="card">
-                            {/* left side */}
-                            <CardImg
-                                alt="Card image cap"
-                                src={treeImg}
-                                top
-                                className="custom-card-img"
-                            />
-                            <CardBody>
-                                <CardTitle tag="h5">
-                                    Card title
-                                </CardTitle>
-                                <CardSubtitle
-                                    className="mb-1 text-muted"
-                                    tag="h6"
-                                >
-                                    Card subtitle
-                                </CardSubtitle>
-                                <CardText>
-                                    This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
-                                </CardText>
-                                <Button>
-                                    Button
-                                </Button>
-                            </CardBody>
-                        </Card>
-                    </div>
 
                     {/* Calc Options */}
                     <div className="calc_box_form">
-                        <TreesForm onUpdate={handleCalcUpdate} />
+
+                        <div className="calc_box_form_elements">
+                            {/* Add New TreesForm here */}
+                            {treeData.map((_, index) => (
+                                <div key={index}>
+                                    <TreesForm onUpdate={(data) => handleCalcUpdate(index, data)} />
+                                    {index !== 0 && <Button onClick={() => handleDeleteRow(index)}>Delete</Button>}
+                                </div>
+                            ))}
+                            <Form>
+                                <Button onClick={handleAddRow}>
+                                    Add new row
+                                </Button>
+                            </Form>
+                            <Form>
+                                <Button onClick={handleButtonClick}>
+                                    Submit
+                                </Button>
+                            </Form>
+                        </div>
+
+                        {/* Results shown here */}
                         {calc && (
                             <div style={{ border: '1px solid black' }}>
+                                <h2>Result:</h2>
+                                <p>Here is your calculation result.</p>
                                 <ProgressBarTrees calc={calc} />
-                                <h2>Response Data:</h2>
+
                                 <p>{JSON.stringify(calc, null, 2)}</p>
                             </div>
                         )}
@@ -92,18 +107,9 @@ const TreesCalc = () => {
                     </div>
                 </div>
 
-                {/* <div style={{ display: "flex", justifyContent: "space-around", flexGrow: 1 }}>
-                    <img src={treeImg} style={{ width: "70%", height: "70%" }}></img>
-                </div> */}
-
-
             </Card>
-
-
-        </div >
+        </div>
     );
 };
-
-
 
 export default TreesCalc;
