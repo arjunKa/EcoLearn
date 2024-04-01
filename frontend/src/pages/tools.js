@@ -2,17 +2,13 @@ import React, { useState } from "react";
 import TreesCalc from "../components/Calculators/Trees/TreesCalc";
 import GardenCalc from "../components/Calculators/Garden/GardenCalc";
 import WaterSavedCalc from "../components/Calculators/waterSavedCalc";
-import FoodWasteCalc from "../components/Calculators/foodWasteCalc";
-import CarEmissionCalc from "../components/Calculators/carEmissionCalc";
+import FoodWasteCalc from "../components/Calculators/FoodWaste/FoodWasteCalc";
+import VehiclesCalc from "../components/Calculators/Vehicles/VehiclesCalc";
 import RecyclingCalc from "../components/Calculators/recyclingCalc";
 import RenewableEnergyCalc from "../components/Calculators/renewableEnergyCalc";
 import {
-    Form,
-    Label,
-    FormGroup,
+
     Input,
-    Col, Row,
-    Button, option
 
 } from 'reactstrap';
 import ItemsDonatedCalc from "../components/Calculators/itemsDonatedCalc";
@@ -35,7 +31,7 @@ const Tools = () => {
         } else if (calc === "foodWaste") {
             return <FoodWasteCalc />
         } else if (calc === "carEmissions") {
-            return <CarEmissionCalc />
+            return <VehiclesCalc />
         } else if (calc === "recycling") {
             return <RecyclingCalc />
         } else if (calc === "energy") {
