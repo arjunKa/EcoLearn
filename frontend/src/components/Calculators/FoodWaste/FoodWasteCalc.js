@@ -6,10 +6,10 @@ import {
     Card, Form
 } from "reactstrap";
 
-import TreesForm from "./TreesForm";
+import FoodwasteForm from "./FoodwasteForm";
 import ProgressBarTrees from "./ProgressBarTrees";
 import axios from "axios";
-import TreesCard from "./TreesCard";
+import FoodwasteCard from "./FoodwasteCard";
 
 const FoodWasteCalc = () => {
 
@@ -66,7 +66,7 @@ const FoodWasteCalc = () => {
 
                 <div className="calc_box">
                     {/* Box of whole Calculator */}
-                    <TreesCard />
+                    <FoodwasteCard />
 
 
                     {/* Calc Options */}
@@ -76,8 +76,8 @@ const FoodWasteCalc = () => {
                             {/* Add New TreesForm here */}
                             {treeData.map((_, index) => (
                                 <div key={index}>
-                                    <TreesForm onUpdate={(data) => handleCalcUpdate(index, data)} />
-                                    {index !== 0 && <Button onClick={() => handleDeleteRow(index)}>Delete</Button>}
+                                    <FoodwasteForm onUpdate={(data) => handleCalcUpdate(index, data)} />
+                                    {index !== 0 && <Button style= {{ marginTop: "10px"}} onClick={() => handleDeleteRow(index)}>Delete</Button>}
                                 </div>
                             ))}
                             <Form>

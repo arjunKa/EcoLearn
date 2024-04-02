@@ -3,9 +3,9 @@ import {
     CardImg, CardBody, CardText, CardTitle, CardSubtitle,
     Card, Form
 } from "reactstrap";
-import treeImg from "../../../public/treeImage.jpeg"
+import foodwasteImg from "../../../public/foodWasteImage.jpg"
 
-const TreesCard = () => {
+const FoodwasteCard = () => {
 
     return (
 
@@ -14,7 +14,7 @@ const TreesCard = () => {
                 {/* left side */}
                 <CardImg
                     alt="Card image cap"
-                    src={treeImg}
+                    src={foodwasteImg}
                     top
                     className="custom-card-img"
                 />
@@ -41,4 +41,4 @@ const TreesCard = () => {
     );
 };
 
-export default TreesCard;
+export default FoodwasteCard;

@@ -29,19 +29,20 @@ const VehiclesForm = ({ onUpdate }) => {
 
   return (
 
-    <Form style={{ border: '1px solid blue' }} >
+    <Form style={{ border: '1px solid blue', borderRadius: "20px" }} >
       <Row>
         <Col md={4} >
-          <FormGroup >
-            <Label for="exampleNumber">
+          <FormGroup style={{ paddingLeft: "10px"}}>
+            <Label for="driving">
               How many Km of driving did you eliminate?
             </Label>
             <Input
-              id="exampleNumber"
+              id="driving"
               name="amount"
               placeholder="number placeholder"
               type="number" value={amount} onChange={handleAmountChange}
               onBlur={handleAmountChange}
+              min="0"
               required
             />
           </FormGroup>
@@ -76,16 +77,17 @@ const VehiclesForm = ({ onUpdate }) => {
       </Row>
       <Row>
         <Col md={4} >
-          <FormGroup >
-            <Label for="exampleNumber">
+          <FormGroup style={{ paddingLeft: "10px"}}>
+            <Label for="idle">
               How many minutes of idling did you prevent?
             </Label>
             <Input
-              id="exampleNumber"
+              id="idle"
               name="amount"
               placeholder="number placeholder"
               type="number" value={amount} onChange={handleAmountChange}
               onBlur={handleAmountChange}
+              min="0"
               required
             />
           </FormGroup>

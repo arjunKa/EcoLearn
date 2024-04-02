@@ -9,7 +9,7 @@ import {
 } from 'reactstrap';
 import React, { useState, useEffect } from 'react';
 
-const TreesForm = ({ onUpdate }) => {
+const FoodwasteForm = ({ onUpdate }) => {
 
 
   const [selectedOption, setSelectedOption] = useState('basswood');
@@ -29,10 +29,10 @@ const handleSelectedOptionChange = (event) => {
 
   return (
 
-    <Form style={{ border: '1px solid blue'}} >
+    <Form style={{ border: '1px solid blue', borderRadius: "20px"}} >
       <Row>
         <Col md={4} >
-          <FormGroup >
+          <FormGroup style={{ paddingLeft: "10px"}}>
             <Label for="exampleNumber">
               Quantity
             </Label>
@@ -42,6 +42,7 @@ const handleSelectedOptionChange = (event) => {
               placeholder="number placeholder"
               type="number" value={amount} onChange={handleAmountChange}
               onBlur={handleAmountChange}
+              min="0"
               required
             />
           </FormGroup>
@@ -77,4 +78,4 @@ const handleSelectedOptionChange = (event) => {
   );
 
 }
-export default TreesForm;
+export default FoodwasteForm;

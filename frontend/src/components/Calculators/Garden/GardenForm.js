@@ -50,10 +50,10 @@ const GardenForm = ({ onUpdate }) => {
 
   return (
 
-    <Form style={{ border: '1px solid blue' }} >
+    <Form style={{ border: '1px solid blue',  borderRadius: "20px", margin: "10px" }} >
       <Row>
         <Col md={4}>
-          <FormGroup>
+          <FormGroup style={{ paddingLeft: "10px"}}>
 
             <Label for="exampleSelect">
               Select
@@ -77,18 +77,19 @@ const GardenForm = ({ onUpdate }) => {
             <Label for="exampleNumber">
               {PlantType()} {/* Dynamically render label text */}
             </Label>
-            <Input
+            <Input style={{width: "500px"}}
               id="exampleNumber"
               name="age"
               placeholder="number placeholder"
               type="number" value={age} onChange={(event) => setAge(event.target.value)}
+              min="0"
               required
             />
           </FormGroup>
         </Col>
       </Row>
 
-      <Button onClick={handleButtonClick}>
+      <Button onClick={handleButtonClick} style={{ marginLeft: "10px", marginBottom: "5px"}}>
         Submit
       </Button>
 

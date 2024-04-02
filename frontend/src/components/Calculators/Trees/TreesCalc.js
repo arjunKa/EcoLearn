@@ -77,7 +77,7 @@ const TreesCalc = () => {
                             {treeData.map((_, index) => (
                                 <div key={index}>
                                     <TreesForm onUpdate={(data) => handleCalcUpdate(index, data)} />
-                                    {index !== 0 && <Button onClick={() => handleDeleteRow(index)}>Delete</Button>}
+                                    {index !== 0 && <Button style= {{ marginTop: "10px"}} onClick={() => handleDeleteRow(index)}>Delete</Button>}
                                 </div>
                             ))}
                             <Form>

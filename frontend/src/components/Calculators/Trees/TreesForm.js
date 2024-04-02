@@ -29,10 +29,10 @@ const handleSelectedOptionChange = (event) => {
 
   return (
 
-    <Form style={{ border: '1px solid blue'}} >
+    <Form style={{ border: '1px solid blue', borderRadius: "20px"}} >
       <Row>
         <Col md={4} >
-          <FormGroup >
+          <FormGroup style={{ paddingLeft: "10px"}}>
             <Label for="exampleNumber">
               Quantity of trees planted
             </Label>
@@ -41,6 +41,7 @@ const handleSelectedOptionChange = (event) => {
               name="age"
               placeholder="number placeholder"
               type="number" value={age} onChange={handleAgeChange}
+              min="0"
               onBlur={handleAgeChange}
               required
             />

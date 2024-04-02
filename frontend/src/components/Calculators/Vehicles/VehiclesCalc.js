@@ -8,7 +8,7 @@ import {
 import VehiclesForm from "./VehiclesForm";
 import ProgressBarTrees from "./ProgressBarTrees";
 import axios from "axios";
-import TreesCard from "./TreesCard";
+import VehiclesCard from "./VehiclesCard";
 
 const VehiclesCalc = () => {
 
@@ -48,7 +48,7 @@ const VehiclesCalc = () => {
 
                 <div className="calc_box">
                     {/* Box of whole Calculator */}
-                    <TreesCard />
+                    <VehiclesCard />
 
 
                     {/* Calc Options */}
