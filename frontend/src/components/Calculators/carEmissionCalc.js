@@ -1,9 +1,7 @@
 import React from "react";
 import { MyButton } from "../Common/CommonUI";
+import carImg from "../../public/carImage.jpg"
 
-{/* Type of Cars */}
-{/* Distance Traveled in Km  */}
-{/* Another option for how long they idled for */}
 
 const CarEmissionCalc = () => {
     return (
@@ -14,7 +12,7 @@ const CarEmissionCalc = () => {
             </h1>
 
             {/* Block for inside Calc */}
-            <div style={{ display: "flex", flexDirection: "row", padding: "10px 5px 10px 0px", border: "2px solid #000", borderRadius: "25px" }}>
+            <div style={{ display: "flex", flexDirection: "row", padding: "10px 5px 10px 10px", border: "2px solid #000", borderRadius: "25px" }}>
                 {/* Calc Options */}
                 <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-around", flexGrow: 2 }}>
                     {/* Left Side */}
@@ -42,7 +40,7 @@ const CarEmissionCalc = () => {
                         {/* Drop down for type of Car driven */}
                         <div style={{ display: "flex", flexDirection: "column", paddingBottom: "5px" }}>
                             <label for="kmDriven" style={{ paddingRight: "5px" }}> Distance saved (km) </label>
-                            <input type="number" id="kmDriven" name="kmDriven" min="0" step=".01" style={{width:"160px"}}></input>  
+                            <input type="number" id="kmDriven" name="kmDriven" min="0" step=".01" style={{width:"180px"}}></input>  
                         </div>
 
                         {/* Submit Button */}
@@ -53,8 +51,8 @@ const CarEmissionCalc = () => {
                 </div>
 
                 {/* Image area within Calc */}
-                <div style={{ display: "flex", justifyContent: "space-around", flexGrow: 1, backgroundColor: "#808080" }}>
-                    Hello
+                <div style={{ display: "flex", justifyContent: "space-around", flexGrow: 1,  marginLeft: "30px" }}>
+                    <img src={carImg} style={{ width:"60%", height: "90%", paddingTop: "35px"}}></img>
                 </div>
             </div>
 

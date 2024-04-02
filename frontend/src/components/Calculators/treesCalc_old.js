@@ -2,6 +2,8 @@ import React from "react";
 import { MyButton } from "../Common/CommonUI";
 import treeImg from "../../public/treeImage.jpeg"
 
+{/* Add inforation and description of how to use the tool in the white space and add some photo */}
+
 const TreesCalc = () => {
     return (
         <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", marginLeft: "200px", marginRight: "200px", marginTop: "30px" }}> 

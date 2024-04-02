@@ -1,6 +1,6 @@
 import React from "react";
 import { MyButton } from "../Common/CommonUI";
-
+import recyclingImage from "../../public/recyclingImage.jpg"
 
 {/* Type of Item */}
 {/* Weight in Kg Recycled */}
@@ -50,8 +50,8 @@ const RecyclingCalc = () => {
                 </div>
 
                 {/* Image area within Calc */}
-                <div style={{ display: "flex", justifyContent: "space-around", flexGrow: 1, backgroundColor: "#808080" }}>
-                    Hello
+                <div style={{ display: "flex", justifyContent: "space-around", flexGrow: 1, width: "35%" }}>
+                    <img src={recyclingImage} style={{ width: "60%", height: "90%", padding: "50px 0px 30px 0px" }}></img>
                 </div>
             </div>
         </div>
