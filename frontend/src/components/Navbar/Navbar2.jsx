@@ -48,7 +48,7 @@ function Navbar2(args) {
                             <DropdownToggle nav caret>
                                 Options
                             </DropdownToggle>
-                            <DropdownMenu right>
+                            <DropdownMenu>
                                 <DropdownItem>Option 1</DropdownItem>
                                 <DropdownItem>Option 2</DropdownItem>
                                 <DropdownItem divider />
