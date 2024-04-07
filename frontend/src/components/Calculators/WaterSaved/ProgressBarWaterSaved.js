@@ -4,7 +4,7 @@ import {
 
 } from "reactstrap";
 import React, { useState, useEffect } from "react";
-const ProgressBarTrees = ({ calc }) => {
+const ProgressBarGarden = ({ calc }) => {
 
     const [progressColor, setProgressColor] = useState('primary');
     const [totalCarbonReduction, setTotalCarbonReduction] = useState(1000);
@@ -21,7 +21,7 @@ const ProgressBarTrees = ({ calc }) => {
 
     useEffect(() => {
         // Calculate the total carbon reduction by summing up the 'total' values in the calc array
-        const total = calc.reduce((acc, item) => acc + item.carbon_reduction, 0);
+        const total = calc.reduce((acc, item) => acc + item.total, 0);
         setTotalCarbonReduction(total);
     }, [calc]);
 
@@ -34,7 +34,7 @@ const ProgressBarTrees = ({ calc }) => {
                 <Progress
                     key={index}
                     className="my-2"
-                    value={item.carbon_reduction}
+                    value={item.total}
                     max={100} // Assuming the max value of each progress bar is 100
                     style={{
                         height: "20px",
@@ -82,4 +82,4 @@ const ProgressBarTrees = ({ calc }) => {
 
 };
 
-export default ProgressBarTrees;
+export default ProgressBarGarden;

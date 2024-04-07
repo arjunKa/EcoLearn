@@ -27,28 +27,18 @@ const GardenForm = ({ onUpdate }) => {
     onUpdate({ value, selectedOption: newSelectedOption });
   };
 
-  function PlantType() {
-    if (selectedOption === "grass") {
-      return "Area of Grass (m^2)";
-    } else if (selectedOption === "shrub") {
-      return "# of Shrubs";
-    } else if (selectedOption === "vegetable") {
-      return "Weight in kg";
-    }
-  }
-
   return (
 
     <Form style={{ border: '1px solid blue' }} >
       <Row>
         <Col md={4} >
           <FormGroup >
-            <Label for="exampleNumber">
-              {PlantType()}
+            <Label for="amount">
+              Litres water saved
             </Label>
             <Input
-              id="exampleNumber"
-              name="value"
+              id="amount"
+              name="amount"
               placeholder="number placeholder"
               type="number" value={value} onChange={handleValueChange}
               onBlur={handleValueChange}
@@ -69,9 +59,9 @@ const GardenForm = ({ onUpdate }) => {
               type="select" value={selectedOption} onChange={handleSelectedOptionChange}
               onBlur={handleSelectedOptionChange}
             >
-              <option value="grass"> Grass </option>
-              <option value="shrub"> Shrub </option>
-              <option value="vegetable"> Flower/Vegetables </option>
+              <option value="ontario"> Ontario </option>
+              <option value="quebec"> Quebec </option>
+              <option value="yukon"> Yukon </option>
             </Input>
           </FormGroup>
         </Col>

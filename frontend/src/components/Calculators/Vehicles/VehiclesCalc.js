@@ -24,11 +24,16 @@ const VehiclesCalc = () => {
         try {
             // Make your API request with the treeData array
             console.log(treeData);
-            const res = await axios.post("/api/ecolearning/trees", { treeData });
+            const res = await axios.get("/api/ecolearning/vehicles", {
+                params: {
+                    type: treeData.selectedOption.toLowerCase(),
+                    distance: treeData.amount
+                },
+            });
 
             // Handle the response as needed
             console.log(res.data);
-            setCalc(res.data);
+            setCalc([res.data]);
 
         } catch (err) {
             console.error('Error fetching data:', err);

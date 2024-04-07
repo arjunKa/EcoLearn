@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Tree
+from .models import Tree, Garden, Vehicle, Food
 
 # class EcoLearningSerializer(serializers.ModelSerializer):
 #     class Meta:
@@ -10,6 +10,22 @@ class TreeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tree
         fields = ('type', 'amount_carbon', 'description')
+        
+class GardenSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Garden
+        fields = ('type', 'amount', 'description')
+        
+class VehicleSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Vehicle
+        fields = ('type', 'amount', 'description')
+
+class FoodSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Food
+        fields = ('type', 'amount_carbon', 'per_year', 'description')
+        
         
 # class CustomTreeSerializer(serializers.ModelSerializer):
 #     class Meta:

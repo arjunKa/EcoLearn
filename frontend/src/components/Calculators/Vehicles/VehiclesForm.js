@@ -14,17 +14,24 @@ const VehiclesForm = ({ onUpdate }) => {
 
   const [selectedOption, setSelectedOption] = useState('fseries');
   const [amount, setAmount] = useState(''); // State for amount input
+  const [idling, setIdling] = useState(''); // State for amount input
 
   const handleAmountChange = (event) => {
     const newAmount = event.target.value;
     setAmount(newAmount);
-    onUpdate({ amount: newAmount, selectedOption });
+    onUpdate({ amount: newAmount, selectedOption, idling });
   };
 
   const handleSelectedOptionChange = (event) => {
     const newSelectedOption = event.target.value;
     setSelectedOption(newSelectedOption);
     onUpdate({ amount, selectedOption: newSelectedOption });
+  };
+
+  const handleIdlingChange = (event) => {
+    const newIdling = event.target.value;
+    setIdling(newIdling);
+    onUpdate({ amount, selectedOption, idling: newIdling });
   };
 
   return (
@@ -37,11 +44,11 @@ const VehiclesForm = ({ onUpdate }) => {
               How many Km of driving did you eliminate?
             </Label>
             <Input
-              id="exampleNumber"
+              id="amount"
               name="amount"
               placeholder="number placeholder"
               type="number" value={amount} onChange={handleAmountChange}
-              onBlur={handleAmountChange}
+              
               required
             />
           </FormGroup>
@@ -57,7 +64,7 @@ const VehiclesForm = ({ onUpdate }) => {
               id="exampleSelect"
               name="select"
               type="select" value={selectedOption} onChange={handleSelectedOptionChange}
-              onBlur={handleSelectedOptionChange}
+              
             >
               <option value="fseries"> Ford F-Series Pickup Truck</option>
               <option value="ram"> Ram Pickup Truck</option>
@@ -77,15 +84,15 @@ const VehiclesForm = ({ onUpdate }) => {
       <Row>
         <Col md={4} >
           <FormGroup >
-            <Label for="exampleNumber">
+            <Label for="idling">
               How many minutes of idling did you prevent?
             </Label>
             <Input
-              id="exampleNumber"
-              name="amount"
+              id="idling"
+              name="idling"
               placeholder="number placeholder"
-              type="number" value={amount} onChange={handleAmountChange}
-              onBlur={handleAmountChange}
+              type="number" value={idling} onChange={handleIdlingChange}
+              
               required
             />
           </FormGroup>

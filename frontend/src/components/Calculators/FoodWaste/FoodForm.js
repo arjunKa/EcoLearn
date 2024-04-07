@@ -12,7 +12,7 @@ import React, { useState, useEffect } from 'react';
 const TreesForm = ({ onUpdate }) => {
 
 
-  const [selectedOption, setSelectedOption] = useState('basswood');
+  const [selectedOption, setSelectedOption] = useState('chicken');
   const [amount, setAmount] = useState(''); // State for amount input
 
   const handleAmountChange = (event) => {
@@ -59,11 +59,11 @@ const handleSelectedOptionChange = (event) => {
               type="select" value={selectedOption} onChange={handleSelectedOptionChange}
               onBlur={handleSelectedOptionChange}
             >
-              <option value="Chicken"> Chicken </option>
-              <option value="beech"> Beef </option>
-              <option value="Beef"> Lamb </option>
-              <option value="Pork"> Pork </option>
-              <option value="Fish"> Fish </option>
+              <option value="chicken"> Chicken </option>
+              <option value="beef"> Beef </option>
+              <option value="lamb"> Lamb </option>
+              <option value="pork"> Pork </option>
+              <option value="fish"> Fish </option>
 
             </Input>
           </FormGroup>

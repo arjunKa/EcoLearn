@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import TreesCalc from "../components/Calculators/Trees/TreesCalc";
 import GardenCalc from "../components/Calculators/Garden/GardenCalc";
-import WaterSavedCalc from "../components/Calculators/waterSavedCalc";
+import WaterSavedCalc from "../components/Calculators/WaterSaved/WaterSavedCalc";
 import FoodWasteCalc from "../components/Calculators/FoodWaste/FoodWasteCalc";
 import VehiclesCalc from "../components/Calculators/Vehicles/VehiclesCalc";
 import RecyclingCalc from "../components/Calculators/recyclingCalc";
