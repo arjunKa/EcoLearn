@@ -19,10 +19,10 @@ MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
 ]
 
-# CORS_ALLOWED_ORIGINS = [
+CORS_ALLOWED_ORIGINS = [
+    'https://delightful-sky-0f5eaf70f.5.azurestaticapps.net/'
     
-    
-# ]
+]
 
 STORAGES = {
     "default": {
