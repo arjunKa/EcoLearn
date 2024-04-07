@@ -1,5 +1,5 @@
 import React from "react";
-import { MyButton } from "../Common/CommonUI";
+import { MyButton } from "../../Common/CommonUI";
 import carImg from "../../public/carImage.jpg"
 
 

@@ -2,16 +2,15 @@ import React, { useState, useEffect } from "react";
 
 import {
     Button,
-    CardImg, CardBody, CardText, CardTitle, CardSubtitle,
     Card, Form
 } from "reactstrap";
 
-import GardenForm from "./GardenForm";
-import ProgressBarGarden from "./ProgressBarGarden";
+import GardenForm from "./WaterSavedForm";
+import ProgressBarGarden from "./ProgressBarWaterSaved";
 import axios from "axios";
-import TreesCard from "./TreesCard";
+import TreesCard from "./WaterSavedCard";
 
-const GardenCalc = () => {
+const WaterSavedCalc = () => {
 
     const [calc, setCalc] = useState(''); // State for age input
     const [treeData, setTreeData] = useState([{}]); // State for storing tree data
@@ -23,28 +22,23 @@ const GardenCalc = () => {
     };
 
     const handleButtonClick = async () => {
-        try {
+        
             // Make your API request with the treeData array
             console.log(treeData);
-            const res = await axios.get("/api/ecolearning/gardens", {
-                params: {
-                    type: treeData.selectedOption.toLowerCase(),
-                    amount: treeData.value
-                },
-            });
-
+            const res ={};
+            res.type = "water";
+            res.amount = 0.298;
+            res.total = res.amount*treeData.value;
             // Handle the response as needed
             console.log(res.data);
-            setCalc([res.data]);
+            setCalc([res]);
 
-        } catch (err) {
-            console.error('Error fetching data:', err);
-        }
+
     };
 
     useEffect(() => {
         // Check if any quantity field is empty
-        
+
         const isAnyQuantityEmpty = !treeData.value || treeData.value.trim() === '';
         // Update the state to enable/disable submit button accordingly
         setSubmitDisabled(isAnyQuantityEmpty);
@@ -104,4 +98,4 @@ const GardenCalc = () => {
     );
 };
 
-export default GardenCalc;
+export default WaterSavedCalc;

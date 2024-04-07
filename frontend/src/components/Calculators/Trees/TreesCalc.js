@@ -15,6 +15,7 @@ const TreesCalc = () => {
 
     const [calc, setCalc] = useState(''); // State for age input
     const [treeData, setTreeData] = useState([{}]); // State for storing tree data
+    const [submitDisabled, setSubmitDisabled] = useState(true); // State to control submit button disable/enable
 
     useEffect(() => {
         // Ensure at least one TreesForm is rendered initially
@@ -22,6 +23,16 @@ const TreesCalc = () => {
             setTreeData([{}]);
         }
     }, []);
+
+    useEffect(() => {
+        // Check if any quantity field is empty
+        
+        const isAnyQuantityEmpty = treeData.some((item) => !item.age || item.age.trim() === '');
+        // Update the state to enable/disable submit button accordingly
+        setSubmitDisabled(isAnyQuantityEmpty);
+        console.log(isAnyQuantityEmpty);
+    }, [treeData]);
+
 
     const handleCalcUpdate = (index, data) => {
         const updatedTreeData = [...treeData];
@@ -86,7 +97,7 @@ const TreesCalc = () => {
                                 </Button>
                             </Form>
                             <Form>
-                                <Button onClick={handleButtonClick}>
+                                <Button onClick={handleButtonClick} disabled={submitDisabled}>
                                     Submit
                                 </Button>
                             </Form>
