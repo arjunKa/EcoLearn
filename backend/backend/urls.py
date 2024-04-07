@@ -28,6 +28,7 @@ router.register(r'vehicles', b2.VehicleView, 'Vehicle')
 router.register(r'food', b2.FoodView, 'Food')
 
 urlpatterns = [
+    
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
     path('api/ecolearning/trees', b2.tree_list, name = "trees"),
