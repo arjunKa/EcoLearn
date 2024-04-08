@@ -62,7 +62,6 @@ db.sqlite3-journal
 __pypackages__/
 
 # Environments
-.env
 .venv
 env/
 venv/
