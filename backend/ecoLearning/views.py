@@ -2,6 +2,7 @@ from django.shortcuts import render
 from rest_framework import viewsets
 from .serializers import TreeSerializer, GardenSerializer, VehicleSerializer, FoodSerializer
 from .models import Tree, Garden, Vehicle, Food
+from rest_framework.permissions import BasePermission, IsAuthenticated, SAFE_METHODS
 # from Objects.Tree import Tree as t2
 from rest_framework.decorators import api_view, renderer_classes
 from rest_framework.response import Response
@@ -11,24 +12,31 @@ from rest_framework.renderers import JSONRenderer, TemplateHTMLRenderer
 import json
 from django.http import JsonResponse
 from django.db.models import Q
+from .permissions import IsAuthenticatedOrReadOnly
 
 # Create your views here.
 
 class TreeView(viewsets.ModelViewSet):
     serializer_class = TreeSerializer
     queryset = Tree.objects.all()
+    permission_classes = [IsAuthenticatedOrReadOnly]
     
 class GardenView(viewsets.ModelViewSet):
     serializer_class = GardenSerializer
     queryset = Garden.objects.all()
+    permission_classes = [IsAuthenticatedOrReadOnly]
 
 class VehicleView(viewsets.ModelViewSet):
     serializer_class = VehicleSerializer
     queryset = Vehicle.objects.all()
+    permission_classes = [IsAuthenticatedOrReadOnly]
 
 class FoodView(viewsets.ModelViewSet):
     serializer_class = FoodSerializer
     queryset = Food.objects.all()
+    permission_classes = [IsAuthenticatedOrReadOnly]
+    
+
 # class CustomTree:
 #     def __init__(self, tree_type, age, carbon_reduction, amount_carbon, description):
 #         self.tree_type = tree_type
