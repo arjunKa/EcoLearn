@@ -22,7 +22,7 @@ function Navbar2(args) {
     return (
         <div>
             <Navbar color="dark" dark expand="md">
-                <NavbarBrand href="/">EcoLearning</NavbarBrand>
+                <NavbarBrand href="/">EcoLearn</NavbarBrand>
                 <NavbarToggler onClick={toggle} />
                 <Collapse isOpen={isOpen} navbar>
                     <Nav className="me-auto" navbar>
