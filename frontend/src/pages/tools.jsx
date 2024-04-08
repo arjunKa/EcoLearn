@@ -44,16 +44,16 @@ const Tools = () => {
     }
 
     return (
-        <div style={{ padding: "25px 25px" }} className="page">
-            <h1 style={{ color: "#515799" }}>
-                This page is for the Tools!
+        <div className="page">
+            <h1 className="main_header" >
+                Tools
             </h1>
 
             {/* Drop down filters to decide which calculator */}
 
             {/* Right Filter Side (Filter by specific Calc in left side filter) */}
-            <div>
-                <label htmlFor="calc"> Tool Filter </label>
+            <div style={{}}>
+                <label htmlFor="calc"> Select Tool </label>
                 <Input type="select" name="calc" id="calc" onChange={handleChange} style={{ width: "250px" }}>
                     <option value="treesPlanted"> Trees </option>
                     <option value="garden"> Garden </option>

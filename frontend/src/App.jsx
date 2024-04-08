@@ -9,6 +9,7 @@ import Tools from "./pages/tools";
 import Impact from "./pages/impact";
 import Projects from "./pages/projects";
 import Resources from "./pages/resources";
+import AboutUs from "./pages/aboutUs";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/impact" element={<Impact/>} />
         <Route path="/projects" element={<Projects/>} />
         <Route path="/resources" element={<Resources/>} />
+        <Route path="/aboutUs" element={<AboutUs/>} />
       </Routes>
     </div>
   );
