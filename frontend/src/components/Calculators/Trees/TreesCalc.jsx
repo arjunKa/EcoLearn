@@ -44,7 +44,7 @@ const TreesCalc = () => {
         try {
             // Make your API request with the treeData array
             console.log(treeData);
-            const res = await AxiosInstance.post("/api/ecolearning/trees", { treeData });
+            const res = await AxiosInstance.post("/api/ecolearning/trees/", { treeData });
 
             // Handle the response as needed
             console.log(res.data);

@@ -8,7 +8,7 @@ import {
 
 import GardenForm from "./GardenForm";
 import ProgressBarGarden from "./ProgressBarGarden";
-import axios from "axios";
+import AxiosInstance from "../../Axios";
 import TreesCard from "./TreesCard";
 
 const GardenCalc = () => {
@@ -26,7 +26,7 @@ const GardenCalc = () => {
         try {
             // Make your API request with the treeData array
             console.log(treeData);
-            const res = await axios.get("/api/ecolearning/gardens", {
+            const res = await AxiosInstance.get("/api/ecolearning/gardens", {
                 params: {
                     type: treeData.selectedOption.toLowerCase(),
                     amount: treeData.value

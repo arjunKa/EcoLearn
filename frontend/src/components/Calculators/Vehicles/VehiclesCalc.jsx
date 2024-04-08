@@ -7,7 +7,7 @@ import {
 
 import VehiclesForm from "./VehiclesForm";
 import ProgressBarTrees from "./ProgressBarTrees";
-import axios from "axios";
+import AxiosInstance from '../../Axios'
 import TreesCard from "./TreesCard";
 
 const VehiclesCalc = () => {
@@ -24,7 +24,7 @@ const VehiclesCalc = () => {
         try {
             // Make your API request with the treeData array
             console.log(treeData);
-            const res = await axios.get("/api/ecolearning/vehicles", {
+            const res = await AxiosInstance.get("/api/ecolearning/vehicles", {
                 params: {
                     type: treeData.selectedOption.toLowerCase(),
                     distance: treeData.amount
