@@ -22,19 +22,19 @@ from ecoLearning import views as b2
 
 #these are api tools for admin access, to add new entires and delete them
 router = routers.DefaultRouter()
-router.register('trees', b2.TreeView, basename = 'trees')
-router.register('gardens', b2.GardenView, basename = 'gardens')
-router.register('vehicles', b2.VehicleView, basename = 'vehicles')
-router.register('food', b2.FoodView, basename = 'food')
+router.register(r'trees', b2.TreeView, basename = 'trees')
+router.register(r'gardens', b2.GardenView, basename = 'gardens')
+router.register(r'vehicles', b2.VehicleView, basename = 'vehicles')
+router.register(r'food', b2.FoodView, basename = 'food')
 
 urlpatterns = [
     
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
-    path('api/ecolearning/trees', b2.tree_list, name = "trees"),
-    path('api/ecolearning/gardens', b2.garden, name = "gardens"),
-    path('api/ecolearning/vehicles', b2.vehicle, name = "vehicles"),
-    path('api/ecolearning/food', b2.food, name = "food"),
+    path('api/ecolearning/trees/', b2.tree_list, name = "trees"),
+    path('api/ecolearning/gardens/', b2.garden, name = "gardens"),
+    path('api/ecolearning/vehicles/', b2.vehicle, name = "vehicles"),
+    path('api/ecolearning/food/', b2.food, name = "food"),
     # re_path('api/ecolearning/$', b2.tree_list),
     # re_path(r'^api/ecolearning/([0-9])$', b2.TreeView.as_view({'get': 'tree'}))
     
