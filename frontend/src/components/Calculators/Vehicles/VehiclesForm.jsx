@@ -36,8 +36,8 @@ const VehiclesForm = ({ onUpdate }) => {
 
   return (
 
-    <Form style={{ border: '1px solid blue' }} >
-      <Row>
+    <Form >
+      <Row style={{alignItems:"baseline"}}>
         <Col md={4} >
           <FormGroup >
             <Label for="exampleNumber">

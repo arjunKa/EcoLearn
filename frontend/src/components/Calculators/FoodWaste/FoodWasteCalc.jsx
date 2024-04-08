@@ -85,7 +85,7 @@ const FoodWasteCalc = () => {
                         <div className="calc_box_form_elements">
                             {/* Add New TreesForm here */}
                             {foodData.map((_, index) => (
-                                <div key={index}>
+                                <div key={index} className="calc_box_form_elements_row">
                                     <TreesForm onUpdate={(data) => handleCalcUpdate(index, data)} />
                                     {index !== 0 && <Button onClick={() => handleDeleteRow(index)}>Delete</Button>}
                                 </div>
@@ -104,7 +104,7 @@ const FoodWasteCalc = () => {
 
                         {/* Results shown here */}
                         {calc && (
-                            <div style={{ border: '1px solid black' }}>
+                            <div>
                                 <h2>Result:</h2>
                                 <p>Here is your calculation result.</p>
                                 <ProgressBarTrees calc={calc} />

@@ -39,7 +39,7 @@ const GardenForm = ({ onUpdate }) => {
 
   return (
 
-    <Form style={{ border: '1px solid blue' }} >
+    <Form >
       <Row>
         <Col md={4} >
           <FormGroup >

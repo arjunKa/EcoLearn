@@ -86,7 +86,7 @@ const GardenCalc = () => {
 
                         {/* Results shown here */}
                         {calc && (
-                            <div style={{ border: '1px solid black' }}>
+                            <div>
                                 <h2>Result:</h2>
                                 <p>Here is your calculation result.</p>
                                 <ProgressBarGarden calc={calc} />
