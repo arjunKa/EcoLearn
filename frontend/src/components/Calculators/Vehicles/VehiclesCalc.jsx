@@ -6,7 +6,7 @@ import {
 } from "reactstrap";
 
 import VehiclesForm from "./VehiclesForm";
-import ProgressBarTrees from "./ProgressBarTrees";
+import ProgressBarVehicles from "./ProgressBarVehicles";
 import AxiosInstance from '../../Axios'
 import TreesCard from "./TreesCard";
 
@@ -27,13 +27,15 @@ const VehiclesCalc = () => {
             const res = await AxiosInstance.get("/api/ecolearning/vehicles", {
                 params: {
                     type: treeData.selectedOption.toLowerCase(),
-                    distance: treeData.amount
+                    distance: treeData.amount,
+                    idling: treeData.idling,
+                    
                 },
             });
 
             // Handle the response as needed
             console.log(res.data);
-            setCalc([res.data]);
+            setCalc(res.data);
 
         } catch (err) {
             console.error('Error fetching data:', err);
@@ -81,7 +83,7 @@ const VehiclesCalc = () => {
                             <div >
                                 <h2>Result:</h2>
                                 <p>Here is your calculation result.</p>
-                                <ProgressBarTrees calc={calc} />
+                                <ProgressBarVehicles calc={calc} />
 
                                 <p>{JSON.stringify(calc, null, 2)}</p>
                             </div>

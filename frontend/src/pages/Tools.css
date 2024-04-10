@@ -101,6 +101,7 @@ p {
 
         /* border: '1px solid black'; */
         width: 100%;
+        margin: 0px;
 
     }
 
@@ -112,10 +113,10 @@ p {
     }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 450px) {
 
     .calc_box_card .custom-card-img {
-        width: 50%;
+        width: 60%;
         /* border: 1px solid rgb(18, 125, 62); */
 
 
@@ -135,7 +136,7 @@ p {
     }
 
     .calc_box_form {
-        width: auto;
+        /* width: auto; */
         /* border: 1px solid black; */
 
 

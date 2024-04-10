@@ -7,9 +7,12 @@ from .models import Tree, Garden, Vehicle, Food
 #         fields = ('type', 'amount_carbon', 'description',)
         
 class TreeSerializer(serializers.ModelSerializer):
+    type = serializers.CharField(max_length=100)
+    amount_carbon = serializers.DecimalField(max_digits=10, decimal_places=2)
+    description = serializers.CharField(default ="text")
     class Meta:
         model = Tree
-        fields = ('type', 'amount_carbon', 'description')
+        fields = '__all__'
         
 class GardenSerializer(serializers.ModelSerializer):
     class Meta:

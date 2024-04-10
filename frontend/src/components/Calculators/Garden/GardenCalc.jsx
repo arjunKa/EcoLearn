@@ -55,7 +55,7 @@ const GardenCalc = () => {
         <div>
             {/* Heading outside of Calc */}
             <h1 style={{ display: "flex", justifyContent: "flex-end" }}>
-                Trees Planted
+                Garden
             </h1>
 
             {/* Block for inside Calc */}
