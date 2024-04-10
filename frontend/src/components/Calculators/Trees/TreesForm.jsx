@@ -3,11 +3,10 @@ import {
   Label,
   FormGroup,
   Input,
-  Col, Row,
-  Button
+  Col, Row
 
 } from 'reactstrap';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 const TreesForm = ({ onUpdate }) => {
 

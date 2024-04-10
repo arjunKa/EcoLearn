@@ -7,7 +7,7 @@ import {
 
 import GardenForm from "./WaterSavedForm";
 import ProgressBarGarden from "./ProgressBarWaterSaved";
-import axios from "axios";
+import AxiosInstance from '../../Axios'
 import TreesCard from "./WaterSavedCard";
 
 const WaterSavedCalc = () => {

@@ -5,15 +5,6 @@ const ProgressBarGarden = ({ calc }) => {
   const [totalCarbonReduction, setTotalCarbonReduction] = useState(1000);
   const colors = ["", "success", "warning", "danger"];
 
-  // useEffect(() => {
-  //     // Check the calc value and update the progress color accordingly
-  //     if (calc.amount_carbon < 30) {
-  //         setProgressColor('danger');
-  //     } else {
-  //         setProgressColor('success');
-  //     }
-  // }, [calc]); // Run the effect whenever the calc value changes
-
   useEffect(() => {
     // Calculate the total carbon reduction by summing up the 'total' values in the calc array
     const total = calc.reduce((acc, item) => acc + item.carbon_reduction, 0);

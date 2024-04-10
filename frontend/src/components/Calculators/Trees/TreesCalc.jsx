@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 
 import {
     Button,
-    CardImg, CardBody, CardText, CardTitle, CardSubtitle,
     Card, Form
 } from "reactstrap";
 
