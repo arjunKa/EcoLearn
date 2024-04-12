@@ -5,7 +5,7 @@ import { Button, Card, Form } from "reactstrap";
 import VehiclesForm from "./VehiclesForm";
 import ProgressBarVehicles from "./ProgressBarVehicles";
 import AxiosInstance from "../../Axios";
-import TreesCard from "./TreesCard";
+import VehiclesCard from "./VehiclesCard";
 
 const VehiclesCalc = () => {
   const [calc, setCalc] = useState(""); // State for age input
@@ -46,7 +46,7 @@ const VehiclesCalc = () => {
       <Card>
         <div className="calc_box">
           {/* Box of whole Calculator */}
-          <TreesCard />
+          <VehiclesCard />
 
           {/* Calc Options */}
           <div className="calc_box_form">

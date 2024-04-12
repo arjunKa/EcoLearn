@@ -6,10 +6,10 @@ import {
   Form,
 } from "reactstrap";
 
-import TreesForm from "./FoodForm";
-import ProgressBarTrees from "./ProgressBarTrees";
+import FoodForm from "./FoodForm";
+import ProgressBarFoodWaste from "./ProgressBarFoodWaste";
 import axios from "axios";
-import TreesCard from "./TreesCard";
+import FoodWasteCard from "./FoodWasteCard";
 
 const FoodWasteCalc = () => {
   const [calc, setCalc] = useState(""); // State for age input
@@ -75,7 +75,7 @@ const FoodWasteCalc = () => {
       <Card>
         <div className="calc_box">
           {/* Box of whole Calculator */}
-          <TreesCard />
+          <FoodWasteCard />
 
           {/* Calc Options */}
           <div className="calc_box_form">
@@ -83,7 +83,7 @@ const FoodWasteCalc = () => {
               {/* Add New TreesForm here */}
               {foodData.map((_, index) => (
                 <div key={index} className="calc_box_form_elements_row">
-                  <TreesForm
+                  <FoodForm
                     onUpdate={(data) => handleCalcUpdate(index, data)}
                   />
                   {index !== 0 && (
@@ -108,7 +108,7 @@ const FoodWasteCalc = () => {
               <div>
                 <h2>Result:</h2>
                 <p>Here is your calculation result.</p>
-                <ProgressBarTrees calc={calc} />
+                <ProgressBarFoodWaste calc={calc} />
 
                 <p>{JSON.stringify(calc, null, 2)}</p>
               </div>

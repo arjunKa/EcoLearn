@@ -1,9 +1,9 @@
 import React from "react";
-import { MyButton } from "../../Common/CommonUI";
-import carImg from "../../public/carImage.jpg"
+// import { MyButton } from "../../Common/CommonUI";
+// import carImg from "../../public/carImage.jpg"
 
 
-const CarEmissionCalc = () => {
+const VehicleEmissionCalc = () => {
     return (
         <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", marginLeft: "200px", marginRight: "200px", marginTop: "30px" }}>
             {/* Heading outside of Calc */}
@@ -45,14 +45,14 @@ const CarEmissionCalc = () => {
 
                         {/* Submit Button */}
                         <div style={{ display: "flex", alignItems: "flex-start"}}>
-                            <MyButton style={{width: "100px"}}> Calculate </MyButton>
+                            {/* <MyButton style={{width: "100px"}}> Calculate </MyButton> */}
                         </div>
                     </div>
                 </div>
 
                 {/* Image area within Calc */}
                 <div style={{ display: "flex", justifyContent: "space-around", flexGrow: 1,  marginLeft: "30px" }}>
-                    <img src={carImg} style={{ width:"60%", height: "90%", paddingTop: "35px"}}></img>
+                    {/* <img src={carImg} style={{ width:"60%", height: "90%", paddingTop: "35px"}}></img> */}
                 </div>
             </div>
 
@@ -61,4 +61,4 @@ const CarEmissionCalc = () => {
 
 };
 
-export default CarEmissionCalc;
+export default VehicleEmissionCalc;

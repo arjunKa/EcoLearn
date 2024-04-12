@@ -1,7 +1,7 @@
 import { Form, Label, FormGroup, Input, Col, Row } from "reactstrap";
 import React, { useState, useEffect } from "react";
 
-const TreesForm = ({ onUpdate }) => {
+const FoodForm = ({ onUpdate }) => {
   const [selectedOption, setSelectedOption] = useState("chicken");
   const [amount, setAmount] = useState(""); // State for amount input
 
@@ -59,4 +59,4 @@ const TreesForm = ({ onUpdate }) => {
     </Form>
   );
 };
-export default TreesForm;
+export default FoodForm;

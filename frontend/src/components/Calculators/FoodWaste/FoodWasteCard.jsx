@@ -9,7 +9,7 @@ import {
 } from "reactstrap";
 import treeImg from "../../../public/treeImage.jpeg";
 
-const TreesCard = () => {
+const FoodWasteCard = () => {
   return (
     <div className="calc_box_card">
       <Card className="card">
@@ -23,13 +23,10 @@ const TreesCard = () => {
         <CardBody>
           <CardTitle tag="h5">Food Waste - Meat Reduced</CardTitle>
           <CardSubtitle className="mb-1 text-muted" tag="h6">
-            Quantify how much you have reduced carbon by how much meat you have
-            cut out of your diet.
+            Quantify your carbon reduction by cutting out meat from
+            your diet.
           </CardSubtitle>
-          <CardText>
-            This is a wider card with supporting text below as a natural lead-in
-            to additional content. This content is a little bit longer.
-          </CardText>
+          <CardText>By cutting</CardText>
           <Button>Button</Button>
         </CardBody>
       </Card>
@@ -37,4 +34,4 @@ const TreesCard = () => {
   );
 };
 
-export default TreesCard;
+export default FoodWasteCard;

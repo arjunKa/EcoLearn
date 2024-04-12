@@ -59,7 +59,7 @@ const Tools = () => {
                     <option value="garden"> Garden </option>
                     <option value="recycling"> Recycling </option>
                     <option value="foodWaste"> Food Waste </option>
-                    <option value="carEmissions"> Car Emissions </option>
+                    <option value="carEmissions"> Vehicle Emissions </option>
                     <option value="water"> Water Saved </option>
                     <option value="energy"> Renewable Energy </option>
                     <option value="items"> Items Donated </option>

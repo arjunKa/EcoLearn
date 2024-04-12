@@ -5,7 +5,7 @@ import { Button, Card, Form } from "reactstrap";
 import GardenForm from "./GardenForm";
 import ProgressBarGarden from "./ProgressBarGarden";
 import AxiosInstance from "../../Axios";
-import TreesCard from "./TreesCard";
+import GardenCard from "./GardenCard";
 
 const GardenCalc = () => {
   const [calc, setCalc] = useState(""); // State for age input
@@ -53,7 +53,7 @@ const GardenCalc = () => {
       <Card>
         <div className="calc_box">
           {/* Box of whole Calculator */}
-          <TreesCard />
+          <GardenCard />
 
           {/* Calc Options */}
           <div className="calc_box_form">

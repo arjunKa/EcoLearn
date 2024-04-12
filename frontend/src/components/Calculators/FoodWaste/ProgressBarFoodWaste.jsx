@@ -1,6 +1,7 @@
 import { Progress } from "reactstrap";
 import React, { useState, useEffect } from "react";
-const ProgressBarTrees = ({ calc }) => {
+
+const ProgressBarFoodWaste = ({ calc }) => {
   const [progressColor, setProgressColor] = useState("primary");
   const [totalCarbonReduction, setTotalCarbonReduction] = useState(1000);
   const colors = ["", "success", "warning", "danger"];
@@ -62,4 +63,4 @@ const ProgressBarTrees = ({ calc }) => {
   );
 };
 
-export default ProgressBarTrees;
+export default ProgressBarFoodWaste;

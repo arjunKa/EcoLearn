@@ -6,11 +6,10 @@ import {
   CardTitle,
   CardSubtitle,
   Card,
-  Form,
 } from "reactstrap";
 import treeImg from "../../../public/treeImage.jpeg";
 
-const TreesCard = () => {
+const VehiclesCard = () => {
   return (
     <div className="calc_box_card">
       <Card className="card">
@@ -22,14 +21,14 @@ const TreesCard = () => {
           className="custom-card-img"
         />
         <CardBody>
-          <CardTitle tag="h5">Trees Planted Calculator</CardTitle>
+          <CardTitle tag="h5">Food Waste - Meat Reduced</CardTitle>
           <CardSubtitle className="mb-1 text-muted" tag="h6">
-            Details
+            Quantify how much you have reduced carbon by how much meat you have
+            cut out of your diet.
           </CardSubtitle>
           <CardText>
-            Different types of trees consume different amounts of carbon. Select
-            the different types of trees you planted and how many of them are,
-            and we will show you how much carbon each consumes in it's lifetime.
+            This is a wider card with supporting text below as a natural lead-in
+            to additional content. This content is a little bit longer.
           </CardText>
           <Button>Button</Button>
         </CardBody>
@@ -38,4 +37,4 @@ const TreesCard = () => {
   );
 };
 
-export default TreesCard;
+export default VehiclesCard;
