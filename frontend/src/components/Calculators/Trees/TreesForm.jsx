@@ -29,8 +29,8 @@ const handleSelectedOptionChange = (event) => {
   return (
 
     <Form  >
-      <Row>
-        <Col md={4} >
+      <Row style={{alignItems:"baseline"}}>
+        <Col md={5} >
           <FormGroup >
             <Label for="exampleNumber">
               Quantity of trees planted
@@ -45,7 +45,7 @@ const handleSelectedOptionChange = (event) => {
             />
           </FormGroup>
         </Col>
-        <Col md={4}>
+        <Col md={5}>
           <FormGroup>
 
             <Label for="exampleSelect">

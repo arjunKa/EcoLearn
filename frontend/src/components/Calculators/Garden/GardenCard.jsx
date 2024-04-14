@@ -7,7 +7,7 @@ import {
   CardSubtitle,
   Card,
 } from "reactstrap";
-import treeImg from "../../../public/treeImage.jpeg";
+import image from "../../../public/Tree.png";
 
 const GardenCard = () => {
   return (
@@ -16,7 +16,7 @@ const GardenCard = () => {
         {/* left side */}
         <CardImg
           alt="Card image cap"
-          src={treeImg}
+          src={image}
           top
           className="custom-card-img"
         />
