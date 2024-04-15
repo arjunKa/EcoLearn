@@ -7,7 +7,7 @@ import {
   CardSubtitle,
   Card,
 } from "reactstrap";
-import treeImg from "../../../public/treeImage.jpeg";
+import carImg from "../../../public/carImage.jpg";
 
 const VehiclesCard = () => {
   return (
@@ -16,19 +16,19 @@ const VehiclesCard = () => {
         {/* left side */}
         <CardImg
           alt="Card image cap"
-          src={treeImg}
+          src={carImg}
           top
           className="custom-card-img"
         />
         <CardBody>
           <CardTitle tag="h5">Food Waste - Meat Reduced</CardTitle>
           <CardSubtitle className="mb-1 text-muted" tag="h6">
-            Quantify how much you have reduced carbon by how much meat you have
-            cut out of your diet.
+            Quantify how much carbon you have saved by reducing how much you drive. 
           </CardSubtitle>
           <CardText>
-            This is a wider card with supporting text below as a natural lead-in
-            to additional content. This content is a little bit longer.
+            Transportation is one of the largest source to carbon dioxide gas, and it is one of the main contributors to climate change. So even reducing the amount 
+            we drive by 10% can significantlly help cut carbon dioxide emissions. So taking other means of transportation like walking or riding your bike could help.
+            Taking pulbic transportation would vastly lower the amount of emissions per rider than a car would. 
           </CardText>
           <Button>Button</Button>
         </CardBody>

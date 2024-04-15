@@ -22,13 +22,15 @@ const FoodForm = ({ onUpdate }) => {
       <Row>
         <Col md={4}>
           <FormGroup>
-            <Label for="exampleNumber">Quantity</Label>
+            <Label for="exampleNumber">Quantity in grams</Label>
             <Input
               id="exampleNumber"
               name="amount"
               placeholder="number placeholder"
               type="number"
               value={amount}
+              min="0"
+              step="0.1"
               onChange={handleAmountChange}
               onBlur={handleAmountChange}
               required

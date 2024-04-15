@@ -40,6 +40,7 @@ const handleSelectedOptionChange = (event) => {
               name="age"
               placeholder="number placeholder"
               type="number" value={age} onChange={handleAgeChange}
+              min="0"
               onBlur={handleAgeChange}
               required
             />
