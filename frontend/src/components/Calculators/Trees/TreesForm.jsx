@@ -22,22 +22,6 @@ const TreesForm = ({ onUpdate }) => {
       <Row style={{ alignItems: "baseline" }}>
         <Col md={5}>
           <FormGroup>
-            <Label for="exampleNumber">Quantity of trees planted</Label>
-            <Input
-              id="exampleNumber"
-              name="age"
-              placeholder="number placeholder"
-              type="number"
-              value={age}
-              onChange={handleAgeChange}
-              min="0"
-              onBlur={handleAgeChange}
-              required
-            />
-          </FormGroup>
-        </Col>
-        <Col md={5}>
-          <FormGroup>
             <Label for="exampleSelect">Type of Tree</Label>
 
             <Input

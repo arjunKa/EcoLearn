@@ -22,11 +22,11 @@ const TreesCard = () => {
           className="custom-card-img"
         />
         <CardBody>
-          <CardTitle tag="h4" style={{fontFamily: "TimesNewRoman", fontWeight: "bold"}}>Trees Planted Calculator</CardTitle>
-          <CardSubtitle className="mb-1 text-muted" tag="h5" style={{fontFamily: "TimesNewRoman"}}>
+          <CardTitle tag="h4">Trees Planted Calculator</CardTitle>
+          <CardSubtitle className="mb-1 text-muted" tag="h5">
             Quantify your carbon reduction by planting more trees.
           </CardSubtitle>
-          <CardText style={{fontFamily: "TimesNewRoman"}}>
+          <CardText >
             {/* Different types of trees consume different amounts of carbon. Select
             the different types of trees you planted and how many of them are,
             and we will show you how much carbon each consumes in it's lifetime. */}

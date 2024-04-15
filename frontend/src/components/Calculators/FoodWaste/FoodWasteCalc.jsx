@@ -1,14 +1,10 @@
 import React, { useState, useEffect } from "react";
 
-import {
-  Button,
-  Card,
-  Form,
-} from "reactstrap";
+import { Button, Card, Form } from "reactstrap";
 
 import FoodForm from "./FoodForm";
 import ProgressBarFoodWaste from "./ProgressBarFoodWaste";
-import axios from "axios";
+import AxiosInstance from '../../Axios'
 import FoodWasteCard from "./FoodWasteCard";
 
 const FoodWasteCalc = () => {
@@ -44,7 +40,7 @@ const FoodWasteCalc = () => {
     try {
       // Make your API request with the treeData array
       console.log(foodData);
-      const res = await axios.post("/api/ecolearning/food", { foodData });
+      const res = await AxiosInstance.post("/api/ecolearning/food/", { foodData });
 
       // Handle the response as needed
       console.log(res.data);
@@ -68,7 +64,7 @@ const FoodWasteCalc = () => {
     <div>
       {/* Heading outside of Calc */}
       <h1 style={{ display: "flex", justifyContent: "flex-end" }}>
-        Trees Planted
+        Food Waste
       </h1>
 
       {/* Block for inside Calc */}

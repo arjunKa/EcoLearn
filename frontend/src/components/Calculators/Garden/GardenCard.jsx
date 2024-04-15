@@ -7,7 +7,7 @@ import {
   CardSubtitle,
   Card,
 } from "reactstrap";
-import gardenImg from "../../../public/potatoImage.jpg";
+import image from "../../../public/potato.png";
 
 const GardenCard = () => {
   return (
@@ -16,16 +16,16 @@ const GardenCard = () => {
         {/* left side */}
         <CardImg
           alt="Card image cap"
-          src={gardenImg}
+          src={image}
           top
           className="custom-card-img"
         />
         <CardBody>
-          <CardTitle tag="h4" style={{fontFamily: "TimesNewRoman", fontWeight: "bold"}}>Garden Calculator</CardTitle>
-          <CardSubtitle className="mb-1 text-muted" tag="h5" style={{fontFamily: "TimesNewRoman"}}>
+          <CardTitle tag="h4" >Garden Calculator</CardTitle>
+          <CardSubtitle className="mb-1 text-muted" tag="h5">
             Quantify your carbon reduction by planting more agriculture in your garden 
           </CardSubtitle>
-          <CardText style={{fontFamily: "TimesNewRoman"}}>
+          <CardText >
             {/* The type of agriculture you plant and the amount you planted will consume differnt amounts of carbon. Select the type of agriculture you
             planted and the area in meters squared to display how much carbon it will reduce.  */}
 

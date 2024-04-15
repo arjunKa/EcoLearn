@@ -49,7 +49,7 @@ const WaterSavedCalc = () => {
         <div>
             {/* Heading outside of Calc */}
             <h1 style={{ display: "flex", justifyContent: "flex-end" }}>
-                Trees Planted
+                Water Saved
             </h1>
 
             {/* Block for inside Calc */}
