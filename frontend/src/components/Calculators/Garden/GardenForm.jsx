@@ -39,6 +39,7 @@ const GardenForm = ({ onUpdate }) => {
               placeholder="number placeholder"
               type="number"
               value={value}
+              min="0"
               onChange={handleValueChange}
               onBlur={handleValueChange}
               required

@@ -3,7 +3,7 @@ import {
     CardImg, CardBody, CardText, CardTitle, CardSubtitle,
     Card, Form
 } from "reactstrap";
-import treeImg from "../../../public/treeImage.jpeg"
+import waterImg from "../../../public/waterImage.jpg"
 
 const TreesCard = () => {
 
@@ -14,7 +14,7 @@ const TreesCard = () => {
                 {/* left side */}
                 <CardImg
                     alt="Card image cap"
-                    src={treeImg}
+                    src={waterImg}
                     top
                     className="custom-card-img"
                 />
