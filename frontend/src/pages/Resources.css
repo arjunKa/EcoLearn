@@ -1,0 +1,165 @@
+.page {
+    padding: 25px 25px;
+
+}
+
+.card-group  {
+    /* padding: 25px 25px; */
+    
+
+}
+
+.card2  {
+    min-height: 500px;
+    margin-top: 50px;
+    
+}
+
+
+.main_header {
+    color: #515799;
+    padding-bottom:10px;
+}
+.calculator {
+
+    max-width: 2000px;
+    margin: 0 auto;
+    /* Center the container horizontally */
+}
+
+.calc_box {
+    display: flex;
+    flex-direction: row;
+
+    /* border: 1px solid black; */
+}
+
+.calc_box_card {
+
+    margin: 10px;
+    /* border: '1px solid black'; */
+    width: 50%;
+    max-width: 800px;
+}
+
+
+.calc_box_card .custom-card-img {
+    
+    /* border: 1px solid rgb(0, 0, 0); */
+    max-width: 800px;
+    align-self: center;
+    margin:5px;
+    width: 250px;
+
+
+}
+
+.calc_box_form {
+    display: flex;
+    flex-direction: column;
+    /* border: 1px solid black; */
+    width: 100%;
+    max-width: 1000px;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+.calc_box_form_elements Button{
+    margin-bottom: 5px;
+    margin-top: 5px;
+
+}
+
+.calc_box_form_elements_row {
+    border: 1px solid rgb(195, 195, 195);
+    border-radius: 5px;
+    margin-bottom: 5px;
+
+    
+}
+
+.calc_box_form_elements_row >* {
+    margin-bottom: 5px;
+    margin-top: 5px;
+    margin-left: 5px;
+    
+}
+
+p {
+    font-size: 16px;
+}
+
+.progress_bar_div {
+    width: 80%;
+}
+
+
+@media screen and (max-width: 990px) {
+    .portfolio__projectDetails-container {
+        flex-direction: column-reverse;
+    }
+
+    .calc_box_card {
+
+        /* width: 50%; */
+        max-width: 1050px;
+
+    }
+
+}
+
+@media screen and (max-width: 750px) {
+    .calc_box {
+        display: flex;
+        flex-direction: column;
+
+
+    }
+
+    .calc_box_card {
+
+        /* border: '1px solid black'; */
+        width: 100%;
+        margin: 0px;
+
+    }
+
+    .calc_box_card .custom-card-img {
+        width: 30%;
+        /* border: 1px solid rgb(219, 10, 34); */
+
+
+    }
+}
+
+@media screen and (max-width: 450px) {
+
+    .calc_box_card .custom-card-img {
+        width: 60%;
+        /* border: 1px solid rgb(18, 125, 62); */
+
+
+    }
+
+    .calc_box {
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    .calc_box_card {
+        width: auto;
+        /* border: 1px solid black; */
+
+
+    }
+
+    .calc_box_form {
+        /* width: auto; */
+        /* border: 1px solid black; */
+
+
+    }
+
+
+}

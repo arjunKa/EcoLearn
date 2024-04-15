@@ -2,7 +2,7 @@ import React from "react";
 import { Input, Card } from "reactstrap";
 import ResourceCard from "./resources_components/resourceCard";
 
-import "./Tools.css";
+import "./Resources.css";
 
 const Resources = () => {
   return (

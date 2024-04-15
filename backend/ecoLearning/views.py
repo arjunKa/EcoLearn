@@ -37,6 +37,8 @@ class TreeView(viewsets.ModelViewSet):
         # For example, you can filter the queryset and return specific data
         if tree_type:
             queryset = self.queryset.filter(type=tree_type)
+        else:
+            queryset = Tree.objects.all()
         # else:
         #     queryset = self.filter_queryset(self.get_queryset())  # Apply any queryset filtering
         serializer = self.get_serializer(queryset, many=True)

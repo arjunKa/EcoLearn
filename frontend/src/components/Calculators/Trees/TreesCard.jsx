@@ -31,7 +31,7 @@ const TreesCard = () => {
             the different types of trees you planted and how many of them are,
             and we will show you how much carbon each consumes in it's lifetime.
           </CardText>
-          <Button>Button</Button>
+          <Button>Learn More</Button>
         </CardBody>
       </Card>
     </div>

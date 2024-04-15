@@ -1,61 +1,35 @@
-import {
-  Form,
-  Label,
-  FormGroup,
-  Input,
-  Col, Row
-
-} from 'reactstrap';
-import React, { useState } from 'react';
+import { Form, Label, FormGroup, Input, Col, Row } from "reactstrap";
+import React, { useState } from "react";
 
 const TreesForm = ({ onUpdate }) => {
-
-
-  const [selectedOption, setSelectedOption] = useState('basswood');
-  const [age, setAge] = useState(''); // State for age input
+  const [selectedOption, setSelectedOption] = useState("basswood");
+  const [age, setAge] = useState(""); // State for age input
 
   const handleAgeChange = (event) => {
     const newAge = event.target.value;
     setAge(newAge);
     onUpdate({ age: newAge, selectedOption });
-};
+  };
 
-const handleSelectedOptionChange = (event) => {
+  const handleSelectedOptionChange = (event) => {
     const newSelectedOption = event.target.value;
     setSelectedOption(newSelectedOption);
     onUpdate({ age, selectedOption: newSelectedOption });
-};
+  };
 
   return (
-
-    <Form  >
-      <Row style={{alignItems:"baseline"}}>
-        <Col md={5} >
-          <FormGroup >
-            <Label for="exampleNumber">
-              Quantity of trees planted
-            </Label>
-            <Input
-              id="exampleNumber"
-              name="age"
-              placeholder="number placeholder"
-              type="number" value={age} onChange={handleAgeChange}
-              onBlur={handleAgeChange}
-              required
-            />
-          </FormGroup>
-        </Col>
+    <Form>
+      <Row style={{ alignItems: "baseline" }}>
         <Col md={5}>
           <FormGroup>
-
-            <Label for="exampleSelect">
-              Type of Tree
-            </Label>
+            <Label for="exampleSelect">Type of Tree</Label>
 
             <Input
               id="exampleSelect"
               name="select"
-              type="select" value={selectedOption} onChange={handleSelectedOptionChange}
+              type="select"
+              value={selectedOption}
+              onChange={handleSelectedOptionChange}
               onBlur={handleSelectedOptionChange}
             >
               <option value="basswood"> Basswood </option>
@@ -87,13 +61,24 @@ const handleSelectedOptionChange = (event) => {
             </Input>
           </FormGroup>
         </Col>
+
+        <Col md={5}>
+          <FormGroup>
+            <Label for="exampleNumber">Quantity</Label>
+            <Input
+              id="exampleNumber"
+              name="age"
+              placeholder="number placeholder"
+              type="number"
+              value={age}
+              onChange={handleAgeChange}
+              onBlur={handleAgeChange}
+              required
+            />
+          </FormGroup>
+        </Col>
       </Row>
-
     </Form>
-
-
-
   );
-
-}
+};
 export default TreesForm;
