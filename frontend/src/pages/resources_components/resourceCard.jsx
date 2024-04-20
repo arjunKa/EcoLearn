@@ -28,10 +28,16 @@ const ResourceCard = () => {
               Details about the API
             </CardSubtitle>
             <CardText>
-              This API allows you retrieve data about different types of trees,
-              such as amount of carbon is can consume in its lifetime.
+              This API allows you to retrieve data about different types of trees,
+              such as the amount of carbon a particular tree can consume in its
+              lifetime.
             </CardText>
-            <Button href="https://ecolearn.azurewebsites.net/api/trees/" target="_blank">API</Button>
+            <Button
+              href="https://ecolearn.azurewebsites.net/api/trees/"
+              target="_blank"
+            >
+              API
+            </Button>
           </CardBody>
         </Card>
         <Card>
@@ -47,12 +53,16 @@ const ResourceCard = () => {
               Details about the API
             </CardSubtitle>
             <CardText>
-              This API allows you retrieve data about different types of
-              Vegetables and crop and its carbon consumption data. Units are kg
-              carbon per bush, sq m, etc. such as amount of carbon is can
-              consume in its lifetime.
+              This API allows you to retrieve data about different types of
+              vegetables and crops. You can see carbon consumption data. Units
+              are kg carbon per bush, sq. m of grass, etc.
             </CardText>
-            <Button href="https://ecolearn.azurewebsites.net/api/gardens/" target="_blank">API</Button>
+            <Button
+              href="https://ecolearn.azurewebsites.net/api/gardens/"
+              target="_blank"
+            >
+              API
+            </Button>
           </CardBody>
         </Card>
         <Card>
@@ -77,16 +87,10 @@ const ResourceCard = () => {
       </CardGroup>
 
       <Card body>
-      <CardTitle tag="h5">
-        Main API
-      </CardTitle>
-      <CardText>
-        See list of all APIs.
-      </CardText>
-      <Button>
-        Go to API
-      </Button>
-    </Card>
+        <CardTitle tag="h5">Main API</CardTitle>
+        <CardText>See list of all APIs.</CardText>
+        <Button>Go to API</Button>
+      </Card>
 
       <Card className="card2">
         <div className="text-center">

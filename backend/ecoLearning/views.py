@@ -126,13 +126,14 @@ def tree_list(request):
             print("tree type", trees)
             # Initialize an empty list to store the processed data
             arr = []
-            trees_map = {}
             # Process each tree item
             for item in trees:
                 # Create a new dictionary for each item
                 tree_dict = {}
-
                 tree_type = item.get("selectedOption")
+                quantity = int(item.get("age"))
+                
+                
                 try:
                     # Fetch the tree object from the database
                     tree = Tree.objects.get(type=tree_type)
@@ -141,20 +142,21 @@ def tree_list(request):
                         {"error": f'Tree with type "{tree_type}" not found'},
                         status=status.HTTP_404_NOT_FOUND,
                     )
-
+                print("trees array:", arr)
+                for ele in arr:
+                    if ele['type'] == tree_type:
+                       ele['total'] += float(tree.amount_carbon)*quantity
+                       ele['quantity'] += quantity
+                       continue
+                      
                 # Populate the dictionary with tree data
                 tree_dict["type"] = tree_type
-                tree_dict["total"] = float(tree.amount_carbon)*int(item.get("age"))
-
-                # Append the dictionary to the list
-                if tree_type in trees_map:
-                    trees_map[tree_type] += tree_dict["total"]
-                else:
-                    trees_map[tree_type] = tree_dict["total"]
-
-            for item in trees_map:
-                arr.append({"type": item, "total": trees_map[item]})
-                print("array", arr)
+                tree_dict["total"] = float(tree.amount_carbon)*quantity
+                tree_dict["amount_carbon"] = float(tree.amount_carbon)
+                tree_dict["quantity"] = quantity
+                
+                arr.append(tree_dict)
+            print("trees array:", arr)
 
             # Return the processed data as JSON response
             return Response(arr, status=status.HTTP_200_OK)
