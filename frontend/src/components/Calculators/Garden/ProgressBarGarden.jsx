@@ -28,7 +28,7 @@ const ProgressBarGarden = ({ calc }) => {
             // Assuming the max value of each progress bar is 100
             color={colors[index % colors.length]} // Set color based on total value
           >
-            {item.type}: {item.carbon_reduction} grams of Carbon reduction
+            {item.type}: {item.carbon_reduction} grams of Carbon reduction per year
           </Progress>
         ))}
       </Progress>

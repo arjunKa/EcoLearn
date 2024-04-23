@@ -26,6 +26,7 @@ router.register(r'trees', b2.TreeView, basename = 'trees')
 router.register(r'gardens', b2.GardenView, basename = 'gardens')
 router.register(r'vehicles', b2.VehicleView, basename = 'vehicles')
 router.register(r'food', b2.FoodView, basename = 'food')
+router.register(r'metric', b2.MetricView, basename = 'metric')
 
 urlpatterns = [
     
@@ -35,6 +36,7 @@ urlpatterns = [
     path('api/ecolearning/gardens/', b2.garden, name = "gardens"),
     path('api/ecolearning/vehicles/', b2.vehicle, name = "vehicles"),
     path('api/ecolearning/food/', b2.food, name = "food"),
+    # path('api/ecolearning/metric/', b2.food, name = "metric"),
     # re_path('api/ecolearning/$', b2.tree_list),
     # re_path(r'^api/ecolearning/([0-9])$', b2.TreeView.as_view({'get': 'tree'}))
     

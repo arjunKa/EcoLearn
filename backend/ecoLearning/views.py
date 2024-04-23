@@ -5,8 +5,9 @@ from .serializers import (
     GardenSerializer,
     VehicleSerializer,
     FoodSerializer,
+    MetricSerializer
 )
-from .models import Tree, Garden, Vehicle, Food
+from .models import Tree, Garden, Vehicle, Food, Metric
 from rest_framework.permissions import BasePermission, IsAuthenticated, SAFE_METHODS
 
 # from Objects.Tree import Tree as t2
@@ -63,6 +64,27 @@ class FoodView(viewsets.ModelViewSet):
     serializer_class = FoodSerializer
     queryset = Food.objects.all()
     permission_classes = [IsAuthenticatedOrReadOnly]
+    
+class MetricView(viewsets.ModelViewSet):
+    serializer_class = MetricSerializer
+    queryset = Metric.objects.all()
+    permission_classes = [IsAuthenticatedOrReadOnly]
+    
+    def get_queryset(self):
+        type = self.request.GET.get("type")
+        
+        # Implement your custom logic to handle the GET request
+        # For example, you can filter the queryset and return specific data
+        if type:
+            queryset = self.queryset.filter(type=type)
+        else:
+            queryset = Metric.objects.all()
+        # else:
+        #     queryset = self.filter_queryset(self.get_queryset())  # Apply any queryset filtering
+        serializer = self.get_serializer(queryset, many=True)
+        print("go")
+        serialized_data = serializer.data
+        return serialized_data
 
 
 # class CustomTree:
@@ -126,6 +148,7 @@ def tree_list(request):
             print("tree type", trees)
             # Initialize an empty list to store the processed data
             arr = []
+            total = 0
             # Process each tree item
             for item in trees:
                 # Create a new dictionary for each item
@@ -147,6 +170,7 @@ def tree_list(request):
                     if ele['type'] == tree_type:
                        ele['total'] += float(tree.amount_carbon)*quantity
                        ele['quantity'] += quantity
+                       total+=float(tree.amount_carbon)*quantity
                        continue
                       
                 # Populate the dictionary with tree data
@@ -154,12 +178,16 @@ def tree_list(request):
                 tree_dict["total"] = float(tree.amount_carbon)*quantity
                 tree_dict["amount_carbon"] = float(tree.amount_carbon)
                 tree_dict["quantity"] = quantity
+                total+=float(tree.amount_carbon)*quantity
                 
                 arr.append(tree_dict)
             print("trees array:", arr)
 
             # Return the processed data as JSON response
-            return Response(arr, status=status.HTTP_200_OK)
+            obj = {'list': arr, 'total': total}
+            # arr.append([{'total':total}])
+            print(arr) 
+            return Response(obj, status=status.HTTP_200_OK)
 
         except Exception as e:
             return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
