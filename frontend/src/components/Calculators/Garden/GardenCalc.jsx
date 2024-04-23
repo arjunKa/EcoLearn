@@ -29,7 +29,7 @@ const GardenCalc = () => {
 
       // Handle the response as needed
       console.log(res.data);
-      setCalc([res.data]);
+      setCalc(res.data);
     } catch (err) {
       console.error("Error fetching data:", err);
     }
