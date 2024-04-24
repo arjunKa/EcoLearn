@@ -5,9 +5,10 @@ from .serializers import (
     GardenSerializer,
     VehicleSerializer,
     FoodSerializer,
-    MetricSerializer
+    MetricSerializer,
+    RecycleSerializer
 )
-from .models import Tree, Garden, Vehicle, Food, Metric
+from .models import Tree, Garden, Vehicle, Food, Metric, Recycle
 from rest_framework.permissions import BasePermission, IsAuthenticated, SAFE_METHODS
 
 # from Objects.Tree import Tree as t2
@@ -64,6 +65,28 @@ class FoodView(viewsets.ModelViewSet):
     serializer_class = FoodSerializer
     queryset = Food.objects.all()
     permission_classes = [IsAuthenticatedOrReadOnly]
+    
+class RecycleView(viewsets.ModelViewSet):
+    serializer_class = RecycleSerializer
+    queryset = Recycle.objects.all()
+    permission_classes = [IsAuthenticatedOrReadOnly]
+    
+    def get_queryset(self):
+        type = self.request.GET.get("type")
+        
+        # Implement your custom logic to handle the GET request
+        # For example, you can filter the queryset and return specific data
+        if type:
+            queryset = self.queryset.filter(type=type)
+        else:
+            queryset = Recycle.objects.all()
+        # else:
+        #     queryset = self.filter_queryset(self.get_queryset())  # Apply any queryset filtering
+        serializer = self.get_serializer(queryset, many=True)
+        
+        serialized_data = serializer.data
+        print("go", serialized_data)
+        return serialized_data
     
 class MetricView(viewsets.ModelViewSet):
     serializer_class = MetricSerializer
@@ -253,46 +276,49 @@ def vehicle(request):
             garden_type = request.GET.get("type")
             distance = int(request.GET.get("distance"))
             idling = int(request.GET.get("idling"))
-            print(garden_type)
-            if garden_type:
-                print("good")
-                garden = Vehicle.objects.get(type=garden_type)
-                print("good")
-            else:
-                serializer = VehicleSerializer(garden, many=True)
-                return Response(serializer.data, status=status.HTTP_200_OK)
-            # print(garden)
-            if not distance:
-                distance = 0
-
-            print(distance)
-            print("tree type", garden_type)
-
-            amount_carbon = garden.amount
-            description = garden.description
-            carbon_reduction_driving = float(distance * float(amount_carbon))
-            carbon_reduction_idling = 0.03*idling
-            total_carbon_reduction = carbon_reduction_driving + carbon_reduction_idling
             
-            custom_obj = {
-                "type": garden_type,
-                "total_carbon_reduction": total_carbon_reduction,
-                "carbon_reduction_driving": carbon_reduction_driving,
-                "carbon_reduction_idling": carbon_reduction_idling,
-                "distance": distance,
-                "amount_carbon": amount_carbon,
-                "idling": idling,
-                "description": description,
-            }
-            # Convert the dictionary to a JSON string
-            # json_data = json.dumps(custom_obj)
-            return Response(custom_obj, status=status.HTTP_200_OK)
+            print("distance", distance)
         except Vehicle.DoesNotExist:
             return Response(
                 {"error": "Garden not found"}, status=status.HTTP_404_NOT_FOUND
             )
         except Exception as e:
             return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
+        print(garden_type)
+        if garden_type:
+            print("good")
+            garden = Vehicle.objects.get(type=garden_type)
+            print("good")
+        else:
+            serializer = VehicleSerializer(garden, many=True)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        # print(garden)
+        if not distance:
+            distance = 0
+
+        print(distance)
+        print("tree type", garden_type)
+
+        amount_carbon = garden.amount
+        description = garden.description
+        carbon_reduction_driving = float(distance * float(amount_carbon))
+        carbon_reduction_idling = 0.03*idling
+        total_carbon_reduction = carbon_reduction_driving + carbon_reduction_idling
+        
+        custom_obj = {
+            "type": garden_type,
+            "total_carbon_reduction": total_carbon_reduction,
+            "carbon_reduction_driving": carbon_reduction_driving,
+            "carbon_reduction_idling": carbon_reduction_idling,
+            "distance": distance,
+            "amount_carbon": amount_carbon,
+            "idling": idling,
+            "description": description,
+        }
+        # Convert the dictionary to a JSON string
+        # json_data = json.dumps(custom_obj)
+        return Response(custom_obj, status=status.HTTP_200_OK)
+
 
 
 @api_view(["POST"])
@@ -308,7 +334,8 @@ def food(request):
             print("tree type", food)
             # Initialize an empty list to store the processed data
             arr = []
-
+            total = 0 
+            
             # Process each tree item
             for item in food:
                 # Create a new dictionary for each item
@@ -317,23 +344,36 @@ def food(request):
                 try:
                     # Fetch the tree object from the database
                     tree = Food.objects.get(Q(type__iexact=food_type))
-
-                    # Populate the dictionary with tree data
-                    tree_dict["type"] = food_type
-                    quantity = int(item.get("amount"))
-                    tree_dict["total"] = float(tree.amount_carbon * quantity)
-
-                    # Append the dictionary to the list
-                    arr.append(tree_dict)
-                    print("array", arr)
+                    
                 except Tree.DoesNotExist:
                     return Response(
                         {"error": f'Tree with type "{food_type}" not found'},
                         status=status.HTTP_404_NOT_FOUND,
                     )
 
+                # Populate the dictionary with tree data
+                tree_dict["type"] = food_type
+                
+                for ele in arr:
+                    if ele['type'] == food_type:
+                       ele['total'] += float(tree.amount_carbon)*quantity
+                       ele['quantity'] += quantity
+                       total+=float(tree.amount_carbon)*quantity
+                       continue
+                   
+                quantity = int(item.get("amount"))
+                tree_dict['quantity'] = quantity
+                tree_dict["total"] = float(tree.amount_carbon * quantity)
+                total+=float(tree.amount_carbon * quantity)
+
+                # Append the dictionary to the list
+                arr.append(tree_dict)
+                print("array", arr)
+                
+            obj = {'list': arr, 'total': total}
+
             # Return the processed data as JSON response
-            return Response(arr, status=status.HTTP_200_OK)
+            return Response(obj, status=status.HTTP_200_OK)
 
         except Exception as e:
             return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)

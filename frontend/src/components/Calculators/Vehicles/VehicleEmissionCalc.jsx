@@ -29,8 +29,8 @@ const VehicleEmissionCalc = () => {
                                 <option value="rav4"> Toyota Rav4 </option>
                                 <option value="crv"> Honda CRV </option>
                                 <option value="corolla"> Toyota Corolla </option>
-                                <option value="escape"> Ford Escape </option>
-                                <option value="caravan"> Dodge Grand Caravan </option>
+                                <option value="ford_escape"> Ford Escape </option>
+                                <option value="dodge_caravan"> Dodge Grand Caravan </option>
                             </select>
                         </div>
                     </div>  

@@ -1,23 +1,43 @@
-import { Progress } from "reactstrap";
+import { Progress, Tooltip } from "reactstrap";
 import React, { useState, useEffect } from "react";
-const ProgressBarVehicles = ({ calc }) => {
-  const [progressColor, setProgressColor] = useState("primary");
-  const [totalCarbonReduction, setTotalCarbonReduction] = useState(1000);
-  const colors = ["", "success", "warning", "danger"];
+import AxiosInstance from "../../Axios";
+import Metrics from '../../Metrics/Metrics';
 
-  // useEffect(() => {
-  //     // Check the calc value and update the progress color accordingly
-  //     if (calc.amount_carbon < 30) {
-  //         setProgressColor('danger');
-  //     } else {
-  //         setProgressColor('success');
-  //     }
-  // }, [calc]); // Run the effect whenever the calc value changes
+const ProgressBarVehicles = ({ calc }) => {
+  const colors = ["", "success", "warning", "danger"];
+  const [metrics, setMetrics] = useState(""); // State for age input
+  const [tooltipOpen, setTooltipOpen] = useState(false);
+
+  const toggle = () => setTooltipOpen(!tooltipOpen);
+
+  useEffect(() => {
+    // Trigger getMetrics when calc is updated
+    if (calc) {
+      getMetrics();
+    }
+  }, [calc]);
+
+  const getMetrics = async () => {
+    try {
+      // Make your API request with the treeData array
+
+      const res = await AxiosInstance.get("/api/metric/", {
+        params: {
+          type: "cellphone",
+        },
+      });
+
+      // Handle the response as needed
+      console.log(res.data);
+      setMetrics(res.data);
+    } catch (err) {
+      console.error("Error fetching data:", err);
+    }
+  };
 
   return (
     <div className="progress_bar_div">
       {/* Render individual progress bars for each item */}
-
       <Progress
         className="my-2"
         value={calc.carbon_reduction_driving}
@@ -28,9 +48,9 @@ const ProgressBarVehicles = ({ calc }) => {
         }}
         color={colors[1 % colors.length]} // Set color based on total value
       >
-        {calc.type}: {calc.carbon_reduction_driving} carbon reduction from driving
+        {calc.type}: {calc.carbon_reduction_driving} carbon reduction from
+        driving
       </Progress>
-
       <Progress multi>
         <Progress
           bar
@@ -40,10 +60,10 @@ const ProgressBarVehicles = ({ calc }) => {
 
           color={colors[1 % colors.length]} // Set color based on total value
         >
-          {calc.type}: {calc.carbon_reduction_idling} carbon reduction from idling
+          {calc.type}: {calc.carbon_reduction_idling} carbon reduction from
+          idling
         </Progress>
       </Progress>
-
       {/* Render cumulative progress bar with total carbon reduction */}
       <Progress
         className="my-2"
@@ -56,6 +76,10 @@ const ProgressBarVehicles = ({ calc }) => {
       >
         Cumulative: {calc.total_carbon_reduction} carbon reduction
       </Progress>
+      In their lifetime, the trees you have planted will consume{" "}
+      {calc.total_carbon_reduction} Kg of Carbon.
+      {/* Display metrics value */}
+      <Metrics calc = {calc.total_carbon_reduction} />
     </div>
   );
 };

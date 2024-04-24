@@ -1,28 +1,21 @@
 import { Progress } from "reactstrap";
 import React, { useState, useEffect } from "react";
+import Metrics from "../../Metrics/Metrics";
 
 const ProgressBarFoodWaste = ({ calc }) => {
-  const [progressColor, setProgressColor] = useState("primary");
-  const [totalCarbonReduction, setTotalCarbonReduction] = useState(1000);
   const colors = ["", "success", "warning", "danger"];
-
-  useEffect(() => {
-    // Calculate the total carbon reduction by summing up the 'total' values in the calc array
-    const total = calc.reduce((acc, item) => acc + item.total, 0);
-    setTotalCarbonReduction(total);
-  }, [calc]);
 
   return (
     <div className="progress_bar_div">
       {/* Render individual progress bars for each item */}
-      {calc.map((item, index) => (
+      {calc.list.map((item, index) => (
         <Progress
           key={index}
           className="my-2"
           value={item.total}
-          max={100} // Assuming the max value of each progress bar is 100
+          max={item.total} // Assuming the max value of each progress bar is 100
           style={{
-            height: "20px",
+            height: "30px",
             marginBottom: "10px",
           }}
           color={colors[index % colors.length]} // Set color based on total value
@@ -31,12 +24,18 @@ const ProgressBarFoodWaste = ({ calc }) => {
         </Progress>
       ))}
 
-      <Progress multi>
-        {calc.map((item, index) => (
+      <Progress
+        multi
+        style={{
+          height: "30px",
+          marginBottom: "10px",
+        }}
+      >
+        {calc.list.map((item, index) => (
           <Progress
             bar
             key={index}
-            max={totalCarbonReduction}
+            max={item.total}
             value={item.total}
             // Assuming the max value of each progress bar is 100
 
@@ -50,15 +49,19 @@ const ProgressBarFoodWaste = ({ calc }) => {
       {/* Render cumulative progress bar with total carbon reduction */}
       <Progress
         className="my-2"
-        value={totalCarbonReduction}
-        max={calc.length} // Assuming the max value of cumulative progress bar
+        value={calc.total}
+        max={calc.total} // Assuming the max value of cumulative progress bar
         style={{
-          height: "20px",
+          height: "30px",
+          marginBottom: "10px",
         }}
         color={"dark"} // Set color based on total value
       >
-        Cumulative: {totalCarbonReduction} carbon reduction
+        Cumulative: {calc.total} carbon reduction
       </Progress>
+
+      {/* Display metrics value */}
+      <Metrics calc={calc.total} />
     </div>
   );
 };

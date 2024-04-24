@@ -3,9 +3,9 @@ import {
     CardImg, CardBody, CardText, CardTitle, CardSubtitle,
     Card, Form
 } from "reactstrap";
-import recyclingImg from "../../../public/recyclingImg.jpg"
+import recyclingImg from "../../../public/recyclingImage.jpg";
 
-const RecyclingCard = () => {
+const RecycleCard = () => {
     return (
         <div className="calc_box_card">
         <Card className="card">
@@ -38,4 +38,4 @@ const RecyclingCard = () => {
     );
 }
 
-export default RecyclingCard;
+export default RecycleCard;

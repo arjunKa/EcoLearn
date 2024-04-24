@@ -26,6 +26,7 @@ router.register(r'trees', b2.TreeView, basename = 'trees')
 router.register(r'gardens', b2.GardenView, basename = 'gardens')
 router.register(r'vehicles', b2.VehicleView, basename = 'vehicles')
 router.register(r'food', b2.FoodView, basename = 'food')
+router.register(r'recycle', b2.RecycleView, basename = 'recycle')
 router.register(r'metric', b2.MetricView, basename = 'metric')
 
 urlpatterns = [

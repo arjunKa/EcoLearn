@@ -9,7 +9,7 @@ import VehiclesCard from "./VehiclesCard";
 
 const VehiclesCalc = () => {
   const [calc, setCalc] = useState(""); // State for age input
-  const [treeData, setTreeData] = useState([{}]); // State for storing tree data
+  const [treeData, setTreeData] = useState({amount: '0', selectedOption: 'fseries', idling: '0'}); // State for storing tree data
 
   const handleCalcUpdate = (data) => {
     setTreeData(data);
@@ -21,7 +21,7 @@ const VehiclesCalc = () => {
       console.log(treeData);
       const res = await AxiosInstance.get("/api/ecolearning/vehicles", {
         params: {
-          type: treeData.selectedOption.toLowerCase(),
+          type: treeData.selectedOption,
           distance: treeData.amount,
           idling: treeData.idling,
         },

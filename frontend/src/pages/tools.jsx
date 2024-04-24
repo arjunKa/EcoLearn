@@ -4,7 +4,7 @@ import GardenCalc from "../components/Calculators/Garden/GardenCalc";
 import WaterSavedCalc from "../components/Calculators/WaterSaved/WaterSavedCalc";
 import FoodWasteCalc from "../components/Calculators/FoodWaste/FoodWasteCalc";
 import VehiclesCalc from "../components/Calculators/Vehicles/VehiclesCalc";
-import RecyclingCalc from "../components/Calculators/recyclingCalc";
+import RecyclingCalc from "../components/Calculators/Recycling/RecycleCalc";
 import RenewableEnergyCalc from "../components/Calculators/renewableEnergyCalc";
 import {
 

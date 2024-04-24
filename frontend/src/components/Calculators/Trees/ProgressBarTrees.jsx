@@ -1,35 +1,10 @@
 import { Progress } from "reactstrap";
 import React, { useState, useEffect } from "react";
-import AxiosInstance from "../../Axios";
+import Metrics from '../../Metrics/Metrics';
 
 const ProgressBarTrees = ({ calc }) => {
   const colors = ["", "success", "warning", "danger"];
-  const [metrics, setMetrics] = useState(""); // State for age input
 
-  useEffect(() => {
-    // Trigger getMetrics when calc is updated
-    if (calc) {
-      getMetrics();
-    }
-  }, [calc]);
-
-  const getMetrics = async () => {
-    try {
-      // Make your API request with the treeData array
-
-      const res = await AxiosInstance.get("/api/metric/", {
-        params: {
-          type: "cellphone",
-        },
-      });
-
-      // Handle the response as needed
-      console.log(res.data);
-      setMetrics(res.data);
-    } catch (err) {
-      console.error("Error fetching data:", err);
-    }
-  };
 
   return (
     <div className="progress_bar_div">
@@ -97,16 +72,7 @@ const ProgressBarTrees = ({ calc }) => {
       In their lifetime, the trees you have planted will consume {calc.total} Kg
       of Carbon.
       {/* Display metrics value */}
-      {metrics && (
-        <div>
-          <h2>Metrics:</h2>
-          <p>
-            {calc.total} Kg of Carbon can charge{" "}
-            {Math.round((calc.total / metrics[0].amount_carbon) * 100) / 100}{" "}
-            {metrics[0].type}s <i className="fa-solid fa-mobile-screen-button"></i>
-          </p>
-        </div>
-      )}
+      <Metrics calc = {calc.total} />
     </div>
   );
 };

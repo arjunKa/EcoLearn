@@ -73,6 +73,7 @@ const TreesForm = ({ onUpdate }) => {
               value={age}
               onChange={handleAgeChange}
               onBlur={handleAgeChange}
+              min={0}
               required
             />
           </FormGroup>

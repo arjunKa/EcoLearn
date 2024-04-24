@@ -12,8 +12,9 @@ const VehiclesForm = ({ onUpdate }) => {
 
 
   const [selectedOption, setSelectedOption] = useState('fseries');
-  const [amount, setAmount] = useState(''); // State for amount input
-  const [idling, setIdling] = useState(''); // State for amount input
+  const [amount, setAmount] = useState(0); // State for amount input
+  const [idling, setIdling] = useState(0); // State for amount input
+  // onUpdate({ amount, selectedOption, idling });
 
   const handleAmountChange = (event) => {
     const newAmount = event.target.value;
@@ -24,7 +25,7 @@ const VehiclesForm = ({ onUpdate }) => {
   const handleSelectedOptionChange = (event) => {
     const newSelectedOption = event.target.value;
     setSelectedOption(newSelectedOption);
-    onUpdate({ amount, selectedOption: newSelectedOption });
+    onUpdate({ amount, selectedOption: newSelectedOption, idling: idling });
   };
 
   const handleIdlingChange = (event) => {
@@ -47,7 +48,7 @@ const VehiclesForm = ({ onUpdate }) => {
               name="amount"
               placeholder="number placeholder"
               type="number" value={amount} onChange={handleAmountChange}
-              
+              min={0}
               required
             />
           </FormGroup>
@@ -91,7 +92,7 @@ const VehiclesForm = ({ onUpdate }) => {
               name="idling"
               placeholder="number placeholder"
               type="number" value={idling} onChange={handleIdlingChange}
-              
+              min={0}
               required
             />
           </FormGroup>

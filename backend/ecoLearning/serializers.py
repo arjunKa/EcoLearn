@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Tree, Garden, Vehicle, Food, Metric
+from .models import Tree, Garden, Vehicle, Food, Metric, Recycle
 
 # class EcoLearningSerializer(serializers.ModelSerializer):
 #     class Meta:
@@ -34,7 +34,12 @@ class MetricSerializer(serializers.ModelSerializer):
     class Meta:
         model = Metric
         fields = '__all__'
-        
+ 
+class RecycleSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Recycle
+        fields = '__all__'       
         
 # class CustomTreeSerializer(serializers.ModelSerializer):
 #     class Meta:

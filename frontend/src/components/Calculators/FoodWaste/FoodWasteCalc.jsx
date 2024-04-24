@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from "react";
 
-import { Button, Card, Form } from "reactstrap";
+import { Button, Card, Form, Spinner } from "reactstrap";
 
 import FoodForm from "./FoodForm";
 import ProgressBarFoodWaste from "./ProgressBarFoodWaste";
-import AxiosInstance from '../../Axios'
+import AxiosInstance from "../../Axios";
 import FoodWasteCard from "./FoodWasteCard";
 
 const FoodWasteCalc = () => {
   const [calc, setCalc] = useState(""); // State for age input
   const [foodData, setTreeData] = useState([{}]); // State for storing tree data
   const [submitDisabled, setSubmitDisabled] = useState(true); // State to control submit button disable/enable
+  const [isFetching, setIsFetching] = useState(false);
 
   useEffect(() => {
     // Ensure at least one TreesForm is rendered initially
@@ -40,7 +41,11 @@ const FoodWasteCalc = () => {
     try {
       // Make your API request with the treeData array
       console.log(foodData);
-      const res = await AxiosInstance.post("/api/ecolearning/food/", { foodData });
+      setIsFetching(true);
+      const res = await AxiosInstance.post("/api/ecolearning/food/", {
+        foodData,
+      });
+      setIsFetching(false);
 
       // Handle the response as needed
       console.log(res.data);
@@ -99,6 +104,11 @@ const FoodWasteCalc = () => {
               </Form>
             </div>
 
+            {isFetching && (
+              <Spinner className="m-5" color="primary">
+                Loading...
+              </Spinner>
+            )}
             {/* Results shown here */}
             {calc && (
               <div>
