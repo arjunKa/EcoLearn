@@ -28,9 +28,9 @@ const ResourceCard = () => {
               Details about the API
             </CardSubtitle>
             <CardText>
-              This API allows you to retrieve data about different types of trees,
-              such as the amount of carbon a particular tree can consume in its
-              lifetime.
+              This API allows you to retrieve data about different types of
+              trees, such as the amount of carbon a particular tree can consume
+              in its lifetime.
             </CardText>
             <Button
               href="https://ecolearn.azurewebsites.net/api/trees/"
@@ -81,7 +81,12 @@ const ResourceCard = () => {
               See detailed data about how much carbon each kind of meat
               produces.
             </CardText>
-            <Button>API</Button>
+            <Button
+              href="https://ecolearn.azurewebsites.net/api/food/"
+              target="_blank"
+            >
+              API
+            </Button>
           </CardBody>
         </Card>
       </CardGroup>
@@ -89,12 +94,14 @@ const ResourceCard = () => {
       <Card body>
         <CardTitle tag="h5">Main API</CardTitle>
         <CardText>See list of all APIs.</CardText>
-        <Button>Go to API</Button>
+        <Button href="https://ecolearn.azurewebsites.net/api/" target="_blank">
+          Go to API
+        </Button>
       </Card>
 
       <Card className="card2">
         <div className="text-center">
-          Total carbon reduction per type of tree
+          Extra.
         </div>
       </Card>
     </div>
