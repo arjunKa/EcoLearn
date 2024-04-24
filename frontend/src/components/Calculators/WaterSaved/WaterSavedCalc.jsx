@@ -22,10 +22,10 @@ const WaterSavedCalc = () => {
     const res = {};
     res.type = "water";
     res.amount = 0.298;
-    res.total = res.amount * treeData.value;
+    res.carbon_reduction = res.amount * treeData.value;
     // Handle the response as needed
-    console.log(res.data);
-    setCalc([res]);
+    
+    setCalc(res);
   };
 
   useEffect(() => {

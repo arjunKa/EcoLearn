@@ -53,7 +53,7 @@ const Tools = () => {
 
             {/* Right Filter Side (Filter by specific Calc in left side filter) */}
             <div style={{}}>
-                <label htmlFor="calc"> Select Tool </label>
+                <label htmlFor="calc" style={{paddingBottom:"10px"}}> Select Tool </label>
                 <Input type="select" name="calc" id="calc" onChange={handleChange} style={{ width: "250px" }}>
                     <option value="treesPlanted"> Trees </option>
                     <option value="garden"> Garden </option>

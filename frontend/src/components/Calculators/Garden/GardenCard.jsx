@@ -21,11 +21,11 @@ const GardenCard = () => {
           className="custom-card-img"
         />
         <CardBody>
-          <CardTitle tag="h4" >Garden Calculator</CardTitle>
-          <CardSubtitle className="mb-1 text-muted" tag="h5">
+          <CardTitle tag="h5" >Garden Calculator</CardTitle>
+          <CardSubtitle className="mb-1 text-muted" tag="h6">
             Quantify your carbon reduction by planting more agriculture in your garden 
           </CardSubtitle>
-          <CardText >
+          <CardText tag="p">
             {/* The type of agriculture you plant and the amount you planted will consume differnt amounts of carbon. Select the type of agriculture you
             planted and the area in meters squared to display how much carbon it will reduce.  */}
 
@@ -33,7 +33,7 @@ const GardenCard = () => {
             growing your own vegetables in your garden reduces your carbon footprint by eliminating the need for packaging and transportation which will
             lessen the use of fossil fuels. 
           </CardText>
-          <Button>Button</Button>
+          <Button>More</Button>
         </CardBody>
       </Card>
     </div>
