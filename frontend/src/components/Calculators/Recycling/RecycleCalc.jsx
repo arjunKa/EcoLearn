@@ -95,8 +95,6 @@ const RecycleCalc = () => {
                 <h2>Result:</h2>
                 <p>Here is your calculation result.</p>
                 <ProgressBarRecycle calc={calc} />
-
-                <p>{JSON.stringify(calc, null, 2)}</p>
               </div>
             )}
           </div>

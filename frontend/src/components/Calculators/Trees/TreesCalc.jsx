@@ -116,8 +116,6 @@ const TreesCalc = () => {
                 <h2>Result:</h2>
                 <p>Here is your calculation result.</p>
                 <ProgressBarTrees calc={calc} />
-
-                {/* <p>{JSON.stringify(calc, null, 2)}</p> */}
               </div>
             )}
           </div>

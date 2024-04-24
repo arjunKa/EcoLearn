@@ -70,7 +70,6 @@ const VehiclesCalc = () => {
                 <p>Here is your calculation result.</p>
                 <ProgressBarVehicles calc={calc} />
 
-                <p>{JSON.stringify(calc, null, 2)}</p>
               </div>
             )}
           </div>
