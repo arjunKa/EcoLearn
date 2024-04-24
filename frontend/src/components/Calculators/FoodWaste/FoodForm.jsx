@@ -22,7 +22,7 @@ const FoodForm = ({ onUpdate }) => {
       <Row>
         <Col md={4}>
           <FormGroup>
-            <Label for="exampleNumber">Quantity in grams</Label>
+            <Label for="exampleNumber">Quantity in kg</Label>
             <Input
               id="exampleNumber"
               name="amount"

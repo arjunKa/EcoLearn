@@ -1,10 +1,9 @@
 import { Progress } from "reactstrap";
 import React, { useState, useEffect } from "react";
-import Metrics from '../../Metrics/Metrics';
+import Metrics from "../../Metrics/Metrics";
 
 const ProgressBarTrees = ({ calc }) => {
   const colors = ["", "success", "warning", "danger"];
-
 
   return (
     <div className="progress_bar_div">
@@ -72,7 +71,7 @@ const ProgressBarTrees = ({ calc }) => {
       In their lifetime, the trees you have planted will consume {calc.total} Kg
       of Carbon.
       {/* Display metrics value */}
-      <Metrics calc = {calc.total} />
+      <Metrics calc={calc.total} />
     </div>
   );
 };

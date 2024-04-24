@@ -22,7 +22,7 @@ const GardenForm = ({ onUpdate }) => {
       return "Area of Grass (m^2)";
     } else if (selectedOption === "shrub") {
       return "# of Shrubs";
-    } else if (selectedOption === "vegetable") {
+    } else if (selectedOption === "small plant") {
       return "Weight in kg";
     }
   }
@@ -60,7 +60,7 @@ const GardenForm = ({ onUpdate }) => {
             >
               <option value="grass"> Grass </option>
               <option value="shrub"> Shrub </option>
-              <option value="vegetable"> Flower/Vegetables </option>
+              <option value="small plant"> Flower/Vegetables </option>
             </Input>
           </FormGroup>
         </Col>
