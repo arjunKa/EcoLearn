@@ -107,7 +107,8 @@ const ResourceCard = () => {
           <CardTitle tag="h5"> Additional Resources </CardTitle>
           <CardText> For additional resources on where to find all the information we used to learn about carbon emmisions can be found through these links. </CardText>
         </CardBody>
-        <CardGroup>
+
+        <CardGroup className="card1">
           <Card color="light"> 
             <ListGroup carbon> 
               <ListGroupItemHeading> Carbon Emissions Information </ListGroupItemHeading>
@@ -129,7 +130,8 @@ const ResourceCard = () => {
             </ListGroup>
           </Card>
         </CardGroup>
-        <CardGroup>
+
+        <CardGroup className="card1">
           <Card color="success"> 
             <ListGroup tree>
               <ListGroupItemHeading> Trees </ListGroupItemHeading>
@@ -152,7 +154,7 @@ const ResourceCard = () => {
           </Card>
         </CardGroup>
 
-        <CardGroup>
+        <CardGroup className="card1">
           <Card color="secondary"> 
             <ListGroup garden> 
               <ListGroupItemHeading> Garden </ListGroupItemHeading>
@@ -166,7 +168,7 @@ const ResourceCard = () => {
           </Card>
         </CardGroup>
 
-        <CardGroup>
+        <CardGroup className="card1">
           <Card color="info"> 
             <ListGroup recycling> 
               <ListGroupItemHeading> Recycling & Waste Reduction </ListGroupItemHeading>
@@ -180,7 +182,7 @@ const ResourceCard = () => {
           </Card>
         </CardGroup>
 
-        <CardGroup>
+        <CardGroup className="card1">
           <Card color="danger"> 
             <ListGroup food> 
               <ListGroupItemHeading> Food Waste </ListGroupItemHeading>
@@ -197,7 +199,7 @@ const ResourceCard = () => {
           </Card>
         </CardGroup>
 
-        <CardGroup>
+        <CardGroup className="card1">
           <Card color="secondary"> 
             <ListGroup vehicle> 
               <ListGroupItemHeading> Vehicle Emissions </ListGroupItemHeading>
@@ -210,7 +212,7 @@ const ResourceCard = () => {
           </Card>
         </CardGroup>
 
-        <CardGroup>
+        <CardGroup className="card1">
           <Card color="primary"> 
             <ListGroup water> 
               <ListGroupItemHeading> Water Saved </ListGroupItemHeading>
@@ -221,7 +223,7 @@ const ResourceCard = () => {
           </Card>
         </CardGroup>
 
-        <CardGroup>
+        <CardGroup className="card1">
           <Card color="warning"> 
             <ListGroup energy> 
               <ListGroupItemHeading> Renewable Energy </ListGroupItemHeading>
@@ -235,7 +237,7 @@ const ResourceCard = () => {
           </Card>
         </CardGroup>
 
-        <CardGroup>
+        <CardGroup className="card1">
           <Card color="success"> 
             <ListGroup donate> 
               <ListGroupItemHeading> Item Donated </ListGroupItemHeading>
