@@ -10,11 +10,14 @@
 }
 
 .card2  {
-    min-height: 500px;
+    /* min-height: 500px; */
     margin-top: 50px;
-    
+
 }
 
+.list-group {
+    padding: 15px 15px 15px 15px;
+}
 
 .main_header {
     color: #515799;
