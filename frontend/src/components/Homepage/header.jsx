@@ -1,32 +1,17 @@
 import React from "react";
-import "../Common/Common.css"
+import "../Common/Common.css";
 
 const Header = (props) => {
-    return (
-    <header id="header">
+  return (
     <div className="intro">
-        <div className="overlay">
-        <div className="container">
-            <div className="row">
-            <div className="col-md-8 col-md-offset-2 intro-text">
-                <h1>
-                {props.data ? props.data.title : "Loading"}
-                <span></span>
-                </h1>
-                <p>{props.data ? props.data.paragraph : "Loading"}</p>
-                <a
-                href=""
-                className="btn btn-custom btn-lg page-scroll"
-                >
-                <p>Learn More</p>
-                </a>{" "}
-            </div>
-            </div>
-        </div>
-        </div>
+      <img src="/ecoLearn.svg" alt="My Happy SVG" className="logo" />
+      <h1>{props.data ? props.data.title : "Loading"}</h1>
+      <p>{props.data ? props.data.paragraph : "Loading"}</p>
+      <a href="" className="">
+        <p>Learn More</p>
+      </a>{" "}
     </div>
-    </header>
-    );
-}    
+  );
+};
 
 export default Header;

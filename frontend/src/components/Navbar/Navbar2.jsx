@@ -22,21 +22,39 @@ function Navbar2(args) {
   return (
     <div>
       <Navbar color="dark" dark expand="md">
-        <NavbarBrand href="/">EcoLearn</NavbarBrand>
+        <NavbarBrand href="/">
+          {/* <div
+            style={{
+              paddingRight: "10px",
+            }}
+          > */}
+          <img
+            alt="logo"
+            src="/ecoLearn.svg"
+            style={{
+              height: 40,
+              width: 40,
+              marginRight: "10px",
+            }}
+          />
+          {/* </div> */}
+          EcoLearn
+        </NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="me-auto" navbar>
             <NavItem>
               <NavLink href="/tools/">Tools</NavLink>
             </NavItem>
+
             <NavItem>
-              <NavLink href="/impact/">Impact</NavLink>
+              <NavLink href="/resources/">Resources</NavLink>
             </NavItem>
             <NavItem>
               <NavLink href="/projects/">Projects</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="/resources/">Resources</NavLink>
+              <NavLink href="/impact/">Impact</NavLink>
             </NavItem>
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret>
@@ -44,9 +62,6 @@ function Navbar2(args) {
               </DropdownToggle>
               <DropdownMenu>
                 <DropdownItem href="/aboutUs/">About Us</DropdownItem>
-                <DropdownItem>Option 2</DropdownItem>
-                <DropdownItem divider />
-                <DropdownItem>Reset</DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>
           </Nav>

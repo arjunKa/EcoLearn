@@ -1,0 +1,60 @@
+.logo {
+  /* Add styles for your logo */
+  width: 200px;
+  height: 200px;
+  /* background-color: #007bff; Example background color */
+  /* Center the logo */
+  /* position: absolute; */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  /* Animation */
+  animation: spin 10s linear infinite;
+  /* Name, duration, timing function, iteration count */
+  margin-bottom: 20px;
+}
+
+/* Keyframes for the spinning animation */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+    /* Start rotation */
+  }
+
+  to {
+    transform: rotate(360deg);
+    /* End rotation */
+  }
+}
+
+@media screen and (max-width: 450px) {
+
+  .logo {
+    /* Add styles for your logo */
+    width: 150px;
+    height: 150px;
+    /* background-color: #007bff; Example background color */
+    /* Center the logo */
+    /* position: absolute; */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    /* Animation */
+    animation: spin 10s linear infinite;
+    /* Name, duration, timing function, iteration count */
+    margin-bottom: 20px;
+  }
+
+
+}
+
+@media (min-width:2000px) {
+  .logo {
+
+    width: 350px;
+    height: 350px;
+
+  }
+}
