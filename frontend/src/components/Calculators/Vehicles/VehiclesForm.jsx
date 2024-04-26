@@ -34,9 +34,9 @@ const VehiclesForm = ({ onUpdate }) => {
               How many Km of driving did you eliminate?
             </Label>
             <Input
-              id="amount"
-              name="amount"
-              placeholder="number placeholder"
+              id="exampleNumber"
+              name="exampleNumber"
+              placeholder="number"
               type="number"
               value={amount}
               onChange={handleAmountChange}
@@ -52,7 +52,7 @@ const VehiclesForm = ({ onUpdate }) => {
 
             <Input
               id="exampleSelect"
-              name="select"
+              name="exampleSelect"
               type="select"
               value={selectedOption}
               onChange={handleSelectedOptionChange}
