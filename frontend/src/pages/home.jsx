@@ -12,7 +12,7 @@ const Home = (props) => {
   document.body.style = "background: #2c2c2c;";
 
   return (
-    <div class="container">
+    <div className="container">
       <div className="homepage">
         {/* <div><img src = "/ecoLearn.svg" alt="My Happy SVG" className="logo"/></div> */}
         <Header data={landingPageData.Header} />
