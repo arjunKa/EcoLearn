@@ -1,5 +1,4 @@
 import { Progress } from "reactstrap";
-import React, { useState, useEffect } from "react";
 import Metrics from "../../Metrics/Metrics";
 
 const ProgressBarFoodWaste = ({ calc }) => {
@@ -9,7 +8,7 @@ const ProgressBarFoodWaste = ({ calc }) => {
     <div className="progress_bar_div">
       {/* Render individual progress bars for each item */}
       <div className="text-center">
-        Total carbon reduction per type of plant
+        Total carbon reduction per type of food
       </div>
       {calc.list.map((item, index) => (
         <Progress

@@ -9,7 +9,7 @@ const AboutUs = () => {
       <h1 className="main_header">About Us</h1>
 
       <div style={{ margin: "25px 25px" }} className="">
-        <h2 className="main_header">The Team</h2>
+        
         <AboutUsCard />
 
         {/* Right Filter Side (Filter by specific Calc in left side filter) */}
