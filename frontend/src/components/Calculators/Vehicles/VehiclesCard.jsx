@@ -21,7 +21,7 @@ const VehiclesCard = () => {
           className="custom-card-img"
         />
         <CardBody>
-          <CardTitle tag="h5">Food Waste - Meat Reduced</CardTitle>
+          <CardTitle tag="h5">Vehicle Emissions</CardTitle>
           <CardSubtitle className="mb-1 text-muted" tag="h6">
             Quantify how much carbon you have saved by reducing how much you
             drive.

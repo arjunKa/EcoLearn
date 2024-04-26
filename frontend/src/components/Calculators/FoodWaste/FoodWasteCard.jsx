@@ -7,7 +7,7 @@ import {
   CardSubtitle,
   Card,
 } from "reactstrap";
-import image from "../../../images/potato.png";
+import image from "../../../images/foodWasteImage.jpg";
 
 const FoodWasteCard = () => {
   return (
