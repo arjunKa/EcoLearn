@@ -13,7 +13,7 @@ const ProgressBarTrees = ({ calc }) => {
         <div key={index}>
           <div className="text-center">
             1 {item.type} <i className="fa-solid fa-tree"></i> tree absorbs{" "}
-            {item.amount_carbon} kg{" "}
+            {item.amount_carbon.toFixed(2)} kg{" "}
             <i className="fa-solid fa-fire-flame-simple"></i> Carbon.{" "}
           </div>
 
@@ -28,38 +28,16 @@ const ProgressBarTrees = ({ calc }) => {
             }}
             color={colors[index % colors.length]} // Set color based on total value
           >
-            {item.quantity} {item.type} trees: {item.total} Kg of Carbon
+            {item.quantity} {item.type} trees: {item.total.toFixed(2)} Kg of Carbon
           </Progress>
         </div>
       ))}
-      <div className="text-center">Relative carbon reduction</div>
-      <Progress
-        style={{
-          height: "30px",
-          marginBottom: "10px",
-        }}
-        multi
-      >
-        {calc.list.map((item, index) => (
-          <Progress
-            bar
-            key={index}
-            max={calc.total}
-            value={item.total}
-            // Assuming the max value of each progress bar is 100
-
-            color={colors[index % colors.length]} // Set color based on total value
-          >
-            {item.type}: {item.total} Kg of Carbon
-          </Progress>
-        ))}
-      </Progress>
       {/* Render cumulative progress bar with total carbon reduction */}
       <div className="text-center">In total you have absorbed: </div>
       <Progress
         className="my-2"
         value={calc.total}
-        max={calc.list.length} // Assuming the max value of cumulative progress bar
+        max={calc.total} // Assuming the max value of cumulative progress bar
         style={{
           height: "30px",
           marginBottom: "10px",
@@ -68,7 +46,7 @@ const ProgressBarTrees = ({ calc }) => {
       >
         {calc.total} Kg of Carbon
       </Progress>
-      In their lifetime, the trees you have planted will consume {calc.total} Kg
+      In their lifetime, the trees you have planted will consume {calc.total.toFixed(2)} Kg
       of Carbon.
       {/* Display metrics value */}
       <Metrics calc={calc.total} />

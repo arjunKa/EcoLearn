@@ -9,28 +9,27 @@ import RecycleCard from "./RecycleCard";
 
 const RecycleCalc = () => {
   const [calc, setCalc] = useState(""); // State for age input
-  const [treeData, setTreeData] = useState([{}]); // State for storing tree data
+  const [recycleData, setRecycleData] = useState([{}]); // State for storing recycle data
   const [submitDisabled, setSubmitDisabled] = useState(true); // State to control submit button disable/enable
   const [isFetching, setIsFetching] = useState(false);
 
   const handleCalcUpdate = (data) => {
-    setTreeData(data);
+    setRecycleData(data);
   };
 
   const handleButtonClick = async () => {
     try {
-      // Make your API request with the treeData array
-      console.log(treeData);
+      // Make your API request with the recycleData array
+      console.log(recycleData);
       setIsFetching(true);
       const res = await AxiosInstance.get("/api/recycle", {
         params: {
-          type: treeData.selectedOption.toLowerCase(),
+          type: recycleData.selectedOption.toLowerCase(),
         },
       });
-      
+
       setIsFetching(false);
-      if(res.data.length ==0) {
-        
+      if (res.data.length == 0) {
         return;
       }
       // Handle the response as needed
@@ -39,7 +38,7 @@ const RecycleCalc = () => {
       console.log(res.data);
       const modifiedData = res.data.map((item) => ({
         ...item,
-        quantity: parseInt(treeData.value),
+        quantity: parseFloat(recycleData.value),
       }));
       console.log(modifiedData);
       setCalc(modifiedData);
@@ -51,11 +50,12 @@ const RecycleCalc = () => {
   useEffect(() => {
     // Check if any quantity field is empty
 
-    const isAnyQuantityEmpty = !treeData.value || treeData.value.trim() === "";
+    const isAnyQuantityEmpty =
+      !recycleData.value || recycleData.value.trim() === "";
     // Update the state to enable/disable submit button accordingly
     setSubmitDisabled(isAnyQuantityEmpty);
     console.log(isAnyQuantityEmpty);
-  }, [treeData]);
+  }, [recycleData]);
 
   return (
     <div>
@@ -71,7 +71,7 @@ const RecycleCalc = () => {
           {/* Calc Options */}
           <div className="calc_box_form">
             <div className="calc_box_form_elements">
-              {/* Add New TreesForm here */}
+              {/* Add New recyclesForm here */}
 
               <div>
                 <RecycleForm onUpdate={(data) => handleCalcUpdate(data)} />

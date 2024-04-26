@@ -3,18 +3,18 @@ import React, { useState, useEffect } from "react";
 
 const FoodForm = ({ onUpdate }) => {
   const [selectedOption, setSelectedOption] = useState("chicken");
-  const [amount, setAmount] = useState(""); // State for amount input
+  const [quantity, setQuantity] = useState(""); // State for quantity input
 
-  const handleAmountChange = (event) => {
-    const newAmount = event.target.value;
-    setAmount(newAmount);
-    onUpdate({ amount: newAmount, selectedOption });
+  const handleQuantityChange = (event) => {
+    const newQuantity = event.target.value;
+    setQuantity(newQuantity);
+    onUpdate({ quantity: newQuantity, selectedOption });
   };
 
   const handleSelectedOptionChange = (event) => {
     const newSelectedOption = event.target.value;
     setSelectedOption(newSelectedOption);
-    onUpdate({ amount, selectedOption: newSelectedOption });
+    onUpdate({ quantity, selectedOption: newSelectedOption });
   };
 
   return (
@@ -25,14 +25,14 @@ const FoodForm = ({ onUpdate }) => {
             <Label for="exampleNumber">Quantity in kg</Label>
             <Input
               id="exampleNumber"
-              name="amount"
+              name="quantity"
               placeholder="number placeholder"
               type="number"
-              value={amount}
+              value={quantity}
               min="0"
               step="0.1"
-              onChange={handleAmountChange}
-              onBlur={handleAmountChange}
+              onChange={handleQuantityChange}
+              onBlur={handleQuantityChange}
               required
             />
           </FormGroup>

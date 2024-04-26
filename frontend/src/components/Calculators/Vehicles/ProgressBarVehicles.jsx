@@ -1,39 +1,9 @@
 import { Progress, Tooltip } from "reactstrap";
 import React, { useState, useEffect } from "react";
-import AxiosInstance from "../../Axios";
 import Metrics from "../../Metrics/Metrics";
 
 const ProgressBarVehicles = ({ calc }) => {
   const colors = ["", "success", "warning", "danger"];
-  const [metrics, setMetrics] = useState(""); // State for age input
-  const [tooltipOpen, setTooltipOpen] = useState(false);
-
-  const toggle = () => setTooltipOpen(!tooltipOpen);
-
-  useEffect(() => {
-    // Trigger getMetrics when calc is updated
-    if (calc) {
-      getMetrics();
-    }
-  }, [calc]);
-
-  const getMetrics = async () => {
-    try {
-      // Make your API request with the treeData array
-
-      const res = await AxiosInstance.get("/api/metric/", {
-        params: {
-          type: "cellphone",
-        },
-      });
-
-      // Handle the response as needed
-      console.log(res.data);
-      setMetrics(res.data);
-    } catch (err) {
-      console.error("Error fetching data:", err);
-    }
-  };
 
   return (
     <div className="progress_bar_div">
@@ -52,8 +22,8 @@ const ProgressBarVehicles = ({ calc }) => {
       </Progress>
       <Progress
         className="my-2"
-        max={calc.carbon_reduction_idling}
         value={calc.carbon_reduction_idling}
+        max={calc.carbon_reduction_idling}
         // Assuming the max value of each progress bar is 100
         style={{
           height: "30px",
@@ -74,8 +44,7 @@ const ProgressBarVehicles = ({ calc }) => {
       >
         Cumulative: {calc.total_carbon_reduction} carbon reduction
       </Progress>
-      In total you have reduced{" "}
-      {calc.total_carbon_reduction} Kg of Carbon.
+      In total you have reduced {calc.total_carbon_reduction} Kg of Carbon.
       {/* Display metrics value */}
       <Metrics calc={calc.total_carbon_reduction} />
     </div>

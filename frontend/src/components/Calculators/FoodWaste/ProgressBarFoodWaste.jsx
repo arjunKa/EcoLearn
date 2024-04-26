@@ -8,6 +8,9 @@ const ProgressBarFoodWaste = ({ calc }) => {
   return (
     <div className="progress_bar_div">
       {/* Render individual progress bars for each item */}
+      <div className="text-center">
+        Total carbon reduction per type of plant
+      </div>
       {calc.list.map((item, index) => (
         <Progress
           key={index}
@@ -24,29 +27,36 @@ const ProgressBarFoodWaste = ({ calc }) => {
         </Progress>
       ))}
 
-      <Progress
-        multi
-        style={{
-          height: "30px",
-          marginBottom: "10px",
-        }}
-      >
-        {calc.list.map((item, index) => (
-          <Progress
-            bar
-            key={index}
-            max={item.total}
-            value={item.total}
-            // Assuming the max value of each progress bar is 100
+      {calc.list.length > 1 && (
+        <div>
+          <div className="text-center">Relative carbon absorption:</div>
 
-            color={colors[index % colors.length]} // Set color based on total value
+          <Progress
+            multi
+            style={{
+              height: "30px",
+              marginBottom: "10px",
+            }}
           >
-            {item.type}: {item.total} carbon reduction
+            {calc.list.map((item, index) => (
+              <Progress
+                bar
+                key={index}
+                max={item.total}
+                value={item.total}
+                // Assuming the max value of each progress bar is 100
+
+                color={colors[index % colors.length]} // Set color based on total value
+              >
+                {item.type}: {item.total} carbon reduction
+              </Progress>
+            ))}
           </Progress>
-        ))}
-      </Progress>
+        </div>
+      )}
 
       {/* Render cumulative progress bar with total carbon reduction */}
+      <div className="text-center">In total you have absorbed: </div>
       <Progress
         className="my-2"
         value={calc.total}

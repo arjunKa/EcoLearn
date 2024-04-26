@@ -30,7 +30,7 @@ const FoodWasteCalc = () => {
     // Check if any quantity field is empty
 
     const isAnyQuantityEmpty = foodData.some(
-      (item) => !item.amount || item.amount.trim() === ""
+      (item) => !item.quantity || item.quantity.trim() === ""
     );
     // Update the state to enable/disable submit button accordingly
     setSubmitDisabled(isAnyQuantityEmpty);

@@ -40,16 +40,15 @@ const Metrics = ({ calc }) => {
         <h2>Metrics:</h2>
         <p>
           {calc} Kg of Carbon can charge{" "}
-          {Math.round((calc / (metrics[0].amount)) * 100) / 100}{" "}
-          {metrics[0].type}s{" "}
-          <i className="fa-solid fa-mobile-screen-button"></i>{" "}
+          {Math.round((calc / metrics[0].amount) * 100) / 100}{" "}
           <span
             style={{ textDecoration: "underline", color: "blue" }}
             href="#"
             id="DisabledAutoHideExample"
           >
-            (info)
-          </span>
+            {metrics[0].type}s
+          </span>{" "}
+          <i className="fa-solid fa-mobile-screen-button"></i>{" "}
           <Tooltip
             placement="top"
             isOpen={tooltipOpen}
@@ -57,8 +56,8 @@ const Metrics = ({ calc }) => {
             target="DisabledAutoHideExample"
             toggle={toggle}
           >
-            One cellphone takes {metrics[0].amount} KWh to charge fully,
-            and to generate 1kWh hour you need 1kg of CO2 to be produced.
+            One cellphone takes {metrics[0].amount} KWh to charge fully, and to
+            generate 1kWh hour you need 1kg of CO2 to be produced.
           </Tooltip>
         </p>
       </div>

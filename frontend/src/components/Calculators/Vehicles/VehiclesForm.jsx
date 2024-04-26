@@ -1,17 +1,8 @@
-import {
-  Form,
-  Label,
-  FormGroup,
-  Input,
-  Col, Row,
-
-} from 'reactstrap';
-import React, { useState } from 'react';
+import { Form, Label, FormGroup, Input, Col, Row } from "reactstrap";
+import React, { useState } from "react";
 
 const VehiclesForm = ({ onUpdate }) => {
-
-
-  const [selectedOption, setSelectedOption] = useState('fseries');
+  const [selectedOption, setSelectedOption] = useState("fseries");
   const [amount, setAmount] = useState(0); // State for amount input
   const [idling, setIdling] = useState(0); // State for amount input
   // onUpdate({ amount, selectedOption, idling });
@@ -35,11 +26,10 @@ const VehiclesForm = ({ onUpdate }) => {
   };
 
   return (
-
-    <Form >
-      <Row style={{alignItems:"baseline"}}>
-        <Col md={4} >
-          <FormGroup >
+    <Form>
+      <Row style={{ alignItems: "baseline" }}>
+        <Col md={4}>
+          <FormGroup>
             <Label for="exampleNumber">
               How many Km of driving did you eliminate?
             </Label>
@@ -47,24 +37,25 @@ const VehiclesForm = ({ onUpdate }) => {
               id="amount"
               name="amount"
               placeholder="number placeholder"
-              type="number" value={amount} onChange={handleAmountChange}
+              type="number"
+              value={amount}
+              onChange={handleAmountChange}
               min={0}
+              step={0.1}
               required
             />
           </FormGroup>
         </Col>
         <Col md={4}>
           <FormGroup>
-
-            <Label for="exampleSelect">
-              Vehicle
-            </Label>
+            <Label for="exampleSelect">Vehicle</Label>
 
             <Input
               id="exampleSelect"
               name="select"
-              type="select" value={selectedOption} onChange={handleSelectedOptionChange}
-              
+              type="select"
+              value={selectedOption}
+              onChange={handleSelectedOptionChange}
             >
               <option value="fseries"> Ford F-Series Pickup Truck</option>
               <option value="ram"> Ram Pickup Truck</option>
@@ -76,14 +67,13 @@ const VehiclesForm = ({ onUpdate }) => {
               <option value="corolla"> Toyota Corolla </option>
               <option value="escape"> Ford Escape </option>
               <option value="caravan"> Dodge Grand Caravan </option>
-
             </Input>
           </FormGroup>
         </Col>
       </Row>
       <Row>
-        <Col md={4} >
-          <FormGroup >
+        <Col md={4}>
+          <FormGroup>
             <Label for="idling">
               How many minutes of idling did you prevent?
             </Label>
@@ -91,21 +81,16 @@ const VehiclesForm = ({ onUpdate }) => {
               id="idling"
               name="idling"
               placeholder="number placeholder"
-              type="number" value={idling} onChange={handleIdlingChange}
+              type="number"
+              value={idling}
+              onChange={handleIdlingChange}
               min={0}
               required
             />
           </FormGroup>
         </Col>
-
-
       </Row>
-
     </Form>
-
-
-
   );
-
-}
+};
 export default VehiclesForm;

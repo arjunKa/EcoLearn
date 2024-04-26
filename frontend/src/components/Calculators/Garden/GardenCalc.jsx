@@ -9,21 +9,21 @@ import GardenCard from "./GardenCard";
 
 const GardenCalc = () => {
   const [calc, setCalc] = useState(""); // State for age input
-  const [treeData, setTreeData] = useState([{}]); // State for storing tree data
+  const [gardenData, setGardenData] = useState([{}]); // State for storing garden data
   const [submitDisabled, setSubmitDisabled] = useState(true); // State to control submit button disable/enable
 
   const handleCalcUpdate = (data) => {
-    setTreeData(data);
+    setGardenData(data);
   };
 
   const handleButtonClick = async () => {
     try {
-      // Make your API request with the treeData array
-      console.log(treeData);
+      // Make your API request with the gardenData array
+      console.log(gardenData);
       const res = await AxiosInstance.get("/api/ecolearning/gardens", {
         params: {
-          type: treeData.selectedOption.toLowerCase(),
-          amount: treeData.value,
+          type: gardenData.selectedOption.toLowerCase(),
+          quantity: gardenData.quantity,
         },
       });
 
@@ -38,11 +38,11 @@ const GardenCalc = () => {
   useEffect(() => {
     // Check if any quantity field is empty
 
-    const isAnyQuantityEmpty = !treeData.value || treeData.value.trim() === "";
+    const isAnyQuantityEmpty = !gardenData.quantity || gardenData.quantity.trim() === "";
     // Update the state to enable/disable submit button accordingly
     setSubmitDisabled(isAnyQuantityEmpty);
     console.log(isAnyQuantityEmpty);
-  }, [treeData]);
+  }, [gardenData]);
 
   return (
     <div>
@@ -58,7 +58,7 @@ const GardenCalc = () => {
           {/* Calc Options */}
           <div className="calc_box_form">
             <div className="calc_box_form_elements">
-              {/* Add New TreesForm here */}
+              {/* Add New gardensForm here */}
 
               <div>
                 <GardenForm onUpdate={(data) => handleCalcUpdate(data)} />

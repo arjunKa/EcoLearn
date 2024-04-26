@@ -9,13 +9,13 @@ class Tree(models.Model):
 class Garden(models.Model):
     # id = models.IntegerField(primary_key=True)
     type = models.CharField(max_length=100)
-    amount = models.DecimalField(max_digits=10, decimal_places=4)
+    amount_carbon = models.DecimalField(max_digits=10, decimal_places=4)
     description = models.TextField(default ="text")
    
 class Vehicle(models.Model):
     # id = models.IntegerField(primary_key=True)
     type = models.CharField(max_length=100)
-    amount = models.DecimalField(max_digits=10, decimal_places=4)
+    amount_carbon = models.DecimalField(max_digits=10, decimal_places=4)
     description = models.TextField(default ="text")
     
 class Food(models.Model):

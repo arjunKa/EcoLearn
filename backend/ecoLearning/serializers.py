@@ -17,17 +17,17 @@ class TreeSerializer(serializers.ModelSerializer):
 class GardenSerializer(serializers.ModelSerializer):
     class Meta:
         model = Garden
-        fields = ('type', 'amount', 'description')
+        fields = '__all__'
         
 class VehicleSerializer(serializers.ModelSerializer):
     class Meta:
         model = Vehicle
-        fields = ('type', 'amount', 'description')
+        fields = '__all__'
 
 class FoodSerializer(serializers.ModelSerializer):
     class Meta:
         model = Food
-        fields = ('type', 'amount_carbon', 'per_year', 'description')
+        fields = '__all__'
         
 class MetricSerializer(serializers.ModelSerializer):
 

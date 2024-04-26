@@ -31,6 +31,7 @@ const RecycleForm = ({ onUpdate }) => {
               type="number"
               value={value}
               min="0"
+              step={0.1}
               onChange={handleValueChange}
               onBlur={handleValueChange}
               required

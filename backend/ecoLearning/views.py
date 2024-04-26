@@ -10,20 +10,16 @@ from .serializers import (
     ProvinceSerializer,
 )
 from .models import Tree, Garden, Vehicle, Food, Metric, Recycle, Province
-from rest_framework.permissions import BasePermission, IsAuthenticated, SAFE_METHODS
+
 
 # from Objects.Tree import Tree as t2
-from rest_framework.decorators import api_view, renderer_classes
+from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
-from rest_framework import permissions
-from rest_framework.renderers import JSONRenderer, TemplateHTMLRenderer
-import json
-from django.http import JsonResponse
+
 from django.db.models import Q
 from .permissions import IsAuthenticatedOrReadOnly
-import asyncio
-from django.http import HttpResponse
+
 
 # Create your views here.
 from rest_framework.decorators import action
@@ -35,20 +31,19 @@ class TreeView(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticatedOrReadOnly]
 
     def get_queryset(self):
-        tree_type = self.request.GET.get("type")
+        # Check if the request is for a specific object by primary key
+        pk = self.kwargs.get("pk")
+        if pk is not None:
+            return Tree.objects.filter(pk=pk)
 
-        # Implement your custom logic to handle the GET request
-        # For example, you can filter the queryset and return specific data
-        if tree_type:
-            queryset = self.queryset.filter(type=tree_type)
+        # If not, proceed with the original logic to filter by "type" parameter
+        type = self.request.GET.get("type")
+        if type:
+            queryset = self.queryset.filter(Q(type__iexact=type))
         else:
             queryset = Tree.objects.all()
-        # else:
-        #     queryset = self.filter_queryset(self.get_queryset())  # Apply any queryset filtering
-        serializer = self.get_serializer(queryset, many=True)
-        print("go")
-        serialized_data = serializer.data
-        return serialized_data
+
+        return queryset
 
 
 class GardenView(viewsets.ModelViewSet):
@@ -56,17 +51,62 @@ class GardenView(viewsets.ModelViewSet):
     queryset = Garden.objects.all()
     permission_classes = [IsAuthenticatedOrReadOnly]
 
+    def get_queryset(self):
+        # Check if the request is for a specific object by primary key
+        pk = self.kwargs.get("pk")
+        if pk is not None:
+            return Garden.objects.filter(pk=pk)
+
+        # If not, proceed with the original logic to filter by "type" parameter
+        type = self.request.GET.get("type")
+        if type:
+            queryset = self.queryset.filter(Q(type__iexact=type))
+        else:
+            queryset = Garden.objects.all()
+
+        return queryset
+
 
 class VehicleView(viewsets.ModelViewSet):
     serializer_class = VehicleSerializer
     queryset = Vehicle.objects.all()
     permission_classes = [IsAuthenticatedOrReadOnly]
 
+    def get_queryset(self):
+        # Check if the request is for a specific object by primary key
+        pk = self.kwargs.get("pk")
+        if pk is not None:
+            return Vehicle.objects.filter(pk=pk)
+
+        # If not, proceed with the original logic to filter by "type" parameter
+        type = self.request.GET.get("type")
+        if type:
+            queryset = self.queryset.filter(Q(type__iexact=type))
+        else:
+            queryset = Vehicle.objects.all()
+
+        return queryset
+
 
 class FoodView(viewsets.ModelViewSet):
     serializer_class = FoodSerializer
     queryset = Food.objects.all()
     permission_classes = [IsAuthenticatedOrReadOnly]
+
+    def get_queryset(self):
+        # Check if the request is for a specific object by primary key
+        pk = self.kwargs.get("pk")
+        if pk is not None:
+            return Food.objects.filter(pk=pk)
+
+        # If not, proceed with the original logic to filter by "type" parameter
+        type = self.request.GET.get("type")
+        if type:
+            queryset = self.queryset.filter(Q(type__iexact=type))
+        else:
+            queryset = Food.objects.all()
+
+        return queryset
 
 
 class RecycleView(viewsets.ModelViewSet):
@@ -76,14 +116,14 @@ class RecycleView(viewsets.ModelViewSet):
 
     def get_queryset(self):
         # Check if the request is for a specific object by primary key
-        pk = self.kwargs.get('pk')
+        pk = self.kwargs.get("pk")
         if pk is not None:
             return Recycle.objects.filter(pk=pk)
 
         # If not, proceed with the original logic to filter by "type" parameter
         type = self.request.GET.get("type")
         if type:
-            queryset = self.queryset.filter(type=type)
+            queryset = self.queryset.filter(Q(type__iexact=type))
         else:
             queryset = Recycle.objects.all()
 
@@ -97,9 +137,9 @@ class ProvinceView(viewsets.ModelViewSet):
 
     def get_queryset(self):
         # Check if the request is for a specific object by primary key
-        pk = self.kwargs.get('pk')
+        pk = self.kwargs.get("pk")
         if pk is not None:
-            return Recycle.objects.filter(pk=pk)
+            return Province.objects.filter(pk=pk)
 
         # If not, proceed with the original logic to filter by "type" parameter
         name = self.request.GET.get("name")
@@ -118,12 +158,12 @@ class MetricView(viewsets.ModelViewSet):
 
     def get_queryset(self):
         # Check if the request is for a specific object by primary key
-        pk = self.kwargs.get('pk')
+        pk = self.kwargs.get("pk")
         if pk is not None:
             return Metric.objects.filter(pk=pk)
 
         # If not, proceed with the original logic to filter by "type" parameter
-        type = self.request.GET.get("name")
+        type = self.request.GET.get("type")
         if type:
             queryset = self.queryset.filter(Q(type__iexact=type))
         else:
@@ -146,7 +186,7 @@ def tree_list(request):
             age = request.GET.get("age")
 
             if tree_type:
-                tree = Tree.objects.get(type=tree_type)
+                tree = Tree.objects.get(Q(type__iexact=tree_type))
             else:
                 serializer = TreeSerializer(tree, many=True)
                 return Response(serializer.data, status=status.HTTP_200_OK)
@@ -194,19 +234,25 @@ def tree_list(request):
 
                 try:
                     # Fetch the tree object from the database
-                    tree = Tree.objects.get(type=tree_type)
+                    tree = Tree.objects.get(Q(type__iexact=tree_type))
                 except Tree.DoesNotExist:
                     return Response(
                         {"error": f'Tree with type "{tree_type}" not found'},
                         status=status.HTTP_404_NOT_FOUND,
                     )
                 print("trees array:", arr)
+
+                check = False
                 for ele in arr:
                     if ele["type"] == tree_type:
                         ele["total"] += float(tree.amount_carbon) * quantity
                         ele["quantity"] += quantity
                         total += float(tree.amount_carbon) * quantity
-                        continue
+                        print("tree found")
+                        check = True
+                        break
+                if check:
+                    continue
 
                 # Populate the dictionary with tree data
                 tree_dict["type"] = tree_type
@@ -221,7 +267,7 @@ def tree_list(request):
             # Return the processed data as JSON response
             obj = {"list": arr, "total": total}
             # arr.append([{'total':total}])
-            print(arr)
+            print(obj)
             return Response(obj, status=status.HTTP_200_OK)
 
         except Exception as e:
@@ -239,25 +285,25 @@ def garden(request):
         try:
             garden = Garden.objects.all()
             garden_type = request.GET.get("type")
-            amount = request.GET.get("amount")
+            quantity = int(request.GET.get("quantity"))
             print(garden_type)
             if garden_type:
                 print("good")
-                garden = Garden.objects.get(type=garden_type)
+                garden = Garden.objects.get(Q(type__iexact=garden_type))
                 print("good")
             else:
                 serializer = GardenSerializer(garden, many=True)
                 return Response(serializer.data, status=status.HTTP_200_OK)
             # print(garden)
-            if not amount:
-                amount = 0
+            if not quantity:
+                quantity = 0
 
-            print(amount)
+            print(quantity)
             print("tree type", garden_type)
 
-            amount_carbon = garden.amount
+            amount_carbon = garden.amount_carbon
             description = garden.description
-            carbon_reduction = float(int(amount) * float(amount_carbon))
+            carbon_reduction = float(quantity * float(amount_carbon))
             custom_obj = {
                 "type": garden_type,
                 "carbon_reduction": carbon_reduction,
@@ -284,10 +330,10 @@ def vehicle(request):
     if request.method == "GET":
         print("request.GET ", request.GET)
         try:
-            garden = Vehicle.objects.all()
-            garden_type = request.GET.get("type")
-            distance = int(request.GET.get("distance"))
-            idling = int(request.GET.get("idling"))
+            vehicle = Vehicle.objects.all()
+            vehicle_type = request.GET.get("type")
+            distance = float(request.GET.get("distance"))
+            idling = float(request.GET.get("idling"))
 
             print("distance", distance)
         except Vehicle.DoesNotExist:
@@ -296,37 +342,38 @@ def vehicle(request):
             )
         except Exception as e:
             return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
-        print(garden_type)
-        if garden_type:
-            print("good")
-            garden = Vehicle.objects.get(type=garden_type)
-            print("good")
+        # print(garden_type)
+        if vehicle_type:
+            # print("good")
+            garden = Vehicle.objects.get(Q(type__iexact=vehicle_type))
+            # print("good")
         else:
-            serializer = VehicleSerializer(garden, many=True)
+            serializer = VehicleSerializer(vehicle, many=True)
             return Response(serializer.data, status=status.HTTP_200_OK)
         # print(garden)
         if not distance:
             distance = 0
 
         print(distance)
-        print("tree type", garden_type)
+        # print("tree type", vehicle_type)
 
-        amount_carbon = garden.amount
+        amount_carbon = float(garden.amount_carbon)
         description = garden.description
-        carbon_reduction_driving = float(distance * float(amount_carbon))
+        carbon_reduction_driving = distance * amount_carbon
         carbon_reduction_idling = 0.03 * idling
         total_carbon_reduction = carbon_reduction_driving + carbon_reduction_idling
 
         custom_obj = {
-            "type": garden_type,
-            "total_carbon_reduction": total_carbon_reduction,
-            "carbon_reduction_driving": carbon_reduction_driving,
-            "carbon_reduction_idling": carbon_reduction_idling,
+            "type": vehicle_type,
+            "total_carbon_reduction": round(total_carbon_reduction, 2),
+            "carbon_reduction_driving": round(carbon_reduction_driving, 2),
+            "carbon_reduction_idling": round(carbon_reduction_idling, 2),
             "distance": distance,
             "amount_carbon": amount_carbon,
             "idling": idling,
             "description": description,
         }
+        print(custom_obj)
         # Convert the dictionary to a JSON string
         # json_data = json.dumps(custom_obj)
         return Response(custom_obj, status=status.HTTP_200_OK)
@@ -352,6 +399,7 @@ def food(request):
                 # Create a new dictionary for each item
                 tree_dict = {}
                 food_type = str.lower(item.get("selectedOption"))
+                quantity = float(item.get("quantity"))
                 try:
                     # Fetch the tree object from the database
                     tree = Food.objects.get(Q(type__iexact=food_type))
@@ -365,17 +413,20 @@ def food(request):
                 # Populate the dictionary with tree data
                 tree_dict["type"] = food_type
 
+                check = False
                 for ele in arr:
                     if ele["type"] == food_type:
                         ele["total"] += float(tree.amount_carbon) * quantity
                         ele["quantity"] += quantity
                         total += float(tree.amount_carbon) * quantity
-                        continue
+                        check = True
+                        break
+                if check:
+                    continue
 
-                quantity = int(item.get("amount"))
                 tree_dict["quantity"] = quantity
-                tree_dict["total"] = float(tree.amount_carbon * quantity)
-                total += float(tree.amount_carbon * quantity)
+                tree_dict["total"] = float(tree.amount_carbon) * quantity
+                total += float(tree.amount_carbon) * quantity
 
                 # Append the dictionary to the list
                 arr.append(tree_dict)
@@ -388,51 +439,3 @@ def food(request):
 
         except Exception as e:
             return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
-
-    # # 2. Create
-    # def post(self, request, *args, **kwargs):
-    #     '''
-    #     Create the Todo with given todo data
-    #     '''
-    #     data = {
-    #         'task': request.data.get('task'),
-    #         'completed': request.data.get('completed'),
-    #         'user': request.user.id
-    #     }
-    #     serializer = EcoLearningSerializer(data=data)
-    #     if serializer.is_valid():
-    #         serializer.save()
-    #         return Response(serializer.data, status=status.HTTP_201_CREATED)
-
-    #     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-
-# class TreeApiView(APIView):
-#     # add permission to check if user is authenticated
-#     permission_classes = [permissions.IsAuthenticated]
-
-#     # 1. List all
-#     def get(self, request, *args, **kwargs):
-#         '''
-#         List all the todo items for given requested user
-#         '''
-#         todos = Todo.objects.filter(user = request.user.id)
-#         serializer = TodoSerializer(todos, many=True)
-#         return Response(serializer.data, status=status.HTTP_200_OK)
-
-#     # 2. Create
-#     def post(self, request, *args, **kwargs):
-#         '''
-#         Create the Todo with given todo data
-#         '''
-#         data = {
-#             'task': request.data.get('task'),
-#             'completed': request.data.get('completed'),
-#             'user': request.user.id
-#         }
-#         serializer = TodoSerializer(data=data)
-#         if serializer.is_valid():
-#             serializer.save()
-#             return Response(serializer.data, status=status.HTTP_201_CREATED)
-
-#         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

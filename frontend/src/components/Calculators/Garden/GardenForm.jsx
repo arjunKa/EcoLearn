@@ -3,18 +3,18 @@ import React, { useState } from "react";
 
 const GardenForm = ({ onUpdate }) => {
   const [selectedOption, setSelectedOption] = useState("grass");
-  const [value, setValue] = useState(""); // State for age input
+  const [quantity, setQuantity] = useState(""); // State for age input
 
-  const handleValueChange = (event) => {
-    const newValue = event.target.value;
-    setValue(newValue);
-    onUpdate({ value: newValue, selectedOption });
+  const handleQuantityChange = (event) => {
+    const newQuantity = event.target.value;
+    setQuantity(newQuantity);
+    onUpdate({ quantity: newQuantity, selectedOption });
   };
 
   const handleSelectedOptionChange = (event) => {
     const newSelectedOption = event.target.value;
     setSelectedOption(newSelectedOption);
-    onUpdate({ value, selectedOption: newSelectedOption });
+    onUpdate({ quantity, selectedOption: newSelectedOption });
   };
 
   function PlantType() {
@@ -35,13 +35,13 @@ const GardenForm = ({ onUpdate }) => {
             <Label for="exampleNumber">{PlantType()}</Label>
             <Input
               id="exampleNumber"
-              name="value"
+              name="quantity"
               placeholder="number placeholder"
               type="number"
-              value={value}
+              value={quantity}
               min="0"
-              onChange={handleValueChange}
-              onBlur={handleValueChange}
+              onChange={handleQuantityChange}
+              onBlur={handleQuantityChange}
               required
             />
           </FormGroup>

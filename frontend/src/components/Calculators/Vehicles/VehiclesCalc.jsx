@@ -9,7 +9,11 @@ import VehiclesCard from "./VehiclesCard";
 
 const VehiclesCalc = () => {
   const [calc, setCalc] = useState(""); // State for age input
-  const [treeData, setTreeData] = useState({amount: '0', selectedOption: 'fseries', idling: '0'}); // State for storing tree data
+  const [treeData, setTreeData] = useState({
+    amount: "0",
+    selectedOption: "fseries",
+    idling: "0",
+  }); // State for storing tree data
 
   const handleCalcUpdate = (data) => {
     setTreeData(data);
@@ -69,7 +73,6 @@ const VehiclesCalc = () => {
                 <h2>Result:</h2>
                 <p>Here is your calculation result.</p>
                 <ProgressBarVehicles calc={calc} />
-
               </div>
             )}
           </div>
