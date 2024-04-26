@@ -35,8 +35,8 @@ const TreesForm = ({ onUpdate }) => {
               <option value="basswood"> Basswood </option>
               <option value="beech"> Beech </option>
               <option value="birch"> Birch </option>
-              <option value="blackCherry"> Black Cherry </option>
-              <option value="blackWalnut"> Black Walnut </option>
+              <option value="black Cherry"> Black Cherry </option>
+              <option value="black Walnut"> Black Walnut </option>
               <option value="cedar"> Cedar </option>
               <option value="citrus"> Citrus </option>
               <option value="douglasFir"> Douglas Fir </option>

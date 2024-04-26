@@ -44,7 +44,7 @@ const ProgressBarTrees = ({ calc }) => {
         }}
         color={"dark"} // Set color based on total value
       >
-        {calc.total} Kg of Carbon
+        {calc.total.toFixed(2)} Kg of Carbon
       </Progress>
       In their lifetime, the trees you have planted will consume {calc.total.toFixed(2)} Kg
       of Carbon.

@@ -255,7 +255,7 @@ def tree_list(request):
                     continue
 
                 # Populate the dictionary with tree data
-                tree_dict["type"] = tree_type
+                tree_dict["type"] = tree.type
                 tree_dict["total"] = float(tree.amount_carbon) * quantity
                 tree_dict["amount_carbon"] = float(tree.amount_carbon)
                 tree_dict["quantity"] = quantity
