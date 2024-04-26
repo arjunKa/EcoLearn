@@ -1,10 +1,10 @@
 .intro {
     /* background: url(https://images.ctfassets.net/cj8g3qewem31/6gCFHHMx6FOowAQzBZnTBb/1027042c219756b1ff5357f3e3bc5646/jptmhqql2cycugs2qgzl.jpg) center center; */
-    background-color: #2c2c2c;
+    /* background-color: #2c2c2c;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
-    -o-background-size: cover;
+    -o-background-size: cover; */
 
 
 }
@@ -15,12 +15,12 @@
 
 .homepage {
 
-    margin: 0;
-    position: absolute;
+    /* margin: 0; */
+    /* position: absolute; */
     top: 50%;
     left: 50%;
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
+    /* -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); */
     text-align: center;
     margin-top: 50px;
 }
