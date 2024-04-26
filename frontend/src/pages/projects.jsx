@@ -29,8 +29,8 @@ const Projects = () => {
           </CardTitle>
           <CardText style={{ fontSize: "24px" }}>
             <span style={{ backgroundColor: "black" }}>
-              LSF works with Our Canada Project to make projects for student to
-              work.
+              LSF works with Our Canada Project to provide projects for students to
+              develop their understading on carbon emissions and to make an impact.
             </span>
           </CardText>
           <CardText>
