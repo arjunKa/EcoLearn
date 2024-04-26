@@ -8,8 +8,8 @@ import Home from "./pages/home";
 import Tools from "./pages/tools";
 import Impact from "./pages/impact";
 import Projects from "./pages/projects";
-import Resources from "./pages/resources";
-import AboutUs from "./pages/aboutUs";
+import Resources from "./pages/resources/resources";
+import AboutUs from "./pages/aboutUs/aboutUs";
 
 function App() {
   return (

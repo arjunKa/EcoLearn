@@ -8,7 +8,7 @@ import {
   Card,
   Form,
 } from "reactstrap";
-import waterImg from "../../../public/waterImage.jpg";
+import waterImg from "../../../images/waterImage.jpg";
 
 const TreesCard = () => {
   return (

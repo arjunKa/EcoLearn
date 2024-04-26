@@ -12,7 +12,7 @@ import {
 
 } from 'reactstrap';
 import ItemsDonatedCalc from "../components/Calculators/itemsDonatedCalc";
-import './Tools.css'
+import './styles/Tools.css'
 
 const Tools = () => {
 

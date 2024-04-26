@@ -8,7 +8,7 @@ import {
   Card,
   Form,
 } from "reactstrap";
-import recyclingImg from "../../../public/recyclingImage.jpg";
+import recyclingImg from "../../../images/recyclingImage.jpg";
 
 const RecycleCard = () => {
   return (

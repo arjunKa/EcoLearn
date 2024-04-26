@@ -7,7 +7,7 @@ import {
   CardSubtitle,
   Card,
 } from "reactstrap";
-import image from "../../../public/potato.png";
+import image from "../../../images/potato.png";
 
 const GardenCard = () => {
   return (

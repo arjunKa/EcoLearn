@@ -7,7 +7,7 @@ import {
   CardSubtitle,
   Card,
 } from "reactstrap";
-import carImg from "../../../public/carImage.jpg";
+import carImg from "../../../images/carImage.jpg";
 
 const VehiclesCard = () => {
   return (
