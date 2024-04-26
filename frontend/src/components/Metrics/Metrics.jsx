@@ -12,7 +12,6 @@ const Metrics = ({ calc }) => {
   useEffect(() => {
     // Trigger getMetrics when calc is updated
     if (calc) {
-        
       getMetrics();
     }
   }, [calc]);
@@ -35,42 +34,36 @@ const Metrics = ({ calc }) => {
     }
   };
 
-
-if(metrics){
+  if (metrics) {
     return (
-
-<div>
-<h2>Metrics:</h2>
-<p>
-  {calc} Kg of Carbon can charge{" "}
-  {Math.round(
-    (calc / (metrics[0].amount / 1000)) * 100
-  ) / 100}{" "}
-  {metrics[0].type}s{" "}
-  <i className="fa-solid fa-mobile-screen-button"></i>{" "}
-  <span
-    style={{ textDecoration: "underline", color: "blue" }}
-    href="#"
-    id="DisabledAutoHideExample"
-  >
-    (info)
-  </span>
-  <Tooltip
-    placement="top"
-    isOpen={tooltipOpen}
-    autohide={false}
-    target="DisabledAutoHideExample"
-    toggle={toggle}
-  >
-    One cellphone takes {metrics[0].amount / 1000} KWh to
-    charge fully, and to generate 1kWh hour you need 1kg of CO2 to be
-    produced.
-  </Tooltip>
-</p>
-</div>
-
-);
+      <div>
+        <h2>Metrics:</h2>
+        <p>
+          {calc} Kg of Carbon can charge{" "}
+          {Math.round((calc / (metrics[0].amount)) * 100) / 100}{" "}
+          {metrics[0].type}s{" "}
+          <i className="fa-solid fa-mobile-screen-button"></i>{" "}
+          <span
+            style={{ textDecoration: "underline", color: "blue" }}
+            href="#"
+            id="DisabledAutoHideExample"
+          >
+            (info)
+          </span>
+          <Tooltip
+            placement="top"
+            isOpen={tooltipOpen}
+            autohide={false}
+            target="DisabledAutoHideExample"
+            toggle={toggle}
+          >
+            One cellphone takes {metrics[0].amount} KWh to charge fully,
+            and to generate 1kWh hour you need 1kg of CO2 to be produced.
+          </Tooltip>
+        </p>
+      </div>
+    );
+  }
 };
-}
 
 export default Metrics;

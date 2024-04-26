@@ -28,7 +28,7 @@ class Food(models.Model):
 class Metric(models.Model):
     # id = models.IntegerField(primary_key=True)
     type = models.CharField(max_length=100)
-    amount = models.DecimalField(max_digits=6, decimal_places=2)
+    amount = models.DecimalField(max_digits=8, decimal_places=6)
     description = models.TextField(default ="text")
 
 class Recycle(models.Model):
@@ -36,6 +36,12 @@ class Recycle(models.Model):
     type = models.CharField(max_length=100)
     amount_carbon = models.DecimalField(max_digits=6, decimal_places=2)
     description = models.TextField(default ="text")
+    
+class Province(models.Model):
+    # id = models.IntegerField(primary_key=True)
+    name = models.CharField(max_length=100)
+    amount_carbon = models.DecimalField(max_digits=6, decimal_places=4)
+    
 
 # class Tree2(models.Model):
 #     type = models.CharField(max_length=100)

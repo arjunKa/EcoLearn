@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { Button, Card, Form } from "reactstrap";
 
 import GardenForm from "./WaterSavedForm";
-import ProgressBarGarden from "./ProgressBarWaterSaved";
+import ProgressBarWaterSaved from "./ProgressBarWaterSaved";
 import AxiosInstance from "../../Axios";
 import TreesCard from "./WaterSavedCard";
 
@@ -18,13 +18,29 @@ const WaterSavedCalc = () => {
 
   const handleButtonClick = async () => {
     // Make your API request with the treeData array
-    console.log(treeData);
+
     const res = {};
     res.type = "water";
     res.amount = 0.298;
     res.carbon_reduction = res.amount * treeData.value;
+    res.selectedOption = treeData.selectedOption;
     // Handle the response as needed
-    
+
+    try {
+      const res2 = await AxiosInstance.get("/api/province", {
+        params: {
+          name: res.selectedOption,
+        },
+      });
+      console.log(res2.data);
+      // Handle the response as needed
+      res.province = res2.data[0].name;
+      res.power = res2.data[0].amount_carbon;
+    } catch (err) {
+      console.error("Error fetching data:", err);
+    }
+
+    console.log(res);
     setCalc(res);
   };
 
@@ -71,7 +87,7 @@ const WaterSavedCalc = () => {
               <div>
                 <h2>Result:</h2>
                 <p>Here is your calculation result.</p>
-                <ProgressBarGarden calc={calc} />
+                <ProgressBarWaterSaved calc={calc} />
               </div>
             )}
           </div>

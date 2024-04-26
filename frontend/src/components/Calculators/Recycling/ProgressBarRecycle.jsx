@@ -8,7 +8,7 @@ const ProgressBarRecycle = ({ calc }) => {
 
   useLayoutEffect(() => {
     console.log(calc)
-    setTotal(parseFloat(calc[0].amount_carbon)*calc[0].quantity);
+    setTotal(Math.round(parseFloat(calc[0].amount_carbon)*calc[0].quantity*1000) / 1000);
 
 }, []);
 

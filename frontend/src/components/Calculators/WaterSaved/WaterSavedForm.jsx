@@ -12,7 +12,7 @@ import React, { useState, useEffect } from 'react';
 const GardenForm = ({ onUpdate }) => {
 
 
-  const [selectedOption, setSelectedOption] = useState('grass');
+  const [selectedOption, setSelectedOption] = useState('Ontario');
   const [value, setValue] = useState(''); // State for age input
 
   const handleValueChange = (event) => {
@@ -62,6 +62,7 @@ const GardenForm = ({ onUpdate }) => {
               <option value="ontario"> Ontario </option>
               <option value="quebec"> Quebec </option>
               <option value="yukon"> Yukon </option>
+              <option value="northwest territories"> NW Territories </option>
             </Input>
           </FormGroup>
         </Col>

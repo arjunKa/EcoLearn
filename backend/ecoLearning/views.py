@@ -6,9 +6,10 @@ from .serializers import (
     VehicleSerializer,
     FoodSerializer,
     MetricSerializer,
-    RecycleSerializer
+    RecycleSerializer,
+    ProvinceSerializer,
 )
-from .models import Tree, Garden, Vehicle, Food, Metric, Recycle
+from .models import Tree, Garden, Vehicle, Food, Metric, Recycle, Province
 from rest_framework.permissions import BasePermission, IsAuthenticated, SAFE_METHODS
 
 # from Objects.Tree import Tree as t2
@@ -23,18 +24,19 @@ from django.db.models import Q
 from .permissions import IsAuthenticatedOrReadOnly
 import asyncio
 from django.http import HttpResponse
+
 # Create your views here.
 from rest_framework.decorators import action
+
 
 class TreeView(viewsets.ModelViewSet):
     serializer_class = TreeSerializer
     queryset = Tree.objects.all()
     permission_classes = [IsAuthenticatedOrReadOnly]
-    
-    
+
     def get_queryset(self):
         tree_type = self.request.GET.get("type")
-        
+
         # Implement your custom logic to handle the GET request
         # For example, you can filter the queryset and return specific data
         if tree_type:
@@ -65,58 +67,69 @@ class FoodView(viewsets.ModelViewSet):
     serializer_class = FoodSerializer
     queryset = Food.objects.all()
     permission_classes = [IsAuthenticatedOrReadOnly]
-    
+
+
 class RecycleView(viewsets.ModelViewSet):
     serializer_class = RecycleSerializer
     queryset = Recycle.objects.all()
     permission_classes = [IsAuthenticatedOrReadOnly]
-    
+
     def get_queryset(self):
+        # Check if the request is for a specific object by primary key
+        pk = self.kwargs.get('pk')
+        if pk is not None:
+            return Recycle.objects.filter(pk=pk)
+
+        # If not, proceed with the original logic to filter by "type" parameter
         type = self.request.GET.get("type")
-        
-        # Implement your custom logic to handle the GET request
-        # For example, you can filter the queryset and return specific data
         if type:
             queryset = self.queryset.filter(type=type)
         else:
             queryset = Recycle.objects.all()
-        # else:
-        #     queryset = self.filter_queryset(self.get_queryset())  # Apply any queryset filtering
-        serializer = self.get_serializer(queryset, many=True)
-        
-        serialized_data = serializer.data
-        print("go", serialized_data)
-        return serialized_data
-    
+
+        return queryset
+
+
+class ProvinceView(viewsets.ModelViewSet):
+    serializer_class = ProvinceSerializer
+    queryset = Province.objects.all()
+    permission_classes = [IsAuthenticatedOrReadOnly]
+
+    def get_queryset(self):
+        # Check if the request is for a specific object by primary key
+        pk = self.kwargs.get('pk')
+        if pk is not None:
+            return Recycle.objects.filter(pk=pk)
+
+        # If not, proceed with the original logic to filter by "type" parameter
+        name = self.request.GET.get("name")
+        if name:
+            queryset = self.queryset.filter(Q(name__iexact=name))
+        else:
+            queryset = Province.objects.all()
+
+        return queryset
+
+
 class MetricView(viewsets.ModelViewSet):
     serializer_class = MetricSerializer
     queryset = Metric.objects.all()
     permission_classes = [IsAuthenticatedOrReadOnly]
-    
+
     def get_queryset(self):
-        type = self.request.GET.get("type")
-        
-        # Implement your custom logic to handle the GET request
-        # For example, you can filter the queryset and return specific data
+        # Check if the request is for a specific object by primary key
+        pk = self.kwargs.get('pk')
+        if pk is not None:
+            return Metric.objects.filter(pk=pk)
+
+        # If not, proceed with the original logic to filter by "type" parameter
+        type = self.request.GET.get("name")
         if type:
-            queryset = self.queryset.filter(type=type)
+            queryset = self.queryset.filter(Q(type__iexact=type))
         else:
             queryset = Metric.objects.all()
-        # else:
-        #     queryset = self.filter_queryset(self.get_queryset())  # Apply any queryset filtering
-        serializer = self.get_serializer(queryset, many=True)
-        print("go")
-        serialized_data = serializer.data
-        return serialized_data
 
-
-# class CustomTree:
-#     def __init__(self, tree_type, age, carbon_reduction, amount_carbon, description):
-#         self.tree_type = tree_type
-#         self.age = age
-#         self.carbon_reduction = carbon_reduction
-#         self.amount_carbon = amount_carbon
-#         self.description = description
+        return queryset
 
 
 @api_view(["GET", "POST"])
@@ -178,8 +191,7 @@ def tree_list(request):
                 tree_dict = {}
                 tree_type = item.get("selectedOption")
                 quantity = int(item.get("age"))
-                
-                
+
                 try:
                     # Fetch the tree object from the database
                     tree = Tree.objects.get(type=tree_type)
@@ -190,26 +202,26 @@ def tree_list(request):
                     )
                 print("trees array:", arr)
                 for ele in arr:
-                    if ele['type'] == tree_type:
-                       ele['total'] += float(tree.amount_carbon)*quantity
-                       ele['quantity'] += quantity
-                       total+=float(tree.amount_carbon)*quantity
-                       continue
-                      
+                    if ele["type"] == tree_type:
+                        ele["total"] += float(tree.amount_carbon) * quantity
+                        ele["quantity"] += quantity
+                        total += float(tree.amount_carbon) * quantity
+                        continue
+
                 # Populate the dictionary with tree data
                 tree_dict["type"] = tree_type
-                tree_dict["total"] = float(tree.amount_carbon)*quantity
+                tree_dict["total"] = float(tree.amount_carbon) * quantity
                 tree_dict["amount_carbon"] = float(tree.amount_carbon)
                 tree_dict["quantity"] = quantity
-                total+=float(tree.amount_carbon)*quantity
-                
+                total += float(tree.amount_carbon) * quantity
+
                 arr.append(tree_dict)
             print("trees array:", arr)
 
             # Return the processed data as JSON response
-            obj = {'list': arr, 'total': total}
+            obj = {"list": arr, "total": total}
             # arr.append([{'total':total}])
-            print(arr) 
+            print(arr)
             return Response(obj, status=status.HTTP_200_OK)
 
         except Exception as e:
@@ -276,7 +288,7 @@ def vehicle(request):
             garden_type = request.GET.get("type")
             distance = int(request.GET.get("distance"))
             idling = int(request.GET.get("idling"))
-            
+
             print("distance", distance)
         except Vehicle.DoesNotExist:
             return Response(
@@ -302,9 +314,9 @@ def vehicle(request):
         amount_carbon = garden.amount
         description = garden.description
         carbon_reduction_driving = float(distance * float(amount_carbon))
-        carbon_reduction_idling = 0.03*idling
+        carbon_reduction_idling = 0.03 * idling
         total_carbon_reduction = carbon_reduction_driving + carbon_reduction_idling
-        
+
         custom_obj = {
             "type": garden_type,
             "total_carbon_reduction": total_carbon_reduction,
@@ -320,7 +332,6 @@ def vehicle(request):
         return Response(custom_obj, status=status.HTTP_200_OK)
 
 
-
 @api_view(["POST"])
 def food(request):
     print("-------------------------------------")
@@ -334,8 +345,8 @@ def food(request):
             print("tree type", food)
             # Initialize an empty list to store the processed data
             arr = []
-            total = 0 
-            
+            total = 0
+
             # Process each tree item
             for item in food:
                 # Create a new dictionary for each item
@@ -344,7 +355,7 @@ def food(request):
                 try:
                     # Fetch the tree object from the database
                     tree = Food.objects.get(Q(type__iexact=food_type))
-                    
+
                 except Tree.DoesNotExist:
                     return Response(
                         {"error": f'Tree with type "{food_type}" not found'},
@@ -353,24 +364,24 @@ def food(request):
 
                 # Populate the dictionary with tree data
                 tree_dict["type"] = food_type
-                
+
                 for ele in arr:
-                    if ele['type'] == food_type:
-                       ele['total'] += float(tree.amount_carbon)*quantity
-                       ele['quantity'] += quantity
-                       total+=float(tree.amount_carbon)*quantity
-                       continue
-                   
+                    if ele["type"] == food_type:
+                        ele["total"] += float(tree.amount_carbon) * quantity
+                        ele["quantity"] += quantity
+                        total += float(tree.amount_carbon) * quantity
+                        continue
+
                 quantity = int(item.get("amount"))
-                tree_dict['quantity'] = quantity
+                tree_dict["quantity"] = quantity
                 tree_dict["total"] = float(tree.amount_carbon * quantity)
-                total+=float(tree.amount_carbon * quantity)
+                total += float(tree.amount_carbon * quantity)
 
                 # Append the dictionary to the list
                 arr.append(tree_dict)
                 print("array", arr)
-                
-            obj = {'list': arr, 'total': total}
+
+            obj = {"list": arr, "total": total}
 
             # Return the processed data as JSON response
             return Response(obj, status=status.HTTP_200_OK)
