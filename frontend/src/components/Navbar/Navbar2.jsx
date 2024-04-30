@@ -53,9 +53,9 @@ function Navbar2(args) {
             <NavItem>
               <NavLink href="/projects/">Projects</NavLink>
             </NavItem>
-            <NavItem>
+            {/* <NavItem>
               <NavLink href="/impact/">Impact</NavLink>
-            </NavItem>
+            </NavItem> */}
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret>
                 Extra
