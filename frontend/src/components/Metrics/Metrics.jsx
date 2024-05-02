@@ -6,8 +6,10 @@ const Metrics = ({ calc }) => {
   const colors = ["", "success", "warning", "danger"];
   const [metrics, setMetrics] = useState(""); // State for age input
   const [tooltipOpen, setTooltipOpen] = useState(false);
+  const [tooltipOpen2, setTooltipOpen2] = useState(false);
 
   const toggle = () => setTooltipOpen(!tooltipOpen);
+  const toggle2 = () => setTooltipOpen2(!tooltipOpen2);
 
   useEffect(() => {
     // Trigger getMetrics when calc is updated
@@ -21,9 +23,7 @@ const Metrics = ({ calc }) => {
       // Make your API request with the treeData array
 
       const res = await AxiosInstance.get("/api/metric/", {
-        params: {
-          type: "cellphone",
-        },
+        params: {},
       });
 
       // Handle the response as needed
@@ -58,6 +58,27 @@ const Metrics = ({ calc }) => {
           >
             One cellphone takes {metrics[0].amount} KWh to charge fully, and to
             generate 1kWh hour you need 1kg of CO2 to be produced.
+          </Tooltip>
+        </p>
+        <p>
+          {calc} Kg of Carbon is in{" "}
+          {parseFloat((calc / metrics[1].amount)).toFixed(2)}{" "}
+          <span
+            style={{ textDecoration: "underline", color: "blue" }}
+            href="#"
+            id="DisabledAutoHideExample2"
+          >
+            litres of {metrics[1].type}
+          </span>{" "}
+          <i className="fa-solid fa-gas-pump"></i>{" "}
+          <Tooltip
+            placement="top"
+            isOpen={tooltipOpen2}
+            autohide={false}
+            target="DisabledAutoHideExample2"
+            toggle={toggle2}
+          >
+            One litre of gas produces { parseFloat(metrics[1].amount).toFixed(2)} kg of carbon.
           </Tooltip>
         </p>
       </div>
