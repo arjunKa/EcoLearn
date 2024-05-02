@@ -7,10 +7,17 @@ React + Vite + Django + Azure PostgreSQL
 
 
 ## Install
-List of Install instructions
+List of Install instructions.
 ### WordPress
-To install in wordpress, you must build the front end project using npm and then upload the build artifacts to your web server. <br><br>
-Here are some instructions to provide details: https://javascript.plainenglish.io/how-to-embed-a-react-app-inside-a-wordpress-website-923e0af0ea00 <br><br>
-To do the steps laid out in the instructions in the url provided, you would go into the 'frontend' folder of this repository and run "npm run build". This will generate a 'dist' folder that has the build artifacts in it. The contents of this folder is what you will upload into you web server using FTP, SSH, or however you web server is set up for WordPress.
-<br><br>
-After the app is added to your web server, you can Embed the app into a web WordPress webpage. Or, you can create a hyperlink to the build folder directly to get the full-page app experience, e.g. https://yourwebsite.com/apps/my-app-build
+To install in wordpress, you must build the front end project using npm and then upload the build artifacts to your web server. <br>
+<em><strong>These are instructions that provide all the details of what needs to be done: </em></strong>  https://javascript.plainenglish.io/how-to-embed-a-react-app-inside-a-wordpress-website-923e0af0ea00 <br>
+
+#### Some Additional details for the steps:
+Before doing the steps laid out in the instructions in the url above, there are some preliminary information. The instructions mention using the build folder. We must generate this build folder ourselves. Steps to do this:<br>
+
+* clone the git repository if not done already
+* go into the 'frontend' folder of this repository and run "npm run build" (We don't actually need to o use 'backend' folder at all for this). After running, this will generate a 'dist' folder that has the build artifacts in it. (The contents of this folder is what you will upload into you web server using FTP, SSH, or however you web server is set up for WordPress, as mentioned in the steps in the url.)
+* You can follow with the steps in the url now
+<!-- end of the list -->
+
+Note: After the app is added to your web server, you can Embed the app into a web WordPress webpage. Or, you can create a hyperlink to the build folder directly to get the full-page app experience, e.g. https://yourwebsite.com/apps/my-app-build
