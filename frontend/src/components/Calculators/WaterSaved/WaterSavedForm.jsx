@@ -1,7 +1,7 @@
 import { Form, Label, FormGroup, Input, Col, Row, Button } from "reactstrap";
 import React, { useState, useEffect } from "react";
 
-const GardenForm = ({ onUpdate }) => {
+const WaterSavedForm = ({ onUpdate }) => {
   const [selectedOption, setSelectedOption] = useState("Ontario");
   const [value, setValue] = useState(""); // State for age input
 
@@ -76,4 +76,4 @@ const GardenForm = ({ onUpdate }) => {
     </Form>
   );
 };
-export default GardenForm;
+export default WaterSavedForm;

@@ -1,0 +1,20 @@
+[
+    {
+        "id": 1,
+        "type": "clothing",
+        "amount": "4.0",
+        "description": "It takes 5.45 watt hours or 0.00545 kwh to fully charge an iPhone."
+    },
+    {
+        "id": 2,
+        "type": "food",
+        "amount": "2.5",
+        "description": "2.3kg of carbon in 1L of gasoline"
+    },
+    {
+        "id": 2,
+        "type": "toys",
+        "amount": "6.0",
+        "description": "2.3kg of carbon in 1L of gasoline"
+    }
+]
