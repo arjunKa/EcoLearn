@@ -8,7 +8,7 @@ import {
   Card,
   Form,
 } from "reactstrap";
-import waterImg from "../../../images/waterImage.jpg";
+import img from "../../../images/tshirt.png";
 
 const ItemsDonatedCard = () => {
   return (
@@ -17,7 +17,7 @@ const ItemsDonatedCard = () => {
         {/* left side */}
         <CardImg
           alt="Card image cap"
-          src={waterImg}
+          src={img}
           top
           className="custom-card-img"
         />
