@@ -4,7 +4,6 @@ import { Button, Card, Form, Spinner } from "reactstrap";
 
 import TreesForm from "./TreesForm";
 import ProgressBarTrees from "./ProgressBarTrees";
-import AxiosInstance from "../../Axios";
 import TreesCard from "./TreesCard";
 import data from "./data.json";
 

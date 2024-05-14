@@ -4,7 +4,6 @@ import { Button, Card, Form } from "reactstrap";
 
 import VehiclesForm from "./VehiclesForm";
 import ProgressBarVehicles from "./ProgressBarVehicles";
-import AxiosInstance from "../../Axios";
 import VehiclesCard from "./VehiclesCard";
 import data from "./data.json";
 

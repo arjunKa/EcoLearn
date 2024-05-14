@@ -4,7 +4,6 @@ import { Button, Card, Form } from "reactstrap";
 
 import WaterSavedForm from "./WaterSavedForm";
 import ProgressBarWaterSaved from "./ProgressBarWaterSaved";
-import AxiosInstance from "../../Axios";
 import TreesCard from "./WaterSavedCard";
 import data from "./data.json";
 

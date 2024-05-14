@@ -4,7 +4,6 @@ import { Button, Card, Form, Spinner } from "reactstrap";
 
 import RecycleForm from "./RecycleForm";
 import ProgressBarRecycle from "./ProgressBarRecycle";
-import AxiosInstance from "../../Axios";
 import RecycleCard from "./RecycleCard";
 import data from "./data.json";
 

@@ -4,7 +4,6 @@ import { Button, Card, Form } from "reactstrap";
 
 import GardenForm from "./GardenForm";
 import ProgressBarGarden from "./ProgressBarGarden";
-import AxiosInstance from "../../Axios";
 import GardenCard from "./GardenCard";
 import data from "./data.json";
 

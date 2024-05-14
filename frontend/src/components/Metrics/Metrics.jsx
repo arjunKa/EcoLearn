@@ -1,6 +1,5 @@
 import { Progress, Tooltip } from "reactstrap";
 import React, { useState, useEffect } from "react";
-import AxiosInstance from "../Axios";
 import data from "./data.json";
 
 const Metrics = ({ calc }) => {

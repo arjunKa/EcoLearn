@@ -4,7 +4,6 @@ import { Button, Card, Form, Spinner } from "reactstrap";
 
 import FoodForm from "./FoodForm";
 import ProgressBarFood from "./ProgressBarFood";
-import AxiosInstance from "../../Axios";
 import FoodCard from "./FoodCard";
 import data from "./data.json";
 
