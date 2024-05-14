@@ -6,6 +6,7 @@ import VehiclesForm from "./VehiclesForm";
 import ProgressBarVehicles from "./ProgressBarVehicles";
 import AxiosInstance from "../../Axios";
 import VehiclesCard from "./VehiclesCard";
+import data from "./data.json";
 
 const VehiclesCalc = () => {
   const [calc, setCalc] = useState(""); // State for age input
@@ -19,7 +20,7 @@ const VehiclesCalc = () => {
     setTreeData(data);
   };
 
-  const handleButtonClick = async () => {
+  const handleButtonClick1 = async () => {
     try {
       // Make your API request with the treeData array
       console.log(treeData);
@@ -37,6 +38,31 @@ const VehiclesCalc = () => {
     } catch (err) {
       console.error("Error fetching data:", err);
     }
+  };
+
+  const handleButtonClick = async () => {
+    // Make your API request with the treeData array
+
+    const res = {};
+
+    console.log(treeData);
+
+    var result = data.find(
+      (item) =>
+        item.type.toLowerCase() === treeData.selectedOption.toLowerCase()
+    );
+    
+    result.distance = parseFloat(treeData.amount);
+    result.idling = parseFloat(treeData.idling);
+    console.log(result);
+    // result.carbon_reduction = result.amount_carbon * result.distance;
+    result.carbon_reduction_driving = result.distance * parseFloat(result.amount_carbon);
+    result.carbon_reduction_idling = 0.03 * result.idling;
+    result.total_carbon_reduction =
+      result.carbon_reduction_driving + result.carbon_reduction_idling;
+
+    console.log(result);
+    setCalc(result);
   };
 
   return (

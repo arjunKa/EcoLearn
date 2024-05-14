@@ -10,9 +10,9 @@ import ItemsDonatedForm from "./ItemsDonatedForm";
 const ItemDonatedCalc = () => {
   const [calc, setCalc] = useState(""); // State for age input
   const [treeData, setTreeData] = useState([
-    { name: "clothing", quantity: 0 },
-    { name: "food", quantity: 0 },
-    { name: "toys", quantity: 0 },
+    { name: "clothing", quantity: null },
+    { name: "food", quantity: null },
+    { name: "toys", quantity: null },
   ]); // State for storing tree data
   const [submitDisabled, setSubmitDisabled] = useState(true); // State to control submit button disable/enable
 
@@ -27,10 +27,7 @@ const ItemDonatedCalc = () => {
 
     res.total = 0;
     res.list = [];
-    // Handle the response as needed
 
-    // const result = data.find(item => item.type === res.selectedOption);
-    // const result = data;
     console.log(data);
     console.log(treeData);
 
@@ -41,10 +38,10 @@ const ItemDonatedCalc = () => {
         console.log(result);
         res.list.push({
           type: data[i].type,
-          total: result.amount * treeData[i].quantity,
-          amount_carbon:  parseFloat(result.amount)
+          total: result.amount_carbon * treeData[i].quantity,
+          amount_carbon:  parseFloat(result.amount_carbon)
         });
-        res.total += parseFloat(result.amount) * treeData[i].quantity;
+        res.total += parseFloat(result.amount_carbon) * treeData[i].quantity;
       }
     }
 

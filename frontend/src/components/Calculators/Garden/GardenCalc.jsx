@@ -6,9 +6,10 @@ import GardenForm from "./GardenForm";
 import ProgressBarGarden from "./ProgressBarGarden";
 import AxiosInstance from "../../Axios";
 import GardenCard from "./GardenCard";
+import data from "./data.json";
 
 const GardenCalc = () => {
-  const [calc, setCalc] = useState(""); // State for age input
+  const [calc, setCalc] = useState("");
   const [gardenData, setGardenData] = useState([{}]); // State for storing garden data
   const [submitDisabled, setSubmitDisabled] = useState(true); // State to control submit button disable/enable
 
@@ -16,7 +17,7 @@ const GardenCalc = () => {
     setGardenData(data);
   };
 
-  const handleButtonClick = async () => {
+  const handleButtonClick1 = async () => {
     try {
       // Make your API request with the gardenData array
       console.log(gardenData);
@@ -35,10 +36,32 @@ const GardenCalc = () => {
     }
   };
 
+  const handleButtonClick = async () => {
+    // Make your API request with the treeData array
+
+    const res = {};
+
+    res.total = 0;
+    res.list = [];
+
+    console.log(gardenData);
+
+    var result = data.find(
+      (item) =>
+        item.type.toLowerCase() === gardenData.selectedOption.toLowerCase()
+    );
+    console.log(result);
+    res.carbon_reduction = result.amount_carbon * gardenData.quantity;
+
+    console.log(res);
+    setCalc(res);
+  };
+
   useEffect(() => {
     // Check if any quantity field is empty
 
-    const isAnyQuantityEmpty = !gardenData.quantity || gardenData.quantity.trim() === "";
+    const isAnyQuantityEmpty =
+      !gardenData.quantity || gardenData.quantity.trim() === "";
     // Update the state to enable/disable submit button accordingly
     setSubmitDisabled(isAnyQuantityEmpty);
     console.log(isAnyQuantityEmpty);

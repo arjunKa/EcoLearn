@@ -1,0 +1,74 @@
+[
+    {
+        "id": 1,
+        "type": "Birch",
+        "amount_carbon": "261.83",
+        "description": "Birch tree."
+    },
+    {
+        "id": 2,
+        "type": "Basswood",
+        "amount_carbon": "0.32",
+        "description": "text"
+    },
+    {
+        "id": 4,
+        "type": "Black Cherry",
+        "amount_carbon": "132.81",
+        "description": "text"
+    },
+    {
+        "id": 3,
+        "type": "Beech",
+        "amount_carbon": "491.02",
+        "description": "text"
+    },
+    {
+        "id": 5,
+        "type": "Black Walnut",
+        "amount_carbon": "163.28",
+        "description": "text"
+    },
+    {
+        "id": 6,
+        "type": "Cedar",
+        "amount_carbon": "2952.85",
+        "description": "text"
+    },
+    {
+        "id": 7,
+        "type": "Douglas Fir",
+        "amount_carbon": "12393.31",
+        "description": "text"
+    },
+    {
+        "id": 8,
+        "type": "Maple",
+        "amount_carbon": "320015.04",
+        "description": "text"
+    },
+    {
+        "id": 9,
+        "type": "Nut",
+        "amount_carbon": "58664.30",
+        "description": "text"
+    },
+    {
+        "id": 10,
+        "type": "Oak",
+        "amount_carbon": "263159.03",
+        "description": "text"
+    },
+    {
+        "id": 11,
+        "type": "Pine",
+        "amount_carbon": "14872",
+        "description": "text"
+    },
+    {
+        "id": 12,
+        "type": "Spruce",
+        "amount_carbon": "12393",
+        "description": "text"
+    }
+]

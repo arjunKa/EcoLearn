@@ -6,6 +6,7 @@ import WaterSavedForm from "./WaterSavedForm";
 import ProgressBarWaterSaved from "./ProgressBarWaterSaved";
 import AxiosInstance from "../../Axios";
 import TreesCard from "./WaterSavedCard";
+import data from "./data.json";
 
 const WaterSavedCalc = () => {
   const [calc, setCalc] = useState(""); // State for age input
@@ -16,7 +17,7 @@ const WaterSavedCalc = () => {
     setTreeData(data);
   };
 
-  const handleButtonClick = async () => {
+  const handleButtonClick1 = async () => {
     // Make your API request with the treeData array
 
     const res = {};
@@ -43,6 +44,29 @@ const WaterSavedCalc = () => {
 
     console.log(res);
     setCalc(res);
+  };
+
+  const handleButtonClick = async () => {
+    // Make your API request with the treeData array
+
+    const res = {};
+
+    console.log(treeData);
+
+    var result = data.find(
+      (item) =>
+        item.name.toLowerCase() === treeData.selectedOption.toLowerCase()
+    );
+    console.log(result);
+    result.amount = 0.298;
+    result.carbon_reduction = result.amount * treeData.value;
+    result.province = result.province;
+    result.power = result.amount_carbon;
+    
+    console.log(result);
+
+    console.log(result);
+    setCalc(result);
   };
 
   useEffect(() => {

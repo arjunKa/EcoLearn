@@ -1,21 +1,20 @@
-import { Form, Label, FormGroup, Input, Col, Row, Button } from "reactstrap";
-import React, { useState, useEffect } from "react";
+import { Form, Label, FormGroup, Input, Col, Row } from "reactstrap";
+import {React,  useState} from "react";
 
 const ItemsDonatedForm = ({ onUpdate }) => {
   const [values, setValues] = useState([
-    { name: "clothing", quantity: 0 },
-    { name: "food", quantity: 0 },
-    { name: "toys", quantity: 0 },
+    { name: "clothing", quantity: null },
+    { name: "food", quantity: null },
+    { name: "toys", quantity: null },
   ]);
 
   // Function to handle input value change for each type
   const handleValueChange = (index, quantity) => {
     const newValues = [...values];
-    
-      newValues[index].quantity = quantity; // Convert value to float
-      setValues(newValues);
-      onUpdate(newValues); // Call onUpdate with the updated values array
-    
+
+    newValues[index].quantity = quantity; // Convert value to float
+    setValues(newValues);
+    onUpdate(newValues); // Call onUpdate with the updated values array
   };
 
   return (
@@ -30,7 +29,6 @@ const ItemsDonatedForm = ({ onUpdate }) => {
                 name={item.name}
                 placeholder="number placeholder"
                 type="number"
-                
                 onChange={(e) => handleValueChange(index, e.target.value)}
                 min={0}
                 step={0.1}

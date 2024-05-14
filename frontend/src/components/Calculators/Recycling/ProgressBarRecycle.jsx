@@ -3,12 +3,12 @@ import React, { useLayoutEffect, useState } from "react";
 import Metrics from '../../Metrics/Metrics';
 
 const ProgressBarRecycle = ({ calc }) => {
-  const [total, setTotal] = useState(parseFloat(calc[0].amount_carbon)*calc[0].quantity);
+  const [total, setTotal] = useState(parseFloat(calc.carbon_reduction)*calc.quantity);
   
 
   useLayoutEffect(() => {
     console.log(calc)
-    setTotal(Math.round(parseFloat(calc[0].amount_carbon)*calc[0].quantity*1000) / 1000);
+    setTotal(Math.round(parseFloat(calc.carbon_reduction)*calc.quantity*1000) / 1000);
 
 }, []);
 

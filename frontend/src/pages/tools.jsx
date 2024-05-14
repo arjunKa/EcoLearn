@@ -2,10 +2,9 @@ import React, { useState } from "react";
 import TreesCalc from "../components/Calculators/Trees/TreesCalc";
 import GardenCalc from "../components/Calculators/Garden/GardenCalc";
 import WaterSavedCalc from "../components/Calculators/WaterSaved/WaterSavedCalc";
-import FoodWasteCalc from "../components/Calculators/FoodWaste/FoodWasteCalc";
+import FoodCalc from "../components/Calculators/Food/FoodCalc";
 import VehiclesCalc from "../components/Calculators/Vehicles/VehiclesCalc";
 import RecyclingCalc from "../components/Calculators/Recycling/RecycleCalc";
-import RenewableEnergyCalc from "../components/Calculators/renewableEnergyCalc";
 
 import ItemsDonatedCalc from "../components/Calculators/ItemsDonated/ItemDonatedCalc";
 import "./styles/Tools.css";
@@ -23,14 +22,12 @@ const Tools = () => {
       return <GardenCalc />;
     } else if (calc === "water") {
       return <WaterSavedCalc />;
-    } else if (calc === "foodWaste") {
-      return <FoodWasteCalc />;
+    } else if (calc === "food") {
+      return <FoodCalc />;
     } else if (calc === "carEmissions") {
       return <VehiclesCalc />;
     } else if (calc === "recycling") {
       return <RecyclingCalc />;
-    } else if (calc === "energy") {
-      return <RenewableEnergyCalc />;
     } else if (calc === "items") {
       return <ItemsDonatedCalc />;
     } else {
@@ -60,10 +57,9 @@ const Tools = () => {
           <option value="treesPlanted"> Trees </option>
           <option value="garden"> Garden </option>
           <option value="recycling"> Recycling </option>
-          <option value="foodWaste"> Food Waste </option>
+          <option value="food"> Food - Meat </option>
           <option value="carEmissions"> Vehicle Emissions </option>
           <option value="water"> Water Saved </option>
-          <option value="energy"> Renewable Energy </option>
           <option value="items"> Items Donated </option>
         </Input>
       </div>

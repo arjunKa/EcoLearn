@@ -1,0 +1,62 @@
+[
+    {
+        "id": 1,
+        "name": "Ontario",
+        "amount_carbon": "0.0290"
+    },
+    {
+        "id": 2,
+        "name": "Yukon",
+        "amount_carbon": "0.0690"
+    },
+    {
+        "id": 3,
+        "name": "Nunavut",
+        "amount_carbon": "0.8400"
+    },
+    {
+        "id": 4,
+        "name": "British Columbia",
+        "amount_carbon": "0.0123"
+    },
+    {
+        "id": 5,
+        "name": "Alberta",
+        "amount_carbon": "0.6300"
+    },
+    {
+        "id": 6,
+        "name": "Saskatchewan",
+        "amount_carbon": "0.6800"
+    },
+    {
+        "id": 7,
+        "name": "Manitoba",
+        "amount_carbon": "0.0013"
+    },
+    {
+        "id": 8,
+        "name": "Quebec",
+        "amount_carbon": "0.0013"
+    },
+    {
+        "id": 9,
+        "name": "New Brunswick",
+        "amount_carbon": "0.2900"
+    },
+    {
+        "id": 11,
+        "name": "Nova Scotia",
+        "amount_carbon": "0.7200"
+    },
+    {
+        "id": 12,
+        "name": "Prince Edward Island",
+        "amount_carbon": "0.0040"
+    },
+    {
+        "id": 10,
+        "name": "Newfoundland and Labrador",
+        "amount_carbon": "0.0260"
+    }
+]

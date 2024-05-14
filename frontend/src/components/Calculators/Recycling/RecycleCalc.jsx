@@ -6,6 +6,7 @@ import RecycleForm from "./RecycleForm";
 import ProgressBarRecycle from "./ProgressBarRecycle";
 import AxiosInstance from "../../Axios";
 import RecycleCard from "./RecycleCard";
+import data from "./data.json";
 
 const RecycleCalc = () => {
   const [calc, setCalc] = useState(""); // State for age input
@@ -17,7 +18,7 @@ const RecycleCalc = () => {
     setRecycleData(data);
   };
 
-  const handleButtonClick = async () => {
+  const handleButtonClick1 = async () => {
     try {
       // Make your API request with the recycleData array
       console.log(recycleData);
@@ -45,6 +46,29 @@ const RecycleCalc = () => {
     } catch (err) {
       console.error("Error fetching data:", err);
     }
+  };
+
+  const handleButtonClick = async () => {
+    // Make your API request with the treeData array
+
+    const res = {};
+
+    res.total = 0;
+    res.list = [];
+    res.quantity = parseFloat(recycleData.value);
+
+    console.log(recycleData);
+
+    var result = data.find(
+      (item) =>
+        item.type.toLowerCase() === recycleData.selectedOption.toLowerCase()
+    );
+    console.log(result);
+    res.amount_carbon = parseFloat(result.amount_carbon)
+    res.carbon_reduction = res.amount_carbon * res.quantity;
+
+    console.log(res);
+    setCalc(res);
   };
 
   useEffect(() => {

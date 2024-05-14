@@ -1,0 +1,62 @@
+[
+    {
+        "id": 1,
+        "type": "fseries",
+        "amount_carbon": "0.3270",
+        "description": "Ford F-Series pickup"
+    },
+    {
+        "id": 2,
+        "type": "Ram",
+        "amount_carbon": "0.3200",
+        "description": "Ford F-Series pickup"
+    },
+    {
+        "id": 3,
+        "type": "civic",
+        "amount_carbon": "0.1650",
+        "description": "Honda Civic Sedan"
+    },
+    {
+        "id": 4,
+        "type": "sierra",
+        "amount_carbon": "0.4880",
+        "description": "GMC Sierra"
+    },
+    {
+        "id": 5,
+        "type": "silverado",
+        "amount_carbon": "0.2520",
+        "description": "Chevrolet Silverado"
+    },
+    {
+        "id": 6,
+        "type": "rav4",
+        "amount_carbon": "0.2310",
+        "description": "Toyota RAV4"
+    },
+    {
+        "id": 7,
+        "type": "crv",
+        "amount_carbon": "0.1800",
+        "description": "Honda CR-V"
+    },
+    {
+        "id": 8,
+        "type": "corolla",
+        "amount_carbon": "0.1970",
+        "description": "Toyota Corolla"
+    },
+    {
+        "id": 9,
+        "type": "escape",
+        "amount_carbon": "0.2440",
+        "description": "Ford Escape"
+    },
+    {
+        "id": 10,
+        "type": "caravan",
+        "amount_carbon": "0.3420",
+        "description": "Dodge Grand Caravan"
+    }
+]

@@ -1,0 +1,14 @@
+[
+    {
+        "id": 1,
+        "type": "cellphone",
+        "amount": "0.054500",
+        "description": "It takes 5.45 watt hours to fully charge iPhone."
+    },
+    {
+        "id": 2,
+        "type": "gasoline",
+        "amount": "2.300000",
+        "description": "2.3kg of carbon in 1L of gasoline"
+    }
+]

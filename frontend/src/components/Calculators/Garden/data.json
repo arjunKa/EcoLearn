@@ -1,0 +1,20 @@
+[
+    {
+        "id": 1,
+        "type": "grass",
+        "amount_carbon": "86.5000",
+        "description": "Amount is: grams of CO2/year"
+    },
+    {
+        "id": 2,
+        "type": "shrub",
+        "amount_carbon": "200.0000",
+        "description": "Amount is: grams of CO2/year"
+    },
+    {
+        "id": 3,
+        "type": "small plant",
+        "amount_carbon": "5.0000",
+        "description": "Amount is: grams of CO2/year"
+    }
+]

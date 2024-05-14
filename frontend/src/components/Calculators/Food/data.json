@@ -1,0 +1,30 @@
+[
+    {
+        "id": 1,
+        "type": "Pork",
+        "amount_carbon": "12.0000",
+        "per_year": 6338400,
+        "description": "text"
+    },
+    {
+        "id": 2,
+        "type": "Chicken",
+        "amount_carbon": "6.9000",
+        "per_year": 5453760,
+        "description": "text"
+    },
+    {
+        "id": 3,
+        "type": "Beef",
+        "amount_carbon": "27.0000",
+        "per_year": 15492600,
+        "description": "text"
+    },
+    {
+        "id": 4,
+        "type": "Fish",
+        "amount_carbon": "11.9000",
+        "per_year": 3617600,
+        "description": "text"
+    }
+]

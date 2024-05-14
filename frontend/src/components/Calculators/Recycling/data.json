@@ -1,0 +1,38 @@
+[
+    {
+        "id": 1,
+        "type": "paper",
+        "amount_carbon": "0.46",
+        "description": "paper"
+    },
+    {
+        "id": 2,
+        "type": "glass",
+        "amount_carbon": "0.31",
+        "description": "glass"
+    },
+    {
+        "id": 3,
+        "type": "plastic",
+        "amount_carbon": "1.02",
+        "description": "plastic"
+    },
+    {
+        "id": 4,
+        "type": "metal",
+        "amount_carbon": "5.86",
+        "description": "metal"
+    },
+    {
+        "id": 5,
+        "type": "card",
+        "amount_carbon": "0.12",
+        "description": "card"
+    },
+    {
+        "id": 6,
+        "type": "textile",
+        "amount_carbon": "3.37",
+        "description": "textile"
+    }
+]

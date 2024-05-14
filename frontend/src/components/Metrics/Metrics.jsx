@@ -1,6 +1,7 @@
 import { Progress, Tooltip } from "reactstrap";
 import React, { useState, useEffect } from "react";
 import AxiosInstance from "../Axios";
+import data from "./data.json";
 
 const Metrics = ({ calc }) => {
   const colors = ["", "success", "warning", "danger"];
@@ -18,7 +19,7 @@ const Metrics = ({ calc }) => {
     }
   }, [calc]);
 
-  const getMetrics = async () => {
+  const getMetrics1 = async () => {
     try {
       // Make your API request with the treeData array
 
@@ -34,13 +35,19 @@ const Metrics = ({ calc }) => {
     }
   };
 
+  const getMetrics = async () => {
+
+      setMetrics(data);
+
+  };
+
   if (metrics) {
     return (
       <div>
         <h2>Metrics:</h2>
         <p>
           {calc} Kg of Carbon can charge{" "}
-          {Math.round((calc / metrics[0].amount) * 100) / 100}{" "}
+          {(calc / metrics[0].amount).toFixed(2)}{" "}
           <span
             style={{ textDecoration: "underline", color: "blue" }}
             href="#"

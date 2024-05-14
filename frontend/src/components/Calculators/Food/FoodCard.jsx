@@ -9,7 +9,7 @@ import {
 } from "reactstrap";
 import image from "../../../images/foodWasteImage.jpg";
 
-const FoodWasteCard = () => {
+const FoodCard = () => {
   return (
     <div className="calc_box_card">
       <Card className="card">
@@ -21,7 +21,7 @@ const FoodWasteCard = () => {
           className="custom-card-img"
         />
         <CardBody>
-          <CardTitle tag="h5">Food Waste - Meat Reduced</CardTitle>
+          <CardTitle tag="h5">Food - Meat Reduced</CardTitle>
           <CardSubtitle className="mb-1 text-muted" tag="h6">
             Quantify your carbon reduction by cutting out meat from your diet.
           </CardSubtitle>
@@ -38,4 +38,4 @@ const FoodWasteCard = () => {
   );
 };
 
-export default FoodWasteCard;
+export default FoodCard;

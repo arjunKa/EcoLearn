@@ -6,6 +6,7 @@ import TreesForm from "./TreesForm";
 import ProgressBarTrees from "./ProgressBarTrees";
 import AxiosInstance from "../../Axios";
 import TreesCard from "./TreesCard";
+import data from "./data.json";
 
 const TreesCalc = () => {
   const [calc, setCalc] = useState(""); // State for age input
@@ -24,7 +25,7 @@ const TreesCalc = () => {
     // Check if any quantity field is empty
 
     const isAnyQuantityEmpty = treeData.some(
-      (item) => !item.age || item.age.trim() === ""
+      (item) => !item.quantity || item.quantity.trim() === ""
     );
     // Update the state to enable/disable submit button accordingly
     setSubmitDisabled(isAnyQuantityEmpty);
@@ -37,6 +38,38 @@ const TreesCalc = () => {
   };
 
   const handleButtonClick = async () => {
+
+    const res = {};
+
+    res.total = 0;
+    res.list = [];
+
+    console.log(data);
+    console.log(treeData);
+
+    for (let i = 0; i < treeData.length; i++) {
+      if (treeData[i]) {
+        console.log(treeData[i]);
+        var result = data.find((item) => item.type.toLowerCase() === treeData[i].selectedOption.toLowerCase());
+        console.log(result);
+        res.list.push({
+          type: result.type,
+          total: result.amount_carbon * treeData[i].quantity,
+          amount_carbon:  parseFloat(result.amount_carbon)
+        });
+        res.total += parseFloat(result.amount_carbon) * treeData[i].quantity;
+      }
+    }
+
+    console.log(res);
+    setCalc(res);
+
+
+
+
+  };
+
+  const handleButtonClick1 = async () => {
     try {
       // Make your API request with the treeData array
       console.log(treeData);
