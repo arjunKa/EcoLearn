@@ -9,7 +9,7 @@ To install in wordpress, you must build the front end project using npm and then
 Before doing the steps laid out in the instructions in the url above, there are some preliminary information. The instructions mention using the build folder. We must generate this build folder ourselves. Steps to do this:<br>
 
 * clone the git repository if not done already
-* go into the 'frontend' folder of this repository and run "npm run build". After running, this will generate a 'dist' folder that has the build artifacts in it. (The contents of this folder is what you will upload into you web server using FTP, SSH, or however you web server is set up for WordPress, as mentioned in the steps in the url.)
+* go into the 'frontend' folder of this repository and run <code>npm run build</code>. After running, this will generate a 'dist' folder that has the build artifacts in it. (The contents of this folder is what you will upload into you web server using FTP, SSH, or however you web server is set up for WordPress, as mentioned in the steps in the url.)
 * You can follow with the steps in the url now
 <!-- end of the list -->
 
