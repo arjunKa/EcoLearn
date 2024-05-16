@@ -15,5 +15,8 @@ Before doing the steps laid out in the instructions in the url above, there are 
 
 Note: After the app is added to your web server, you can Embed the app into a web WordPress webpage. Or, you can create a hyperlink to the build folder directly to get the full-page app experience, e.g. https://yourwebsite.com/apps/my-app-build
 
+## Try Locally
+To try this app locally you need npm installed as well as the npm dependencies which are listed in package.json. Then run the following in the 'frontend' folder: <code>npm run dev</code>.
+
 ## Details of the App
 Each calculator is broken down in the 'src/components/calculators' folder. In each folder there is a data.json file which contains all the data used in the calculation and this is pulled from by each calculator.
