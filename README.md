@@ -10,7 +10,7 @@ React + Vite + Django + Azure PostgreSQL
 List of Install instructions.
 ### WordPress
 To install in wordpress, you must build the front end project using npm and then upload the build artifacts to your web server. <br>
-<em><strong>These are instructions that provide all the details of what needs to be done: </em></strong>  https://javascript.plainenglish.io/how-to-embed-a-react-app-inside-a-wordpress-website-923e0af0ea00 <br>
+<em><strong>These are instructions that provide all the details of what needs to be done (follow step 2 onwards): </em></strong>  https://javascript.plainenglish.io/how-to-embed-a-react-app-inside-a-wordpress-website-923e0af0ea00 <br>
 
 #### Some Additional details for the steps:
 Before doing the steps laid out in the instructions in the url above, there are some preliminary information. The instructions mention using the build folder. We must generate this build folder ourselves. Steps to do this:<br>
