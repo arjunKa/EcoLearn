@@ -77,4 +77,4 @@ jobs:
         with:
           app-name: 'ecolearn'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_37vMCnnuk9ik4PsNeX9rnN413a3pgp2trcxcq8ww8H9bTrBRMZz22Y1TTHkF }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_6E6BD20C01DE4004B69A05F5A9572F52 }}
