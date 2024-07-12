@@ -1,6 +1,6 @@
 # EcoLearn - Carbon Calculator
 
-[Link to Web App.](https://ecolearn.ca)
+[Link to Web App.](https://www.ecolearn.ca)
 
 ## Tools
 React + Vite + Django + Azure PostgreSQL
