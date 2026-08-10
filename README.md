@@ -1,6 +1,6 @@
 # EcoLearn
 
- `https://arjunka.github.io/EcoLearn/` 
+ [Try it Out](https://arjunka.github.io/EcoLearn/)
 
 EcoLearn is a React + Vite frontend with an optional Django backend.
 
