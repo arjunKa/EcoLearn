@@ -1,20 +1,24 @@
-import React, { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import Header from "../components/Homepage/header";
 import JsonData from "../data/data.json";
-import "../components/logo/logo.css";
-// import Logo from "../components/logo/Logo";
 
-const Home = (props) => {
+const Home = () => {
   const [landingPageData, setLandingPageData] = useState({});
+
   useEffect(() => {
     setLandingPageData(JsonData);
+
+    const previousBodyBackground = document.body.style.background;
+    document.body.style.background = "#f4f0e8";
+
+    return () => {
+      document.body.style.background = previousBodyBackground;
+    };
   }, []);
-  document.body.style = "background: #2c2c2c;";
 
   return (
-    <div className="container">
-      <div className="homepage">
-        {/* <div><img src = "/ecoLearn.svg" alt="My Happy SVG" className="logo"/></div> */}
+    <div className="home-page">
+      <div className="home-page__inner">
         <Header data={landingPageData.Header} />
       </div>
     </div>

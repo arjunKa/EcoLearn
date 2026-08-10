@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 import { Button, Card, Form } from "reactstrap";
 
 import GardenForm from "./WaterSavedForm";
 import ProgressBarWaterSaved from "./ProgressBarWaterSaved";
-import AxiosInstance from "../../Axios";
 import TreesCard from "./WaterSavedCard";
+import { calculateWaterSaved } from "../../../services/ecolearnData";
 
 const WaterSavedCalc = () => {
   const [calc, setCalc] = useState(""); // State for age input
@@ -17,31 +17,12 @@ const WaterSavedCalc = () => {
   };
 
   const handleButtonClick = async () => {
-    // Make your API request with the treeData array
-
-    const res = {};
-    res.type = "water";
-    res.amount = 0.298;
-    res.carbon_reduction = res.amount * treeData.value;
-    res.selectedOption = treeData.selectedOption;
-    // Handle the response as needed
-
     try {
-      const res2 = await AxiosInstance.get("/api/province", {
-        params: {
-          name: res.selectedOption,
-        },
-      });
-      console.log(res2.data);
-      // Handle the response as needed
-      res.province = res2.data[0].name;
-      res.power = res2.data[0].amount_carbon;
+      const res = await calculateWaterSaved(treeData);
+      setCalc(res);
     } catch (err) {
       console.error("Error fetching data:", err);
     }
-
-    console.log(res);
-    setCalc(res);
   };
 
   useEffect(() => {
@@ -54,46 +35,47 @@ const WaterSavedCalc = () => {
   }, [treeData]);
 
   return (
-    <div>
-      {/* Heading outside of Calc */}
-      <h1 style={{ display: "flex", justifyContent: "flex-end" }}>
-        Water Saved
-      </h1>
+    <section className="calc-panel">
+      <div className="calc-panel__heading">
+        <span className="calc-panel__eyebrow">Calculator</span>
+        <h2 className="calc-panel__title">Water Saved</h2>
+        <p className="calc-panel__subtitle">
+          Convert litres of saved water into emissions impact using the power
+          profile of the province you choose.
+        </p>
+      </div>
 
-      {/* Block for inside Calc */}
-      <Card>
+      <Card className="calc-surface">
         <div className="calc_box">
-          {/* Box of whole Calculator */}
           <TreesCard />
 
-          {/* Calc Options */}
           <div className="calc_box_form">
             <div className="calc_box_form_elements">
-              {/* Add New TreesForm here */}
-
               <div>
                 <GardenForm onUpdate={(data) => handleCalcUpdate(data)} />
               </div>
-
-              <Form>
-                <Button onClick={handleButtonClick} disabled={submitDisabled}>
-                  Submit
-                </Button>
-              </Form>
+              <div className="calc-actions">
+                <Form>
+                  <Button onClick={handleButtonClick} disabled={submitDisabled}>
+                    Calculate impact
+                  </Button>
+                </Form>
+              </div>
             </div>
 
-            {/* Results shown here */}
             {calc && (
-              <div>
-                <h2>Result:</h2>
-                <p>Here is your calculation result.</p>
+              <div className="calc-results">
+                <h3 className="calc-results__title">Results</h3>
+                <p className="calc-results__copy">
+                  Here is your estimated carbon reduction from water savings.
+                </p>
                 <ProgressBarWaterSaved calc={calc} />
               </div>
             )}
           </div>
         </div>
       </Card>
-    </div>
+    </section>
   );
 };
 

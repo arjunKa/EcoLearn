@@ -1,6 +1,9 @@
-# EcoLearn - Carbon Calculator - Backend
+# EcoLearn Backend
 
-[Link to backend API.](https://ecolearn.azurewebsites.net)
+The backend is optional now.
 
-## Tools
-Django + Azure PostgreSQL
+Use it only if you want the frontend in `api` or `auto` mode to call a live
+server instead of the committed repo dataset.
+
+If you deploy the backend separately, the project is already configured to
+allow requests from `https://arjunka.github.io`.

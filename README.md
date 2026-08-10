@@ -1,23 +1,51 @@
-# EcoLearn - Carbon Calculator
+# EcoLearn
 
-[Link to Web App.](https://www.ecolearn.ca)
+ `https://arjunka.github.io/EcoLearn/` 
 
-## Tools
-React + Vite + Django + Azure PostgreSQL
+EcoLearn is a React + Vite frontend with an optional Django backend.
 
+Can run in two modes:
 
-## Install
-List of Install instructions.
-### WordPress
-To install in wordpress, you must build the front end project using npm and then upload the build artifacts to your web server. <br>
-<em><strong>These are instructions that provide all the details of what needs to be done (follow step 2 onwards): </em></strong>  https://javascript.plainenglish.io/how-to-embed-a-react-app-inside-a-wordpress-website-923e0af0ea00 <br>
+1. `repo` mode
+   The calculators read committed JSON data from `frontend/public/data/ecolearn-data.json` and do not need to deploy the backend.
+2. `api` mode
+   The frontend calls a deployed backend API.
+3. `auto` mode
+   The frontend tries the API first and falls back to the repo dataset if the API is unavailable.
 
-#### Some Additional details for the steps:
-Before doing the steps laid out in the instructions in the url above, there are some preliminary information. The instructions mention using the build folder. We must generate this build folder ourselves. Steps to do this:<br>
+## Frontend deploy
 
-* clone the git repository if not done already
-* go into the 'frontend' folder of this repository and run "npm run build". After running, this will generate a 'dist' folder that has the build artifacts in it. (The contents of this folder is what you will upload into you web server using FTP, SSH, or however you web server is set up for WordPress, as mentioned in the steps in the url.)
-* You can follow with the steps in the url now
-<!-- end of the list -->
+Push to `master` and the GitHub Actions workflow in `.github/workflows/deploy-pages.yml` will build and publish the frontend to GitHub Pages.
 
-Note: After the app is added to your web server, you can Embed the app into a web WordPress webpage. Or, you can create a hyperlink to the build folder directly to get the full-page app experience, e.g. https://yourwebsite.com/apps/my-app-build
+In the repository settings, make sure Pages is set to use `GitHub Actions` as the source.
+
+## Data source toggle
+
+Frontend config lives in `frontend/.env`.
+
+`VITE_DATA_SOURCE_MODE=repo`
+Uses only the committed dataset.
+
+`VITE_DATA_SOURCE_MODE=api`
+Uses only the backend API.
+
+`VITE_DATA_SOURCE_MODE=auto`
+Uses the backend API when available, then falls back to the repo dataset.
+
+`VITE_API_BASE_URL_LOCAL`
+Local backend URL for development.
+
+`VITE_API_BASE_URL_PROD`
+Optional deployed backend URL for production API mode.
+
+## Local development
+
+Frontend:
+
+```bash
+cd frontend
+npm install
+npm run build
+```
+
+Backend is optional. If you do deploy it separately, CORS now includes `https://arjunka.github.io` so the GitHub Pages frontend can call it.

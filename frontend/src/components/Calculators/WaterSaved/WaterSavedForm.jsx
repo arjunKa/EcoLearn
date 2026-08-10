@@ -1,8 +1,8 @@
-import { Form, Label, FormGroup, Input, Col, Row, Button } from "reactstrap";
-import React, { useState, useEffect } from "react";
+import { Form, Label, FormGroup, Input, Col, Row } from "reactstrap";
+import { useState } from "react";
 
 const GardenForm = ({ onUpdate }) => {
-  const [selectedOption, setSelectedOption] = useState("Ontario");
+  const [selectedOption, setSelectedOption] = useState("ontario");
   const [value, setValue] = useState(""); // State for age input
 
   const handleValueChange = (event) => {

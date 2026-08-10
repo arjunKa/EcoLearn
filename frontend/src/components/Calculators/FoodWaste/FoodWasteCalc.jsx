@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 import { Button, Card, Form, Spinner } from "reactstrap";
 
 import FoodForm from "./FoodForm";
 import ProgressBarFoodWaste from "./ProgressBarFoodWaste";
-import AxiosInstance from "../../Axios";
 import FoodWasteCard from "./FoodWasteCard";
+import { calculateFoodWaste } from "../../../services/ecolearnData";
 
 const FoodWasteCalc = () => {
   const [calc, setCalc] = useState(""); // State for age input
@@ -39,18 +39,12 @@ const FoodWasteCalc = () => {
 
   const handleButtonClick = async () => {
     try {
-      // Make your API request with the treeData array
-      console.log(foodData);
       setIsFetching(true);
-      const res = await AxiosInstance.post("/api/ecolearning/food/", {
-        foodData,
-      });
+      const res = await calculateFoodWaste(foodData);
       setIsFetching(false);
-
-      // Handle the response as needed
-      console.log(res.data);
-      setCalc(res.data);
+      setCalc(res);
     } catch (err) {
+      setIsFetching(false);
       console.error("Error fetching data:", err);
     }
   };
@@ -66,22 +60,22 @@ const FoodWasteCalc = () => {
   };
 
   return (
-    <div>
-      {/* Heading outside of Calc */}
-      <h1 style={{ display: "flex", justifyContent: "flex-end" }}>
-        Food Waste
-      </h1>
+    <section className="calc-panel">
+      <div className="calc-panel__heading">
+        <span className="calc-panel__eyebrow">Calculator</span>
+        <h2 className="calc-panel__title">Food Waste</h2>
+        <p className="calc-panel__subtitle">
+          Add one or more meat categories to estimate how much carbon is tied to
+          the food choices you reduced.
+        </p>
+      </div>
 
-      {/* Block for inside Calc */}
-      <Card>
+      <Card className="calc-surface">
         <div className="calc_box">
-          {/* Box of whole Calculator */}
           <FoodWasteCard />
 
-          {/* Calc Options */}
           <div className="calc_box_form">
             <div className="calc_box_form_elements">
-              {/* Add New TreesForm here */}
               {foodData.map((_, index) => (
                 <div key={index} className="calc_box_form_elements_row">
                   <FoodForm
@@ -94,33 +88,36 @@ const FoodWasteCalc = () => {
                   )}
                 </div>
               ))}
-              <Form>
-                <Button onClick={handleAddRow}>Add new row</Button>
-              </Form>
-              <Form>
-                <Button onClick={handleButtonClick} disabled={submitDisabled}>
-                  Submit
-                </Button>
-              </Form>
+              <div className="calc-actions">
+                <Form>
+                  <Button onClick={handleAddRow}>Add another food type</Button>
+                </Form>
+                <Form>
+                  <Button onClick={handleButtonClick} disabled={submitDisabled}>
+                    Calculate impact
+                  </Button>
+                </Form>
+              </div>
             </div>
 
             {isFetching && (
-              <Spinner className="m-5" color="primary">
-                Loading...
-              </Spinner>
+              <div className="calc-spinner-wrap">
+                <Spinner color="primary">Loading...</Spinner>
+              </div>
             )}
-            {/* Results shown here */}
             {calc && (
-              <div>
-                <h2>Result:</h2>
-                <p>Here is your calculation result.</p>
+              <div className="calc-results">
+                <h3 className="calc-results__title">Results</h3>
+                <p className="calc-results__copy">
+                  Here is your estimated food-related carbon reduction.
+                </p>
                 <ProgressBarFoodWaste calc={calc} />
               </div>
             )}
           </div>
         </div>
       </Card>
-    </div>
+    </section>
   );
 };
 

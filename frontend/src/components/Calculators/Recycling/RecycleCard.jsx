@@ -1,20 +1,17 @@
 import {
-  Button,
   CardImg,
   CardBody,
   CardText,
   CardTitle,
   CardSubtitle,
   Card,
-  Form,
 } from "reactstrap";
 import recyclingImg from "../../../images/recyclingImage.jpg";
 
 const RecycleCard = () => {
   return (
     <div className="calc_box_card">
-      <Card className="card">
-        {/* left side */}
+      <Card className="calc-info-card">
         <CardImg
           alt="Card image cap"
           src={recyclingImg}
@@ -22,15 +19,18 @@ const RecycleCard = () => {
           className="custom-card-img"
         />
         <CardBody>
-          <CardTitle tag="h5">Recycling</CardTitle>
-          <CardSubtitle className="mb-1 text-muted" tag="h6">
+          <span className="calc-info-card__tag">Waste reduction</span>
+          <CardTitle className="calc-info-card__title" tag="h5">
+            Recycling
+          </CardTitle>
+          <CardSubtitle className="calc-info-card__subtitle" tag="h6">
             Recycling
           </CardSubtitle>
-          <CardText>
+          <CardText className="calc-info-card__text">
             It takes a lot of energy to dispose of waste material. Which is why
             it is important to try to recycle and reuse whatever you can.
           </CardText>
-          <Button>More</Button>
+          <div className="calc-info-card__footnote">Focus: material-specific savings by weight</div>
         </CardBody>
       </Card>
     </div>

@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 import { Button, Card, Form, Spinner } from "reactstrap";
 
 import RecycleForm from "./RecycleForm";
 import ProgressBarRecycle from "./ProgressBarRecycle";
-import AxiosInstance from "../../Axios";
 import RecycleCard from "./RecycleCard";
+import { calculateRecycle } from "../../../services/ecolearnData";
 
 const RecycleCalc = () => {
   const [calc, setCalc] = useState(""); // State for age input
@@ -19,30 +19,15 @@ const RecycleCalc = () => {
 
   const handleButtonClick = async () => {
     try {
-      // Make your API request with the recycleData array
-      console.log(recycleData);
       setIsFetching(true);
-      const res = await AxiosInstance.get("/api/recycle", {
-        params: {
-          type: recycleData.selectedOption.toLowerCase(),
-        },
-      });
-
+      const res = await calculateRecycle(recycleData);
       setIsFetching(false);
-      if (res.data.length == 0) {
+      if (res.length === 0) {
         return;
       }
-      // Handle the response as needed
-
-      // const modifiedData = { ...res.data, quantity: 5 };
-      console.log(res.data);
-      const modifiedData = res.data.map((item) => ({
-        ...item,
-        quantity: parseFloat(recycleData.value),
-      }));
-      console.log(modifiedData);
-      setCalc(modifiedData);
+      setCalc(res);
     } catch (err) {
+      setIsFetching(false);
       console.error("Error fetching data:", err);
     }
   };
@@ -58,49 +43,52 @@ const RecycleCalc = () => {
   }, [recycleData]);
 
   return (
-    <div>
-      {/* Heading outside of Calc */}
-      <h1 style={{ display: "flex", justifyContent: "flex-end" }}>Recycling</h1>
+    <section className="calc-panel">
+      <div className="calc-panel__heading">
+        <span className="calc-panel__eyebrow">Calculator</span>
+        <h2 className="calc-panel__title">Recycling</h2>
+        <p className="calc-panel__subtitle">
+          Choose a recycled material and its weight to estimate avoided carbon
+          emissions from keeping it out of the waste stream.
+        </p>
+      </div>
 
-      {/* Block for inside Calc */}
-      <Card>
+      <Card className="calc-surface">
         <div className="calc_box">
-          {/* Box of whole Calculator */}
           <RecycleCard />
 
-          {/* Calc Options */}
           <div className="calc_box_form">
             <div className="calc_box_form_elements">
-              {/* Add New recyclesForm here */}
-
               <div>
                 <RecycleForm onUpdate={(data) => handleCalcUpdate(data)} />
               </div>
-
-              <Form>
-                <Button onClick={handleButtonClick} disabled={submitDisabled}>
-                  Submit
-                </Button>
-              </Form>
+              <div className="calc-actions">
+                <Form>
+                  <Button onClick={handleButtonClick} disabled={submitDisabled}>
+                    Calculate impact
+                  </Button>
+                </Form>
+              </div>
             </div>
 
             {isFetching && (
-              <Spinner className="m-5" color="primary">
-                Loading...
-              </Spinner>
+              <div className="calc-spinner-wrap">
+                <Spinner color="primary">Loading...</Spinner>
+              </div>
             )}
-            {/* Results shown here */}
             {calc && (
-              <div>
-                <h2>Result:</h2>
-                <p>Here is your calculation result.</p>
+              <div className="calc-results">
+                <h3 className="calc-results__title">Results</h3>
+                <p className="calc-results__copy">
+                  Here is your estimated recycling-related carbon reduction.
+                </p>
                 <ProgressBarRecycle calc={calc} />
               </div>
             )}
           </div>
         </div>
       </Card>
-    </div>
+    </section>
   );
 };
 

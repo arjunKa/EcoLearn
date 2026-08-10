@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 import { Button, Card, Form } from "reactstrap";
 
 import VehiclesForm from "./VehiclesForm";
 import ProgressBarVehicles from "./ProgressBarVehicles";
-import AxiosInstance from "../../Axios";
 import VehiclesCard from "./VehiclesCard";
+import { calculateVehicle } from "../../../services/ecolearnData";
 
 const VehiclesCalc = () => {
   const [calc, setCalc] = useState(""); // State for age input
@@ -21,64 +21,53 @@ const VehiclesCalc = () => {
 
   const handleButtonClick = async () => {
     try {
-      // Make your API request with the treeData array
-      console.log(treeData);
-      const res = await AxiosInstance.get("/api/ecolearning/vehicles", {
-        params: {
-          type: treeData.selectedOption,
-          distance: treeData.amount,
-          idling: treeData.idling,
-        },
-      });
-
-      // Handle the response as needed
-      console.log(res.data);
-      setCalc(res.data);
+      const res = await calculateVehicle(treeData);
+      setCalc(res);
     } catch (err) {
       console.error("Error fetching data:", err);
     }
   };
 
   return (
-    <div>
-      {/* Heading outside of Calc */}
-      <h1 style={{ display: "flex", justifyContent: "flex-end" }}>
-        Vehicle Emissions
-      </h1>
+    <section className="calc-panel">
+      <div className="calc-panel__heading">
+        <span className="calc-panel__eyebrow">Calculator</span>
+        <h2 className="calc-panel__title">Vehicle Emissions</h2>
+        <p className="calc-panel__subtitle">
+          Compare reduced driving and prevented idling to estimate the carbon
+          impact of changing how you get around.
+        </p>
+      </div>
 
-      {/* Block for inside Calc */}
-      <Card>
+      <Card className="calc-surface">
         <div className="calc_box">
-          {/* Box of whole Calculator */}
           <VehiclesCard />
 
-          {/* Calc Options */}
           <div className="calc_box_form">
             <div className="calc_box_form_elements">
-              {/* Add New TreesForm here */}
-
               <div>
                 <VehiclesForm onUpdate={(data) => handleCalcUpdate(data)} />
               </div>
-
-              <Form></Form>
-              <Form>
-                <Button onClick={handleButtonClick}>Submit</Button>
-              </Form>
+              <div className="calc-actions">
+                <Form>
+                  <Button onClick={handleButtonClick}>Calculate impact</Button>
+                </Form>
+              </div>
             </div>
 
-            {/* Results shown here */}
             {calc && (
-              <div>
-                <h2>Result:</h2>
-                <p>Here is your calculation result.</p>
+              <div className="calc-results">
+                <h3 className="calc-results__title">Results</h3>
+                <p className="calc-results__copy">
+                  Here is your estimated transportation-related carbon savings.
+                </p>
                 <ProgressBarVehicles calc={calc} />
               </div>
             )}
           </div>
         </div>
       </Card>
-    </div>
+    </section>
   );
 };
 

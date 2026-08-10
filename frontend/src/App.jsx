@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 //import Modal from "./components/Modal";
 //import axios from "axios";
 import "./App.css";
@@ -16,12 +16,13 @@ function App() {
     <div>
       <Navbar2 />
       <Routes>
-        <Route path="" element={<Home/>} />
-        <Route path="/tools" element={<Tools/>} />
-        <Route path="/impact" element={<Impact/>} />
-        <Route path="/projects" element={<Projects/>} />
-        <Route path="/resources" element={<Resources/>} />
-        <Route path="/aboutUs" element={<AboutUs/>} />
+        <Route index element={<Home />} />
+        <Route path="/tools" element={<Tools />} />
+        <Route path="/impact" element={<Impact />} />
+        <Route path="/projects" element={<Projects />} />
+        <Route path="/resources" element={<Resources />} />
+        <Route path="/aboutUs" element={<AboutUs />} />
+        <Route path="*" element={<Home />} />
       </Routes>
     </div>
   );

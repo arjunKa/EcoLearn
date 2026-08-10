@@ -2,9 +2,20 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/ecoLearn.svg" />
+    <link rel="icon" type="image/svg+xml" href="%BASE_URL%ecoLearn.svg" />
     <script src="https://kit.fontawesome.com/2f36a4d265.js" crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      (function (locationState) {
+        if (locationState.search.startsWith("?/")) {
+          var decoded = locationState.search
+            .slice(2)
+            .replace(/~and~/g, "&");
+          var nextPath = locationState.pathname + decoded + locationState.hash;
+          window.history.replaceState(null, "", nextPath);
+        }
+      })(window.location);
+    </script>
     <title>EcoLearn</title>
   </head>
   <body>

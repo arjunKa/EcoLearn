@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 import { Button, Card, Form } from "reactstrap";
 
 import GardenForm from "./GardenForm";
 import ProgressBarGarden from "./ProgressBarGarden";
-import AxiosInstance from "../../Axios";
 import GardenCard from "./GardenCard";
+import { calculateGarden } from "../../../services/ecolearnData";
 
 const GardenCalc = () => {
   const [calc, setCalc] = useState(""); // State for age input
@@ -18,18 +18,8 @@ const GardenCalc = () => {
 
   const handleButtonClick = async () => {
     try {
-      // Make your API request with the gardenData array
-      console.log(gardenData);
-      const res = await AxiosInstance.get("/api/ecolearning/gardens", {
-        params: {
-          type: gardenData.selectedOption.toLowerCase(),
-          quantity: gardenData.quantity,
-        },
-      });
-
-      // Handle the response as needed
-      console.log(res.data);
-      setCalc(res.data);
+      const res = await calculateGarden(gardenData);
+      setCalc(res);
     } catch (err) {
       console.error("Error fetching data:", err);
     }
@@ -45,44 +35,47 @@ const GardenCalc = () => {
   }, [gardenData]);
 
   return (
-    <div>
-      {/* Heading outside of Calc */}
-      <h1 style={{ display: "flex", justifyContent: "flex-end" }}>Garden</h1>
+    <section className="calc-panel">
+      <div className="calc-panel__heading">
+        <span className="calc-panel__eyebrow">Calculator</span>
+        <h2 className="calc-panel__title">Garden</h2>
+        <p className="calc-panel__subtitle">
+          Estimate yearly carbon reduction from grass, shrubs, or small plants
+          growing in your home garden.
+        </p>
+      </div>
 
-      {/* Block for inside Calc */}
-      <Card>
+      <Card className="calc-surface">
         <div className="calc_box">
-          {/* Box of whole Calculator */}
           <GardenCard />
 
-          {/* Calc Options */}
           <div className="calc_box_form">
             <div className="calc_box_form_elements">
-              {/* Add New gardensForm here */}
-
               <div>
                 <GardenForm onUpdate={(data) => handleCalcUpdate(data)} />
               </div>
-
-              <Form>
-                <Button onClick={handleButtonClick} disabled={submitDisabled}>
-                  Submit
-                </Button>
-              </Form>
+              <div className="calc-actions">
+                <Form>
+                  <Button onClick={handleButtonClick} disabled={submitDisabled}>
+                    Calculate impact
+                  </Button>
+                </Form>
+              </div>
             </div>
 
-            {/* Results shown here */}
             {calc && (
-              <div>
-                <h2>Result:</h2>
-                <p>Here is your calculation result.</p>
+              <div className="calc-results">
+                <h3 className="calc-results__title">Results</h3>
+                <p className="calc-results__copy">
+                  Here is your estimated yearly carbon reduction.
+                </p>
                 <ProgressBarGarden calc={calc} />
               </div>
             )}
           </div>
         </div>
       </Card>
-    </div>
+    </section>
   );
 };
 

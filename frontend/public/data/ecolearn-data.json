@@ -1,0 +1,297 @@
+{
+  "trees": [
+    {
+      "id": 1,
+      "type": "Birch",
+      "amount_carbon": "261.83",
+      "description": "Birch tree."
+    },
+    {
+      "id": 2,
+      "type": "Basswood",
+      "amount_carbon": "0.32",
+      "description": "text"
+    },
+    {
+      "id": 3,
+      "type": "Beech",
+      "amount_carbon": "491.02",
+      "description": "text"
+    },
+    {
+      "id": 4,
+      "type": "Black Cherry",
+      "amount_carbon": "132.81",
+      "description": "text"
+    },
+    {
+      "id": 5,
+      "type": "Black Walnut",
+      "amount_carbon": "163.28",
+      "description": "text"
+    },
+    {
+      "id": 6,
+      "type": "Cedar",
+      "amount_carbon": "2952.85",
+      "description": "text"
+    },
+    {
+      "id": 7,
+      "type": "Douglas Fir",
+      "amount_carbon": "12393.31",
+      "description": "text"
+    },
+    {
+      "id": 8,
+      "type": "Maple",
+      "amount_carbon": "320015.04",
+      "description": "text"
+    },
+    {
+      "id": 9,
+      "type": "Nut",
+      "amount_carbon": "58664.30",
+      "description": "text"
+    },
+    {
+      "id": 10,
+      "type": "Oak",
+      "amount_carbon": "263159.03",
+      "description": "text"
+    },
+    {
+      "id": 11,
+      "type": "Pine",
+      "amount_carbon": "14872",
+      "description": "text"
+    },
+    {
+      "id": 12,
+      "type": "Spruce",
+      "amount_carbon": "12393",
+      "description": "text"
+    }
+  ],
+  "gardens": [
+    {
+      "id": 1,
+      "type": "grass",
+      "amount_carbon": "86.5000",
+      "description": "Amount is: grams of CO2/year"
+    },
+    {
+      "id": 2,
+      "type": "shrub",
+      "amount_carbon": "200.0000",
+      "description": "Amount is: grams of CO2/year"
+    },
+    {
+      "id": 3,
+      "type": "small plant",
+      "amount_carbon": "5.0000",
+      "description": "Amount is: grams of CO2/year"
+    }
+  ],
+  "vehicles": [
+    {
+      "id": 1,
+      "type": "fseries",
+      "amount_carbon": "0.3270",
+      "description": "Ford F-Series pickup"
+    },
+    {
+      "id": 2,
+      "type": "Ram",
+      "amount_carbon": "0.3200",
+      "description": "Ford F-Series pickup"
+    },
+    {
+      "id": 3,
+      "type": "civic",
+      "amount_carbon": "0.1650",
+      "description": "Honda Civic Sedan"
+    },
+    {
+      "id": 4,
+      "type": "sierra",
+      "amount_carbon": "0.4880",
+      "description": "GMC Sierra"
+    },
+    {
+      "id": 5,
+      "type": "silverado",
+      "amount_carbon": "0.2520",
+      "description": "Chevrolet Silverado"
+    },
+    {
+      "id": 6,
+      "type": "rav4",
+      "amount_carbon": "0.2310",
+      "description": "Toyota RAV4"
+    },
+    {
+      "id": 7,
+      "type": "crv",
+      "amount_carbon": "0.1800",
+      "description": "Honda CR-V"
+    },
+    {
+      "id": 8,
+      "type": "corolla",
+      "amount_carbon": "0.1970",
+      "description": "Toyota Corolla"
+    },
+    {
+      "id": 9,
+      "type": "escape",
+      "amount_carbon": "0.2440",
+      "description": "Ford Escape"
+    },
+    {
+      "id": 10,
+      "type": "caravan",
+      "amount_carbon": "0.3420",
+      "description": "Dodge Grand Caravan"
+    }
+  ],
+  "food": [
+    {
+      "id": 1,
+      "type": "Pork",
+      "amount_carbon": "12.0000",
+      "per_year": 6338400,
+      "description": "text"
+    },
+    {
+      "id": 2,
+      "type": "Chicken",
+      "amount_carbon": "6.9000",
+      "per_year": 5453760,
+      "description": "text"
+    },
+    {
+      "id": 3,
+      "type": "Beef",
+      "amount_carbon": "27.0000",
+      "per_year": 15492600,
+      "description": "text"
+    },
+    {
+      "id": 4,
+      "type": "Fish",
+      "amount_carbon": "11.9000",
+      "per_year": 3617600,
+      "description": "text"
+    },
+    {
+      "id": 5,
+      "type": "Lamb",
+      "amount_carbon": "39.2000",
+      "per_year": 0,
+      "description": "Editable repo default for GitHub Pages mode."
+    }
+  ],
+  "recycle": [
+    {
+      "id": 1,
+      "type": "paper",
+      "amount_carbon": "0.46",
+      "description": "paper"
+    },
+    {
+      "id": 2,
+      "type": "glass",
+      "amount_carbon": "0.31",
+      "description": "glass"
+    },
+    {
+      "id": 3,
+      "type": "plastic",
+      "amount_carbon": "1.02",
+      "description": "plastic"
+    },
+    {
+      "id": 4,
+      "type": "metal",
+      "amount_carbon": "5.86",
+      "description": "metal"
+    }
+  ],
+  "provinces": [
+    {
+      "id": 1,
+      "name": "Ontario",
+      "amount_carbon": "0.0290"
+    },
+    {
+      "id": 2,
+      "name": "Yukon",
+      "amount_carbon": "0.0690"
+    },
+    {
+      "id": 3,
+      "name": "Nunavut",
+      "amount_carbon": "0.8400"
+    },
+    {
+      "id": 4,
+      "name": "British Columbia",
+      "amount_carbon": "0.0123"
+    },
+    {
+      "id": 5,
+      "name": "Saskatchewan",
+      "amount_carbon": "0.6800"
+    },
+    {
+      "id": 6,
+      "name": "Manitoba",
+      "amount_carbon": "0.0013"
+    },
+    {
+      "id": 7,
+      "name": "Quebec",
+      "amount_carbon": "0.0013"
+    },
+    {
+      "id": 8,
+      "name": "New Brunswick",
+      "amount_carbon": "0.2900"
+    },
+    {
+      "id": 9,
+      "name": "Nova Scotia",
+      "amount_carbon": "0.7200"
+    },
+    {
+      "id": 10,
+      "name": "Prince Edward Island",
+      "amount_carbon": "0.0040"
+    },
+    {
+      "id": 11,
+      "name": "Newfoundland and Labrador",
+      "amount_carbon": "0.0260"
+    },
+    {
+      "id": 12,
+      "name": "Northwest Territories",
+      "amount_carbon": "0.4800"
+    }
+  ],
+  "metrics": [
+    {
+      "id": 1,
+      "type": "cellphone",
+      "amount": "0.054500",
+      "description": "It takes 5.45 watt hours to fully charge iPhone."
+    },
+    {
+      "id": 2,
+      "type": "gasoline",
+      "amount": "2.300000",
+      "description": "2.3kg of carbon in 1L of gasoline"
+    }
+  ]
+}

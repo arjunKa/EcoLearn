@@ -21,7 +21,8 @@ MIDDLEWARE = [
 
 CORS_ALLOWED_ORIGINS = [
     'https://zealous-glacier-088bd090f.5.azurestaticapps.net',
-    'https://www.ecolearn.ca'
+    'https://www.ecolearn.ca',
+    'https://arjunka.github.io',
 ]
 
 

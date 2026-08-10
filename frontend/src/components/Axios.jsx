@@ -1,15 +1,13 @@
-import axios from 'axios'
-
-const isDevelopment = import.meta.env.MODE === 'development'
-const baseUrl2 = isDevelopment ? import.meta.env.VITE_API_BASE_URL_LOCAL : import.meta.env.VITE_API_BASE_URL_PROD
+import axios from "axios";
+import { API_BASE_URL } from "../config/appConfig";
 
 const AxiosInstance = axios.create({
-    baseURL: baseUrl2, 
-    timeout: 5000, 
-    headers: {
-        "Content-Type": "application/json", 
-        accept: "application/json"
-    }
-})
+  baseURL: API_BASE_URL || undefined,
+  timeout: 5000,
+  headers: {
+    "Content-Type": "application/json",
+    accept: "application/json",
+  },
+});
 
-export default AxiosInstance 
+export default AxiosInstance;

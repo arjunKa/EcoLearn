@@ -29,7 +29,7 @@ const ProgressBarRecycle = ({ calc }) => {
       </Progress>
 
       {/* Display metrics value */}
-      <Metrics calc = {total} />
+      <Metrics calc = {total / 1000} />
     </div>
   );
 };

@@ -1,5 +1,4 @@
 import {
-  Button,
   CardImg,
   CardBody,
   CardText,
@@ -12,8 +11,7 @@ import carImg from "../../../images/carImage.jpg";
 const VehiclesCard = () => {
   return (
     <div className="calc_box_card">
-      <Card className="card">
-        {/* left side */}
+      <Card className="calc-info-card">
         <CardImg
           alt="Card image cap"
           src={carImg}
@@ -21,12 +19,15 @@ const VehiclesCard = () => {
           className="custom-card-img"
         />
         <CardBody>
-          <CardTitle tag="h5">Vehicle Emissions</CardTitle>
-          <CardSubtitle className="mb-1 text-muted" tag="h6">
+          <span className="calc-info-card__tag">Transportation</span>
+          <CardTitle className="calc-info-card__title" tag="h5">
+            Vehicle Emissions
+          </CardTitle>
+          <CardSubtitle className="calc-info-card__subtitle" tag="h6">
             Quantify how much carbon you have saved by reducing how much you
             drive.
           </CardSubtitle>
-          <CardText>
+          <CardText className="calc-info-card__text">
             Transportation is one of the largest source to carbon dioxide gas,
             and it is one of the main contributors to climate change. So even
             reducing the amount we drive by 10% can significantly help cut
@@ -35,7 +36,7 @@ const VehiclesCard = () => {
             transportation would vastly lower the amount of emissions per rider
             than a car would.
           </CardText>
-          <Button>More</Button>
+          <div className="calc-info-card__footnote">Focus: reduced driving and idling minutes</div>
         </CardBody>
       </Card>
     </div>

@@ -1,9 +1,8 @@
-import { Progress, Tooltip } from "reactstrap";
-import React, { useState, useEffect } from "react";
-import AxiosInstance from "../Axios";
+import { Tooltip } from "reactstrap";
+import { useState, useEffect } from "react";
+import { getMetricsData } from "../../services/ecolearnData";
 
 const Metrics = ({ calc }) => {
-  const colors = ["", "success", "warning", "danger"];
   const [metrics, setMetrics] = useState(""); // State for age input
   const [tooltipOpen, setTooltipOpen] = useState(false);
   const [tooltipOpen2, setTooltipOpen2] = useState(false);
@@ -20,15 +19,8 @@ const Metrics = ({ calc }) => {
 
   const getMetrics = async () => {
     try {
-      // Make your API request with the treeData array
-
-      const res = await AxiosInstance.get("/api/metric/", {
-        params: {},
-      });
-
-      // Handle the response as needed
-      console.log(res.data);
-      setMetrics(res.data);
+      const data = await getMetricsData();
+      setMetrics(data);
     } catch (err) {
       console.error("Error fetching data:", err);
     }

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import {
   Collapse,
   Navbar,
@@ -13,8 +13,10 @@ import {
   DropdownItem,
   NavbarText,
 } from "reactstrap";
+import { NavLink as RouterNavLink } from "react-router-dom";
+import { APP_BASE_PATH } from "../../config/appConfig";
 
-function Navbar2(args) {
+function Navbar2() {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
@@ -22,36 +24,36 @@ function Navbar2(args) {
   return (
     <div>
       <Navbar color="dark" dark expand="md">
-        <NavbarBrand href="/">
-          {/* <div
-            style={{
-              paddingRight: "10px",
-            }}
-          > */}
+        <NavbarBrand tag={RouterNavLink} to="/">
           <img
             alt="logo"
-            src="/ecoLearn.svg"
+            src={`${APP_BASE_PATH}ecoLearn.svg`}
             style={{
               height: 40,
               width: 40,
               marginRight: "10px",
             }}
           />
-          {/* </div> */}
           EcoLearn
         </NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="me-auto" navbar>
             <NavItem>
-              <NavLink href="/tools/">Tools</NavLink>
+              <NavLink tag={RouterNavLink} to="/tools">
+                Tools
+              </NavLink>
             </NavItem>
 
             <NavItem>
-              <NavLink href="/resources/">Resources</NavLink>
+              <NavLink tag={RouterNavLink} to="/resources">
+                Resources
+              </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="/projects/">Projects</NavLink>
+              <NavLink tag={RouterNavLink} to="/projects">
+                Projects
+              </NavLink>
             </NavItem>
             {/* <NavItem>
               <NavLink href="/impact/">Impact</NavLink>
@@ -61,7 +63,9 @@ function Navbar2(args) {
                 Extra
               </DropdownToggle>
               <DropdownMenu>
-                <DropdownItem href="/aboutUs/">About Us</DropdownItem>
+                <DropdownItem tag={RouterNavLink} to="/aboutUs">
+                  About Us
+                </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>
           </Nav>
